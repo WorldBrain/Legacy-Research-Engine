@@ -5,8 +5,7 @@ Chrome extension for flexible full text browsing history search. **Press `f`, th
 Every time you visit a website in Chrome, WorldBrain indexes all the text on the page so that the site can be easily found later. Then, for example, if you type `f <tab> mugwort`, WorldBrain will show the websites you visited containing the text "mugwort"! [Install from the Chrome store here](https://chrome.google.com/webstore/detail/WorldBrain/mmifbbohghecjloeklpbinkjpbplfalb) or [get the CRX file](https://github.com/lengstrom/WorldBrain/releases/tag/0.1.4)! (If you don't feel comfortable with that, look at [Transparent Installation](#transparent-installation)). 
 
 
-**This tool is originally released under the name "[Falcon](https://github.com/lengstrom/falcon)" and will be further developed to fit the needs of the scientific research community.  The original programmers are[@andrewilyas](https://github.com/andrewilyas) and [@lengstrom](https://github.com/lengstrom).
-**
+**This tool is originally released under the name "[Falcon](https://github.com/lengstrom/falcon)" and will be further developed to fit the needs of the scientific research community.  The original programmers are [@andrewilyas](https://github.com/andrewilyas) and [@lengstrom](https://github.com/lengstrom).**
 ## Demo
 <img src="demo.gif" alt="Example Usage" width="880px"/>
 
@@ -30,7 +29,7 @@ If you don't feel comfortable installing a Chrome extension that can read and mo
 ## Preferences Page
 To manage which URLs WorldBrain can index, delete websites from the index, and more, go to the preferences page.
 
-!["Extension Bar"](http://i.imgur.com/w6cdWsc.png "Extension Bar")
+!["Extension Bar"](https://cloud.githubusercontent.com/assets/7870039/19575579/98d64ea4-970f-11e6-958b-8bdc9fd87baf.png "Extension Bar")
 
 ## FAQ
 ### "Will this index my bank statements?"
