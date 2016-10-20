@@ -1,10 +1,14 @@
-# Falcon
+# WorldBrain (Re)Search Engine
 
 Chrome extension for flexible full text browsing history search. **Press `f`, then `space` or `tab`, in the omnibar to start searching your previously visited websites**! 
 
-Every time you visit a website in Chrome, Falcon indexes all the text on the page so that the site can be easily found later. Then, for example, if you type `f <tab> mugwort`, Falcon will show the websites you visited containing the text "mugwort"! [Install from the Chrome store here](https://chrome.google.com/webstore/detail/falcon/mmifbbohghecjloeklpbinkjpbplfalb) or [get the CRX file](https://github.com/lengstrom/falcon/releases/tag/0.1.4)! (If you don't feel comfortable with that, look at [Transparent Installation](#transparent-installation)). Programmed by [@andrewilyas](https://github.com/andrewilyas) and [@lengstrom](https://github.com/lengstrom), art by [Lucia Liu](http://lucialiu.me).
+Every time you visit a website in Chrome, WorldBrain indexes all the text on the page so that the site can be easily found later. Then, for example, if you type `f <tab> mugwort`, WorldBrain will show the websites you visited containing the text "mugwort"! [Install from the Chrome store here](https://chrome.google.com/webstore/detail/WorldBrain/mmifbbohghecjloeklpbinkjpbplfalb) or [get the CRX file](https://github.com/lengstrom/WorldBrain/releases/tag/0.1.4)! (If you don't feel comfortable with that, look at [Transparent Installation](#transparent-installation)). 
 
-<img src="Falcon.gif" alt="Example Usage" width="880px"/>
+
+T**his tool is originally programmed by [@andrewilyas](https://github.com/andrewilyas) and [@lengstrom](https://github.com/lengstrom) under the name "[Falcon](https://github.com/lengstrom/falcon)" and will be further developed to fit the needs of the scientific research community. 
+**
+## Demo
+<img src="demo.gif" alt="Example Usage" width="880px"/>
 
 ## Examples
 
@@ -24,7 +28,7 @@ Every time you visit a website in Chrome, Falcon indexes all the text on the pag
 If you don't feel comfortable installing a Chrome extension that can read and modify all data on the websites you visit from the webstore (we wouldn't either!), you can clone it on your local machine, read through our code to verify that it is not malicious, and then install it as an unpacked local extension through the menu in `chrome://extensions/`. This way you also won't receive any automatic updates, as well. 
 
 ## Preferences Page
-To manage which URLs Falcon can index, delete websites from the index, and more, go to the preferences page.
+To manage which URLs WorldBrain can index, delete websites from the index, and more, go to the preferences page.
 
 !["Extension Bar"](http://i.imgur.com/w6cdWsc.png "Extension Bar")
 

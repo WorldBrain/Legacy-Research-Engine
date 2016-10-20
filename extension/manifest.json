@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Falcon",
-    "short_name":"Falcon",
-    "description": "To activate, type 'f' followed by a tab or space into the Omnibox. Then enter your term and press enter to submit.",
+    "name": "WorldBrain",
+    "short_name":"WorldBrain",
+    "description": "To activate, type 'w' followed by a tab or space into the Omnibox. Then enter your term and press enter to submit.",
     "version": "0.1.4",
     "content_scripts": [
         {
@@ -30,7 +30,7 @@
         "48": "assets/48.png",
         "128": "assets/128.png"
     },
-    "omnibox": { "keyword" : "f" },
+    "omnibox": { "keyword" : "w" },
     "options_page": "assets/preferences.html",
     "background": {
         "scripts": ["js/blacklist2.js", "js/lib/chrono.min.js", "js/textprocessing.js", "js/queryparser.js", "js/background.js"]

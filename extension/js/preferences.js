@@ -149,7 +149,7 @@
 
     function clearAllData() {
         chrome.storage.local.clear();
-        notie.alert(1, 'Deleted All Data. Restarting Falcon...', 2)
+        notie.alert(1, 'Deleted All Data. Restarting WorldBrain...', 2)
         setTimeout(function() {
             chrome.runtime.reload()
         }, 2000);
@@ -161,7 +161,7 @@
             blacklist['SITE'] = ['chrome-ui://newtab']
             chrome.storage.local.set({'blacklist':blacklist});
         });
-        notie.alert(1, 'Deleted Rules. Restarting Falcon...', 2)
+        notie.alert(1, 'Deleted Rules. Restarting WorldBrain...', 2)
         setTimeout(function() {
             chrome.runtime.reload()
         }, 2000);
@@ -175,7 +175,7 @@
             }
             chrome.storage.local.set({'index':{'index':[]}});
         });
-        notie.alert(1, 'Deleted History. Restarting Falcon...', 2)
+        notie.alert(1, 'Deleted History. Restarting WorldBrain...', 2)
         setTimeout(function() {
             chrome.runtime.reload()
         }, 2000);
