@@ -26,7 +26,7 @@ chrome.runtime.onMessage.addListener(handleMessage);
 chrome.runtime.onInstalled.addListener(function (object) {
     chrome.storage.local.get("shouldOpenTab", function(item) {
         if (Object.keys(item).length == 0) {
-            chrome.tabs.create({url: "https://github.com/WorldBrain/falcon"}, function (tab) {
+            chrome.tabs.create({url: "https://github.com/WorldBrain/Research-Engine"}, function (tab) {
             });
             chrome.storage.local.set({"shouldOpenTab": {"dontShow": true}})
         }
