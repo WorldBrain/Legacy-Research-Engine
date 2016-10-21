@@ -2,7 +2,7 @@
 
 Chrome extension for flexible full text browsing history search. **Press `w`, then `space` or `tab`, in the omnibar to start searching your previously visited websites**! 
 
-Every time you visit a website in Chrome, WorldBrain indexes all the text on the page so that the site can be easily found later. Then, for example, if you type `f <tab> mugwort`, WorldBrain will show the websites you visited containing the text "mugwort"! 
+Every time you visit a website in Chrome, WorldBrain indexes all the text on the page so that the site can be easily found later. Then, for example, if you type `w <tab> mugwort`, WorldBrain will show the websites you visited containing the text "mugwort"! 
 
 
 **This tool is originally released under the name "[Falcon](https://github.com/lengstrom/falcon)" and will be further developed to fit the needs of the scientific research community.  The original programmers are [@andrewilyas](https://github.com/andrewilyas) and [@lengstrom](https://github.com/lengstrom).**
