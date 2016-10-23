@@ -355,8 +355,8 @@ function importHistory() {
         for (var i = 0; i < history.length; i++) {
             var visit_time = new Date(new Date().getTime() - history[i].lastVisitTime).toISOString(); 
             var item = {
-                'url': history[i].url,
-                'lastVisitTime': visit_time
+                url: history[i].url,
+                lastVisitTime: visit_time
             }
             history_items.push(item);
         }
