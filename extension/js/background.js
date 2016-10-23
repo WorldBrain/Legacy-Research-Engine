@@ -349,4 +349,20 @@ function binarySearch(arr, value, lt, gt, i, j) {
     return binarySearch(arr, value, lt, gt, i, j);
 }
 
+function importHistory() {
+    chrome.history.search({}, function(history) {
+        history_items = [];
+        for (var i = 0; i < history.length; i++) {
+            var visit_time = new Date(new Date().getTime() - history[i].lastVisitTime).toISOString(); 
+            var item = {
+                'url': history[i].url,
+                'lastVisitTime': visit_time
+            }
+            history_items.push(item);
+        }
+    });
+    return history_items;
+}
+
+importHistory();
 init();
