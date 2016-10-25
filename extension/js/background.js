@@ -127,6 +127,7 @@ function handleMessage(data, sender, sendRespones) {
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
+
         chrome.storage.local.set(keyValue, function() {
             console.log("Stored: " + data.title);
         });
@@ -361,8 +362,10 @@ function importHistory() {
             history_items.push(item);
         }
     });
-    return history_items;
+    
+    chrome.storage.local.set({history: JSON.stringify(history_items)});
+
+    return history_items.length;
 }
 
-importHistory();
 init();
