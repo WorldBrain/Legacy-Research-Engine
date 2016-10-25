@@ -135,6 +135,20 @@ function handleMessage(data, sender, sendRespones) {
         timeIndex.push(time.toString());
         preloaded.push(data);
         chrome.storage.local.set({'index':{'index':timeIndex}});
+    } else if (data.msg === 'saveHistory') {
+        delete data.msg;
+        data.text = processPageText(data.text);
+        var time = data.time;
+        var keyValue = {};
+        keyValue[time] = data;
+
+        chrome.storage.local.set(keyValue, function() {
+            console.log("Stored History item: " + data.title);
+        });
+
+        timeIndex.push(time.toString());
+        preloaded.push(data);
+        chrome.storage.local.set({'index':{'index':timeIndex}});
     } else if (data.msg === 'setPreferences') {
         preferences = data.preferences;
         chrome.storage.local.set({'preferences':preferences});
@@ -372,7 +386,26 @@ function downloadHistory() {
     history_items = chrome.storage.local.get('history');
     history_items = JSON.parse(history_items);
 
-    
+    for(var i = 0 ; i < history_items.length ; i++) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                url_html = xhttp.responseText;
+                page_text = grabArticle(url_html);
+                page_title = getArticleTitle(url_html);
+                data = {
+                    msg: 'saveHistory',
+                    time: history_items[i].lastVisitTime,
+                    url: history_items[i].url,
+                    text: page_text,
+                    title: page_title
+                }
+                handleMessage(data, null, null);
+            }
+        }
+        xhttp.open('GET', history_items[i].url, true);
+        xhttp.send();
+    }
 }
 
 init();
