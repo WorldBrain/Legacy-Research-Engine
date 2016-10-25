@@ -12,8 +12,10 @@ Creates a data object and sends it to ```handleMessage``` for processing. The fo
 ```
 {
 	msg: 'saveHistory',
-	text: 'Raw HTML of the URL',
-	time: 'Time of visit of the URL'
+	text: 'Body/Article HTML of the URL',
+	time: 'Time of visit of the URL',
+	url: 'URL',
+	title: 'Title of the URL'
 }
 ```
 

@@ -368,4 +368,11 @@ function importHistory() {
     return history_items.length;
 }
 
+function downloadHistory() {
+    history_items = chrome.storage.local.get('history');
+    history_items = JSON.parse(history_items);
+
+    
+}
+
 init();
