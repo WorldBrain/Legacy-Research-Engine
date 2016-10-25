@@ -127,6 +127,7 @@ function handleMessage(data, sender, sendRespones) {
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
+
         chrome.storage.local.set(keyValue, function() {
             console.log("Stored: " + data.title);
         });
@@ -347,6 +348,31 @@ function binarySearch(arr, value, lt, gt, i, j) {
         return m;
     }
     return binarySearch(arr, value, lt, gt, i, j);
+}
+
+function importHistory() {
+    chrome.history.search({}, function(history) {
+        history_items = [];
+        for (var i = 0; i < history.length; i++) {
+            var visit_time = new Date(new Date().getTime() - history[i].lastVisitTime).toISOString(); 
+            var item = {
+                url: history[i].url,
+                lastVisitTime: visit_time
+            }
+            history_items.push(item);
+        }
+    });
+    
+    chrome.storage.local.set({history: JSON.stringify(history_items)});
+
+    return history_items.length;
+}
+
+function downloadHistory() {
+    history_items = chrome.storage.local.get('history');
+    history_items = JSON.parse(history_items);
+
+    
 }
 
 init();
