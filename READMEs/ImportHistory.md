@@ -1,6 +1,6 @@
 Goal
 ---
-Importing a user's existing History using the Chrome's History API
+Importing a user's existing Browser History using the Chrome's History API
 
 Input
 ---
@@ -18,4 +18,5 @@ Saves the History Items in the following format and returns the number of Histor
 
 Technical Implementation
 ---
-Query the history using Chrome's [```chrome.history```](https://developer.chrome.com/extensions/history) API.
+Query the history using [```chrome.history```](https://developer.chrome.com/extensions/history) API.<br>
+Store the History Items in JSON format using [```chrome.storage.local```](https://developer.chrome.com/extensions/storage) API.
