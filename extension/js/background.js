@@ -365,21 +365,17 @@ function binarySearch(arr, value, lt, gt, i, j) {
 }
 
 function importHistory() {
-    chrome.history.search({}, function(history) {
-        history_items = [];
-        for (var i = 0; i < history.length; i++) {
-            var visit_time = new Date(new Date().getTime() - history[i].lastVisitTime).toISOString(); 
+    chrome.history.search({text: ''}, function(history) {
+        var history_items = new Array(); 
+        for (var i = 0; i < history.length; i++) { 
             var item = {
                 url: history[i].url,
-                lastVisitTime: visit_time
+                lastVisitTime: new Date(history[i].lastVisitTime).toISOString()
             }
             history_items.push(item);
         }
+        chrome.storage.local.set({history: JSON.stringify(history_items)});
     });
-    
-    chrome.storage.local.set({history: JSON.stringify(history_items)});
-
-    return history_items.length;
 }
 
 function downloadHistory() {
