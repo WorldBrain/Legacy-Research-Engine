@@ -12,9 +12,9 @@ window.setTimeout((function(){
         }*/
     chrome.runtime.sendMessage({
         "msg":'pageContent',
-        "time":epochTime,
-        "url":url,
-        "text":document.body.innerText, //relText,
-        "title":document.title,
+        "time": epochTime,
+        "url": url,
+        "text": document.body.innerText, //relText,
+        "title": document.title,
     });
 }), 1000);

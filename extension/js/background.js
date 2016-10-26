@@ -127,8 +127,23 @@ function handleMessage(data, sender, sendRespones) {
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
+
         chrome.storage.local.set(keyValue, function() {
             console.log("Stored: " + data.title);
+        });
+
+        timeIndex.push(time.toString());
+        preloaded.push(data);
+        chrome.storage.local.set({'index':{'index':timeIndex}});
+    } else if (data.msg === 'saveHistory') {
+        delete data.msg;
+        data.text = processPageText(data.text);
+        var time = data.time;
+        var keyValue = {};
+        keyValue[time] = data;
+
+        chrome.storage.local.set(keyValue, function() {
+            console.log("Stored History item: " + data.title);
         });
 
         timeIndex.push(time.toString());
@@ -347,6 +362,50 @@ function binarySearch(arr, value, lt, gt, i, j) {
         return m;
     }
     return binarySearch(arr, value, lt, gt, i, j);
+}
+
+function importHistory() {
+    chrome.history.search({}, function(history) {
+        history_items = [];
+        for (var i = 0; i < history.length; i++) {
+            var visit_time = new Date(new Date().getTime() - history[i].lastVisitTime).toISOString(); 
+            var item = {
+                url: history[i].url,
+                lastVisitTime: visit_time
+            }
+            history_items.push(item);
+        }
+    });
+    
+    chrome.storage.local.set({history: JSON.stringify(history_items)});
+
+    return history_items.length;
+}
+
+function downloadHistory() {
+    history_items = chrome.storage.local.get('history');
+    history_items = JSON.parse(history_items);
+
+    for(var i = 0 ; i < history_items.length ; i++) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                url_html = xhttp.responseText;
+                page_text = grabArticle(url_html);
+                page_title = getArticleTitle(url_html);
+                data = {
+                    msg: 'saveHistory',
+                    time: history_items[i].lastVisitTime,
+                    url: history_items[i].url,
+                    text: page_text,
+                    title: page_title
+                }
+                handleMessage(data, null, null);
+            }
+        }
+        xhttp.open('GET', history_items[i].url, true);
+        xhttp.send();
+    }
 }
 
 init();
