@@ -379,29 +379,33 @@ function importHistory() {
 }
 
 function downloadHistory() {
-    history_items = chrome.storage.local.get('history');
-    history_items = JSON.parse(history_items);
-
-    for(var i = 0 ; i < history_items.length ; i++) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                url_html = xhttp.responseText;
-                page_text = grabArticle(url_html);
-                page_title = getArticleTitle(url_html);
-                data = {
-                    msg: 'saveHistory',
-                    time: history_items[i].lastVisitTime,
-                    url: history_items[i].url,
-                    text: page_text,
-                    title: page_title
+    history_items = chrome.storage.local.get('history', function(result) {
+        history_items = JSON.parse(result.history);
+        for(var i = 0 ; i < history_items.length - 99 ; i++) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    url_html = xhttp.responseText;
+                    var current_body = document.body.innerHTML;
+                    document.body.parentNode.innerHTML = url_html;
+                    document.body.innerHTML = document.body.innerHTML + url_html;
+                    page_text = readability.grabArticle(document).textContent;
+                    page_title = readability.getArticleTitle(document);
+                    data = {
+                        msg: 'saveHistory',
+                        time: history_items[i].lastVisitTime,
+                        url: history_items[i].url,
+                        text: page_text,
+                        title: page_title
+                    }
+                    console.log(data);
+                    handleMessage(data, null, null);
                 }
-                handleMessage(data, null, null);
             }
+            xhttp.open('GET', history_items[i].url, true);
+            xhttp.send();
         }
-        xhttp.open('GET', history_items[i].url, true);
-        xhttp.send();
-    }
+    });
 }
 
 init();
