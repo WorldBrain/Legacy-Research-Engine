@@ -381,7 +381,7 @@ function importHistory() {
 function downloadHistory() {
     history_items = chrome.storage.local.get('history', function(result) {
         history_items = JSON.parse(result.history);
-        for(var i = 0 ; i < history_items.length - 99 ; i++) {
+        for(var i = 0 ; i < history_items.length ; i++) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
