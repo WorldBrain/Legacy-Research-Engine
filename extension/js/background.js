@@ -123,7 +123,6 @@ function handleMessage(data, sender, sendRespones) {
     // data is from message
     if (data.msg === 'pageContent' && shouldArchive(data)) {
         delete data.msg;
-        console.log(data.text);
         data.text = processPageText(data.text);
         var time = data.time;
         var keyValue = {};
@@ -139,7 +138,6 @@ function handleMessage(data, sender, sendRespones) {
     } else if (data.msg === 'saveHistory') {
         delete data.msg;
         data.text = processPageText(data.text);
-        console.log(data.text);
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
@@ -401,7 +399,6 @@ function downloadHistoryUtil(history_items, index) {
                     url_html = url_html.slice(url_html.search('<body>') + '<body>'.length, url_html.search('</body>'));
                     body.innerHTML = url_html;
                     var page_text = body.innerText;
-                    console.log(page_text);
                     var page_title = url_html.slice(url_html.search('<title>') + '<title>'.length, url_html.search('</title>'));
                     data = {
                         msg: 'saveHistory',
