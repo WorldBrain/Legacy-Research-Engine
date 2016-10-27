@@ -368,43 +368,65 @@ function importHistory() {
     chrome.history.search({text: ''}, function(history) {
         var history_items = new Array(); 
         for (var i = 0; i < history.length; i++) { 
-            var item = {
-                url: history[i].url,
-                lastVisitTime: new Date(history[i].lastVisitTime).toISOString()
+            var history_item_url = history[i].url;
+            if(history_item_url.search('file:///') === -1) {
+                var item = {
+                    url: history[i].url,
+                    lastVisitTime: new Date(history[i].lastVisitTime).toISOString()
+                }
+                history_items.push(item);
             }
-            history_items.push(item);
         }
         chrome.storage.local.set({history: JSON.stringify(history_items)});
     });
 }
 
-function downloadHistory() {
-    history_items = chrome.storage.local.get('history', function(result) {
-        history_items = JSON.parse(result.history);
-        for(var i = 0 ; i < history_items.length ; i++) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
+var initial = document.body.parentNode.innerHTML;
+function downloadHistoryUtil(history_items, index) {
+    if(parseInt(index) === history_items.length) {
+        console.log('Finished Downloading ' + parseInt(index) + ' items');
+        localStorage.setItem('downloaded_history_items', index);
+        return;
+    }
+    else {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                try {
+                    var doc = document.implementation.createHTMLDocument();
                     url_html = xhttp.responseText;
-                    var current_body = document.body.innerHTML;
-                    document.body.parentNode.innerHTML = url_html;
-                    document.body.innerHTML = document.body.innerHTML + url_html;
-                    page_text = readability.grabArticle(document).textContent;
-                    page_title = readability.getArticleTitle(document);
+                    var body = doc.createElement('body');
+                    url_html = url_html.slice(url_html.search('<body>') + '<body>'.length, url_html.search('</body>'));
+                    body.innerHTML = url_html;
+                    var page_text = body.innerText;
+                    var page_title = url_html.slice(url_html.search('<title>') + '<title>'.length, url_html.search('</title>'));
                     data = {
                         msg: 'saveHistory',
-                        time: history_items[i].lastVisitTime,
-                        url: history_items[i].url,
+                        time: history_items[index].lastVisitTime,
+                        url: history_items[index].url,
                         text: page_text,
                         title: page_title
                     }
-                    console.log(data);
                     handleMessage(data, null, null);
+                } catch (err) {
+                    console.log('Download failed!: ' + err.message);
                 }
+                downloadHistoryUtil(history_items, index + 1);
             }
-            xhttp.open('GET', history_items[i].url, true);
-            xhttp.send();
+        };
+        xhttp.ontimeout = function() {
+            console.log('Timeout!!');
+            downloadHistoryUtil(history_items, index + 1);
         }
+        xhttp.open('GET', history_items[index].url, true);
+        xhttp.send();
+    }
+}
+
+function downloadHistory() {
+    chrome.storage.local.get('history', function(result) {
+        var history_items = JSON.parse(result.history);
+        downloadHistoryUtil(history_items, 0);
     });
 }
 
