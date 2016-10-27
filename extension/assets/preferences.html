@@ -8,19 +8,42 @@
       
 
     <body>
+    	<br>
+    	<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <h3 style="margin-top:-2px">New Feature</h3>The ability to import your existing history. <a href=""> Import now>></a>
+</div>
 
         <h1>About the WorldBrain project</h1>
+         <hr />
         WorldBrain is an open-source project that aims to battle (scientific) misinformation by developing a quality score for web content/sources and an expert ranking for users/authors/scientists in a given field. Our first step is a personalisable search-engine that lets users full-text searches on the pages they visited and bookmarked.<br>
-        In later stages users can <strong>voluntarily share</strong> metadata about their browsing behaviour with WorldBrain, from which we develop the quality scores. Also this will make it possible to develop a crowdsourced search-engine where we can collectively show each other related content. (i.e. counter perspectives or unsourced studies)
-        <br> You can read more about it in our <a href="http://wrldbra.in/WorldBrain-Pitch-Deck"> project pitch deck</a>.
+        In later stages users can <strong>voluntarily share</strong> metadata with their friends, the community and WorldBrain. WorldBrain's goal is to develop the quality scores and uncover related content. (i.e. counter perspectives or unsourced studies)
+        <br>
+        The tool is built on the basis of <a href="https://github.com/lengstrom/falcon">Falcon</a>, another open-source tool that provides the initial history search functionality.
+        <br><br>
+        <a href="https://wrldbra.in/WorldBrain-Pitch-Deck"><strong>Read more </strong></a>about it in our project overview.
+
+        <br>	
+        <h2>Current Status</h2>
+
+        <h3>We just added</h3> the ability to import your existing history. <a href="">Import now>></a>
+        <br>
+        <h3>Up next</h3> is the import of existing bookmarks.
+
         <h1>Transparency & Data Ownership</h1>
+         <hr />
         We have no access to your data and won't ever have without your prior approval.
         Your data truly stays yours.
         <br>
 
-        We will publicly explain who benefits in what way from the analysis on the data users <strong>voluntarily share</strong>. Be it the user himself, the community or the project's income streams.
-        You can read more about it in our <a href="http://wrldbra.in/WorldBrain-Pitch-Deck"> project pitch deck</a>.
+        We will publicly explain who benefits in what way from the analysis on the data users <strong>voluntarily share</strong>.
+        <br> Be it the user himself, the community or the project's income streams.
+        <a href="https://docs.google.com/presentation/d/1Pt2NiJwbXq7PNmuzpkqkgfo00fMVP0bxnZgMEakBKWs/edit#slide=id.g16f6f1ade7_5_491"><strong>Read more>> </strong></a>
 
+        <h1>Help & Frequently Asked Questions</h1>
+ 		<hr />
+
+ 		You find <a href="http://www.worldbrain.io/faqs-plugin/">here</a>
 
         <h1>Preferences</h1>
         <hr />
@@ -34,6 +57,12 @@
         <button class="ui green button" id="add">Add</button>
         <button class="ui blue button" id="save">Save</button>
         <button class="ui red button" id="clear-rules">Clear Rules</button>
+
+        <h2>Import your existing History</h2>
+        <p>To also search through the browsing history before the time of installing the plugin, you have to import it</p>
+        <a href="analyse_urls.html"><button class="ui green button" id="import_history_button">Import History</button></a>
+
+
 
         <h2>Your History</h2>
         <div class="ui input">

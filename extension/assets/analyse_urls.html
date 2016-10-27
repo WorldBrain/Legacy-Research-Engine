@@ -1,0 +1,25 @@
+<!doctype html>
+
+<html lang="en">
+   <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="semantic.min.css">
+        <link rel="stylesheet" href="notie.css">
+    </head>
+
+<body>
+    <div>
+        Number of unique URls in your History
+        <span id="number">
+        </span>
+    </div>
+    <script type='text/javascript'>
+        document.getElementById('number').innerHTML = sessionStorage.getItem('number_urls');
+    </script> 
+
+
+
+    <script type="text/javascript" src="../js/lib/notie.min.js"></script>
+    <script type="text/javascript" src="../js/preferences.js"></script>
+    </body>
+</html>
