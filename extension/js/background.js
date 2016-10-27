@@ -413,6 +413,8 @@ function downloadHistoryUtil(history_items, index) {
                     console.log('Download failed!: ' + err.message);
                 }
                 downloadHistoryUtil(history_items, index + 1);
+            } else if (xhttp.readyState == 4 && xhttp.status != 200) {
+                downloadHistoryUtil(history_items, index + 1);
             }
         };
         xhttp.ontimeout = function() {
