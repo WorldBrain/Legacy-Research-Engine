@@ -383,7 +383,7 @@ function importHistory() {
 
 var initial = document.body.parentNode.innerHTML;
 function downloadHistoryUtil(history_items, index) {
-    if(parseInt(index) === 5/*history_items.length*/) {
+    if(parseInt(index) === history_items.length) {
         console.log('Finished Downloading ' + parseInt(index) + ' items');
         localStorage.setItem('downloaded_history_items', index);
         return;
