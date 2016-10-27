@@ -373,9 +373,11 @@ function importHistory() {
                 lastVisitTime: new Date(history[i].lastVisitTime).toISOString()
             }
             history_items.push(item);
+    
         }
-        chrome.storage.local.set({history: JSON.stringify(history_items)});
+        chrome.storage.local.set({history: JSON.stringify(history_items)});  
     });
+
 }
 
 function downloadHistory() {

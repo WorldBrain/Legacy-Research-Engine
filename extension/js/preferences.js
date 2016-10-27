@@ -207,11 +207,10 @@
 
     document.getElementById("search_history").onkeyup = function () {
         getHistory(document.getElementById("search_history").value);
-    }
+    };
 
-    document.getElementById("import_history_button").onclick = function () {
-        var return_from_import = 12345;
-        sessionStorage.setItem("number_urls",return_from_import);
-        }
+
 
 })();
+
+
