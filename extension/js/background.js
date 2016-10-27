@@ -123,6 +123,7 @@ function handleMessage(data, sender, sendRespones) {
     // data is from message
     if (data.msg === 'pageContent' && shouldArchive(data)) {
         delete data.msg;
+        console.log(data.text);
         data.text = processPageText(data.text);
         var time = data.time;
         var keyValue = {};
@@ -138,6 +139,7 @@ function handleMessage(data, sender, sendRespones) {
     } else if (data.msg === 'saveHistory') {
         delete data.msg;
         data.text = processPageText(data.text);
+        console.log(data.text);
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
@@ -383,7 +385,7 @@ function importHistory() {
 
 var initial = document.body.parentNode.innerHTML;
 function downloadHistoryUtil(history_items, index) {
-    if(parseInt(index) === history_items.length) {
+    if(parseInt(index) === 3/*history_items.length*/) {
         console.log('Finished Downloading ' + parseInt(index) + ' items');
         localStorage.setItem('downloaded_history_items', index);
         return;
@@ -399,6 +401,7 @@ function downloadHistoryUtil(history_items, index) {
                     url_html = url_html.slice(url_html.search('<body>') + '<body>'.length, url_html.search('</body>'));
                     body.innerHTML = url_html;
                     var page_text = body.innerText;
+                    console.log(page_text);
                     var page_title = url_html.slice(url_html.search('<title>') + '<title>'.length, url_html.search('</title>'));
                     data = {
                         msg: 'saveHistory',
@@ -411,6 +414,8 @@ function downloadHistoryUtil(history_items, index) {
                 } catch (err) {
                     console.log('Download failed!: ' + err.message);
                 }
+                downloadHistoryUtil(history_items, index + 1);
+            } else if (xhttp.readyState == 4 && xhttp.status != 200) {
                 downloadHistoryUtil(history_items, index + 1);
             }
         };
