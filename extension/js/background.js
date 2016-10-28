@@ -123,6 +123,7 @@ function handleMessage(data, sender, sendRespones) {
     // data is from message
     if (data.msg === 'pageContent' && shouldArchive(data)) {
         delete data.msg;
+        console.log(data.text)
         data.text = processPageText(data.text);
         var time = data.time;
         var keyValue = {};
@@ -138,6 +139,7 @@ function handleMessage(data, sender, sendRespones) {
     } else if (data.msg === 'saveHistory') {
         delete data.msg;
         data.text = processPageText(data.text);
+        console.log(`START2`+data.text)
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
@@ -367,7 +369,7 @@ function binarySearch(arr, value, lt, gt, i, j) {
 function importHistory() {
     chrome.history.search({text: ''}, function(history) {
         var history_items = new Array(); 
-        for (var i = 0; i < history.length; i++) { 
+        for (var i = 1; i < 2; i++) { 
             var history_item_url = history[i].url;
             if(history_item_url.search('file:///') === -1) {
                 var item = {
@@ -394,13 +396,18 @@ function downloadHistoryUtil(history_items, index) {
         xhttp.onreadystatechange = function() {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
                 try {
-                    var doc = document.implementation.createHTMLDocument();
                     url_html = xhttp.responseText;
-                    var body = doc.createElement('body');
-                    url_html = url_html.slice(url_html.search('<body>') + '<body>'.length, url_html.search('</body>'));
-                    body.innerHTML = url_html;
-                    var page_text = body.innerText;
-                    var page_title = url_html.slice(url_html.search('<title>') + '<title>'.length, url_html.search('</title>'));
+
+                    var doc = document.implementation.createHTMLDocument("example");
+                    doc.documentElement.innerHTML = url_html
+
+                    body_text = doc.body.getElementsByTagName('div').value;
+                    console.log(body_text)
+                    //console.log(doc.body.innerHTML)
+                    var page_text = body.textContent || body.innerText;
+                    var pagedfdf_title = url_html.slice(url_html.search('<title>') + '<title>'.length, url_html.search('</title>'));
+                    
+
                     data = {
                         msg: 'saveHistory',
                         time: history_items[index].lastVisitTime,
