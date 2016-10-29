@@ -368,14 +368,15 @@ function binarySearch(arr, value, lt, gt, i, j) {
 function importHistory() {
     chrome.history.search({'text': '','maxResults': 200000, 'startTime':0 }, function(history) {
         var history_items = new Array(); 
-        for (var i = 1; i < history.length ; i++) { 
+        for (var i = 0; i < history.length ; i++) { 
                 var item = {
                     url: history[i].url,
                     lastVisitTime: new Date(history[i].lastVisitTime).toISOString()
                 }
                 history_items.push(item);
-            
+        console.log(history_items.length)    
         }
+        
         chrome.storage.local.set({history: JSON.stringify(history_items)});
         localStorage.setItem('number_urls',history_items.length)
     });
