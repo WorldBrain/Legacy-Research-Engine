@@ -136,7 +136,7 @@ function handleMessage(data, sender, sendRespones) {
         timeIndex.push(time.toString());
         preloaded.push(data);
         chrome.storage.local.set({'index':{'index':timeIndex}});
-    } else if (data.msg === 'saveHistory') {
+    } else if (data.msg === 'saveHistory' && shouldArchive(data)) {
         delete data.msg;
         data.text = processPageText(data.text);
         var time = data.time;
@@ -144,7 +144,7 @@ function handleMessage(data, sender, sendRespones) {
         keyValue[time] = data;
 
         chrome.storage.local.set(keyValue, function() {
-            console.log("Stored History item: " + data.title);
+            console.log("Stored History item: " + data.url);
         });
 
         timeIndex.push(time.toString());
@@ -374,9 +374,9 @@ function importHistory() {
                     lastVisitTime: new Date(history[i].lastVisitTime).toISOString()
                 }
                 history_items.push(item);
-        console.log(history_items.length)    
+        //console.log(history_items.length)    
         }
-        
+        console.log("TOTAL ITEMS IN HISTORY:" + history_items.length)    
         chrome.storage.local.set({history: JSON.stringify(history_items)});
         localStorage.setItem('number_urls',history_items.length)
     });
@@ -402,7 +402,7 @@ function downloadHistoryUtil(history_items, index) {
 
                     divs = body_text.getElementsByTagName('div')
 
-                    console.log(divs)
+                    //console.log(divs)
                     var page_text = ""
 
                         for (i = 0; i< divs.length; i++) {
