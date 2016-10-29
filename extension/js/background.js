@@ -139,7 +139,6 @@ function handleMessage(data, sender, sendRespones) {
     } else if (data.msg === 'saveHistory') {
         delete data.msg;
         data.text = processPageText(data.text);
-        console.log(`START2`+data.text)
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
@@ -367,17 +366,15 @@ function binarySearch(arr, value, lt, gt, i, j) {
 }
 
 function importHistory() {
-    chrome.history.search({text: ''}, function(history) {
+    chrome.history.search({'text': '','maxResults': 200000, 'startTime':0 }, function(history) {
         var history_items = new Array(); 
-        for (var i = 1; i < 2; i++) { 
-            var history_item_url = history[i].url;
-            if(history_item_url.search('file:///') === -1) {
+        for (var i = 1; i < history.length ; i++) { 
                 var item = {
                     url: history[i].url,
                     lastVisitTime: new Date(history[i].lastVisitTime).toISOString()
                 }
                 history_items.push(item);
-            }
+            
         }
         chrome.storage.local.set({history: JSON.stringify(history_items)});
         localStorage.setItem('number_urls',history_items.length)
@@ -397,16 +394,22 @@ function downloadHistoryUtil(history_items, index) {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
                 try {
                     url_html = xhttp.responseText;
-
-                    var doc = document.implementation.createHTMLDocument("example");
+                    var doc = document.implementation.createHTMLDocument();
                     doc.documentElement.innerHTML = url_html
 
-                    body_text = doc.body.getElementsByTagName('div').value;
-                    console.log(body_text)
-                    //console.log(doc.body.innerHTML)
-                    var page_text = body.textContent || body.innerText;
-                    var pagedfdf_title = url_html.slice(url_html.search('<title>') + '<title>'.length, url_html.search('</title>'));
-                    
+                    body_text = doc.body
+
+                    divs = body_text.getElementsByTagName('div')
+
+                    console.log(divs)
+                    var page_text = ""
+
+                        for (i = 0; i< divs.length; i++) {
+                        //console.log(divs[i].textContent)
+                                page_text += divs[i].textContent
+
+                        }
+                    page_title = doc.title
 
                     data = {
                         msg: 'saveHistory',
