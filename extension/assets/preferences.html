@@ -1,8 +1,5 @@
 <html>
     <head>
-        <script type="text/javascript" src="../js/lib/notie.min.js"></script>
-        <script type="text/javascript" src="../js/preferences.js"></script>
-        <script type="text/javascript" src="../js/background.js"></script>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="semantic.min.css">
         <link rel="stylesheet" href="notie.css">
@@ -15,7 +12,7 @@
         <br>
     	<div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <h3 style="margin-top:-2px">New Feature</h3>The ability to import your existing history. <a href=""> Import now>></a>
+  <h3 style="margin-top:-2px">New Feature</h3>The ability to import your existing history. <a href="analyse_urls.html"> Import now>></a>
     </div>
 
         <h1>About the WorldBrain project</h1>
@@ -64,7 +61,7 @@
 
         <h2>Import your existing History</h2>
         <p>To also search through the browsing history before the time of installing the plugin, you have to import it</p>
-        <a href="analyse_urls.html" "><button type="button" class="ui green button" onclick="importHistory();">Import History</button></a>
+        <a href="analyse_urls.html"><button class="ui green button">Import History</button></a>
 
 
 
@@ -80,5 +77,9 @@
         <h2>Danger Zone!</h2>
         <button class="ui red button" id="clear">Clear All Data</button>
         </div>
+        <script type="text/javascript" src="../js/lib/notie.min.js"></script>
+        <script type="text/javascript" src="../js/background.js"></script>
+        <script type="text/javascript" src="../js/preferences.js"></script>
+        
     </body>
 </html>

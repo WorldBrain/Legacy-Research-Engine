@@ -209,8 +209,6 @@
         getHistory(document.getElementById("search_history").value);
     };
 
-    //document.getElementById("import_history_button").addEventListener("click", importHistory());
-
 
 })();
 
