@@ -209,7 +209,6 @@
         getHistory(document.getElementById("search_history").value);
     };
 
-
 })();
 
 
