@@ -38,7 +38,7 @@ function downloadHistoryUtil(history_items, index) {
                 document.getElementById("title_download").innerHTML = "Download cancelled!";
                 document.getElementById("close_message").innerHTML = "You can always restart it via the settings.";
                 document.getElementById("info_text").innerHTML = '<a href="preferences.html">Go to settings</a>';
-                document.getElementById('abort_button').visibility = 'hidden'
+                document.getElementById('abort_button').remove()
                 console.log("Cancelled Download")
             }
 
