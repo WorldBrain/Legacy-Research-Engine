@@ -1,6 +1,8 @@
 (function() {
     var allPageDisplay = null;
 
+    // add element to the custom blacklist 
+    //TODO: check if element is already there before adding. 
     var add = function(type, content) {
         var tab = document.getElementById("blacklist_tbl")
         var row = tab.insertRow()
@@ -97,6 +99,13 @@
                 }
             }
         } else {
+            add("REGEX", ".google.");
+            add("REGEX", "asana.com");
+            add("REGEX", "login");
+            add("REGEX", "Login");
+            add("REGEX", ".paypal.");
+            add("REGEX", ".facebook.com/photo.php");
+            add("REGEX", "chrome//");
             add("SITE", "chrome-ui://newtab");
             save(false);
         }
