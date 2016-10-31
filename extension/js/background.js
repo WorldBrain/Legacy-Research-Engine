@@ -123,7 +123,6 @@ function handleMessage(data, sender, sendRespones) {
     // data is from message
     if (data.msg === 'pageContent' && shouldArchive(data)) {
         delete data.msg;
-        console.log(data.text)
         data.text = processPageText(data.text);
         var time = data.time;
         var keyValue = {};

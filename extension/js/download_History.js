@@ -2,11 +2,11 @@ var initial = document.body.parentNode.innerHTML;
 
 //open list of already indexed urls from local storage
 var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
-var abort_status = 0
+var isAbortedByUser = false;    
 
 // activiator in case user cancelles download
 document.getElementById('abort_button').onclick = function(){
-    abort_status = 1
+    isAbortedByUser = true;
 };
 
 function downloadHistoryUtil(history_items, index) {   
@@ -32,14 +32,13 @@ function downloadHistoryUtil(history_items, index) {
 
         // check if user cancelled download
         xhttp.onreadystatechange = function() {
-            if (abort_status == 1) {
+            if (isAbortedByUser == true) {
                 localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
-                //localStorage.setItem('abort_status',0)
-                document.getElementById("title_download").innerHTML = "Download cancelled!";
+                document.getElementById("title_download").innerHTML = "Download Stopped!";
                 document.getElementById("close_message").innerHTML = "You can always restart it via the settings.";
                 document.getElementById("info_text").innerHTML = '<a href="preferences.html">Go to settings</a>';
                 document.getElementById('abort_button').remove()
-                console.log("Cancelled Download")
+                console.log("Download Stopped")
             }
 
             // if not, continue with download
