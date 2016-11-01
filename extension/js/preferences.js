@@ -105,7 +105,6 @@
             add("REGEX", "Login");
             add("REGEX", ".paypal.");
             add("REGEX", ".facebook.com/photo.php");
-            add("REGEX", "chrome//");
             add("SITE", "chrome-ui://newtab");
             save(false);
         }

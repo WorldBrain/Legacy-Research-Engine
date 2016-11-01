@@ -50,26 +50,25 @@ function downloadHistoryUtil(history_items, index) {
                         url_html = xhttp.responseText;
                         var doc = document.implementation.createHTMLDocument();
                         doc.documentElement.innerHTML = url_html
-                        
-                        // getting only the content with a div tag (therefore exluding script AND META (unfortunately) tags etc.)
-                        // for this whole thing we need a better solution because many divs actually have the same textContent and 
-                        //therefore we have things multiple times -> unecessary bloating of file, now ca 150kb, could be 30kb. 
-                        body_text = doc.body
-                        divs = body_text.getElementsByTagName('div')
-                        var page_text = ""
-                            for (i = 0; i< divs.length; i++) {
-                            //console.log(divs[i].textContent)
-                                    page_text += divs[i].textContent
-                            }
 
-                        page_title = doc.title
+
+                        // Reading out the Title and body of the article
+                        var page_title = doc.title
+
+                        var article = readability.grabArticle(doc);
+                        var body_text =  readability.getInnerText(article);
+
+                        //TEST log
+                        /*console.log("PAGE TITLE" + page_title)
+                        console.log(visible);
+                        console.log("BODY TEXT" + body_text)*/
 
                         //preparing message for storing article to DB      
                         data = {
                             msg: 'saveHistory',
                             time: history_items[index].lastVisitTime,
                             url: history_items[index].url,
-                            text: page_text,
+                            text: body_text,
                             title: page_title
                         }
                         handleMessage(data, null, null);
