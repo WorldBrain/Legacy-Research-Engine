@@ -26,7 +26,7 @@ chrome.runtime.onMessage.addListener(handleMessage);
 chrome.runtime.onInstalled.addListener(function (object) {
     chrome.storage.local.get("shouldOpenTab", function(item) {
         if (Object.keys(item).length == 0) {
-            chrome.tabs.create({url: "about.html"}, function (tab) {
+            chrome.tabs.create({url: "assets/about.html"}, function (tab) {
             });
             chrome.storage.local.set({"shouldOpenTab": {"dontShow": true}})
         }
@@ -127,7 +127,7 @@ function handleMessage(data, sender, sendRespones) {
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
-        console.log("Coming from Browsing" + data.text)
+        //console.log("Coming from Browsing: " + data.text)
 
         chrome.storage.local.set(keyValue, function() {
             console.log("Stored: " + data.title);
@@ -139,7 +139,7 @@ function handleMessage(data, sender, sendRespones) {
     } else if (data.msg === 'saveHistory' && shouldArchive(data)) {
         delete data.msg;
         data.text = processPageText(data.text);
-        console.log("Coming from Import History" + data.text)
+        //console.log("Coming from Import History: " + data.text)
 
         var time = data.time;
         var keyValue = {};
