@@ -54,20 +54,19 @@ function downloadHistoryUtil(history_items, index) {
 
                         // Alterntive 1: Reading out the Title and body of the article with Readbility. Upside: Clean body text. Downside, sometimes doesnt get the whole visible text on the page
                         var article_title = readability.getArticleTitle(doc)
-                        var page_title = doc.title
-
-                        var article = readability.grabArticle(doc);
+                        /*var article = readability.grabArticle(doc);
                         var article_title = readability.getArticleTitle(article);
                         var body_text =  readability.getInnerText(article);
 
-                        text_to_save = article_title + body_text
-
+                       
+*/
                         // Alternative 2: using innerText method Upside: really every word in the text. Downside: a lot of clutter from skripts etc. 
-                        /*body_text = doc.body.innerText
-                        body_text = body_text.replace(/\s+/g, " ")*/
+                        body_text = doc.body.innerText
+                        body_text = body_text.replace(/\s+/g, " ")
+                        page_title = doc.title
 
                         //Alternative 3: Storing the whole html for now and reparsing the entries later (would allow user not to go and crawl their history again.)
-
+                        
 
                         //TEST log
                         /*console.log("PAGE TITLE" + page_title)
@@ -75,6 +74,10 @@ function downloadHistoryUtil(history_items, index) {
                         console.log("BODY TEXT" + body_text)*/
 
                         //preparing message for storing article to DB      
+                        var text_to_save = article_title + body_text
+
+                        //console.log(text_to_save)
+
                         data = {
                             msg: 'saveHistory',
                             time: history_items[index].lastVisitTime,

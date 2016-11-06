@@ -139,7 +139,7 @@ function handleMessage(data, sender, sendRespones) {
     } else if (data.msg === 'saveHistory' && shouldArchive(data)) {
         delete data.msg;
         data.text = processPageText(data.text);
-        //console.log("Coming from Import History: " + data.text)
+        console.log("Coming from Import History: " + data.text)
 
         var time = data.time;
         var keyValue = {};
