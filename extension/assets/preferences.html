@@ -1,13 +1,10 @@
 <html>
     <head>
-        <script type="text/javascript" src="../js/lib/notie.min.js"></script>
-        <script type="text/javascript" src="../js/preferences.js"></script>
-        <script type="text/javascript" src="../js/background.js"></script>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="semantic.min.css">
         <link rel="stylesheet" href="notie.css">
     </head>
-    <header><img src="https://cloud.githubusercontent.com/assets/7870039/19570429/3b3e4040-96fa-11e6-8a25-6f09aed41d5a.png" alt="Banner" width="100%"></header>
+    <header><img src="Banner.png" alt="Banner" width="100%"></header>
       
 
     <body>
@@ -15,35 +12,8 @@
         <br>
     	<div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <h3 style="margin-top:-2px">New Feature</h3>The ability to import your existing history. <a href=""> Import now>></a>
+  <h3 style="margin-top:-2px">New Feature</h3>The ability to import your existing history. <a href="analyse_urls.html"> Import now>></a>
     </div>
-
-        <h1>About the WorldBrain project</h1>
-         <hr />
-        WorldBrain is an open-source project that aims to battle (scientific) misinformation by developing a quality score for web content/sources and an expert ranking for users/authors/scientists in a given field. Our first step is a personalisable search-engine that lets users full-text searches on the pages they visited and bookmarked.<br>
-        In later stages users can <strong>voluntarily share</strong> metadata with their friends, the community and WorldBrain. WorldBrain's goal is to develop the quality scores and uncover related content. (i.e. counter perspectives or unsourced studies)
-        <br>
-        The tool is built on the basis of <a href="https://github.com/lengstrom/falcon">Falcon</a>, another open-source tool that provides the initial history search functionality.
-        <br><br>
-        <a href="https://wrldbra.in/WorldBrain-Pitch-Deck"><strong>Read more </strong></a>about it in our project overview.
-
-        <br>	
-        <h2>Current Status</h2>
-
-        <h3>We just added</h3> the ability to import your existing history. <a href="">Import now>></a>
-        <br>
-        <h3>Up next</h3> is the import of existing bookmarks.
-
-        <h1>Transparency & Data Ownership</h1>
-         <hr />
-        We have no access to your data and won't ever have without your prior approval.
-        Your data truly stays yours.
-        <br>
-
-        We will publicly explain who benefits in what way from the analysis on the data users <strong>voluntarily share</strong>.
-        <br> Be it the user himself, the community or the project's income streams.
-        <a href="https://docs.google.com/presentation/d/1Pt2NiJwbXq7PNmuzpkqkgfo00fMVP0bxnZgMEakBKWs/edit#slide=id.g16f6f1ade7_5_491"><strong>Read more>> </strong></a>
-
         <h1>Help & Frequently Asked Questions</h1>
  		<hr />
 
@@ -64,9 +34,7 @@
 
         <h2>Import your existing History</h2>
         <p>To also search through the browsing history before the time of installing the plugin, you have to import it</p>
-        <a href="analyse_urls.html" "><button type="button" class="ui green button" onclick="importHistory();">Import History</button></a>
-
-
+        <a href="analyse_urls.html"><button class="ui green button">Import History</button></a>
 
         <h2>Your History</h2>
         <div class="ui input">
@@ -80,5 +48,9 @@
         <h2>Danger Zone!</h2>
         <button class="ui red button" id="clear">Clear All Data</button>
         </div>
+        <script type="text/javascript" src="../js/lib/notie.min.js"></script>
+        <script type="text/javascript" src="../js/background.js"></script>
+        <script type="text/javascript" src="../js/preferences.js"></script>
+        
     </body>
 </html>

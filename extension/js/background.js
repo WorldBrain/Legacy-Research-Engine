@@ -26,7 +26,7 @@ chrome.runtime.onMessage.addListener(handleMessage);
 chrome.runtime.onInstalled.addListener(function (object) {
     chrome.storage.local.get("shouldOpenTab", function(item) {
         if (Object.keys(item).length == 0) {
-            chrome.tabs.create({url: "https://github.com/WorldBrain/Research-Engine"}, function (tab) {
+            chrome.tabs.create({url: "assets/about.html"}, function (tab) {
             });
             chrome.storage.local.set({"shouldOpenTab": {"dontShow": true}})
         }
@@ -127,26 +127,29 @@ function handleMessage(data, sender, sendRespones) {
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
-
+        //console.log("Coming from Browsing: " + data.text)
         chrome.storage.local.set(keyValue, function() {
-            console.log("Stored: " + data.title);
+            console.log("Stored: " + data.url);
         });
 
         timeIndex.push(time.toString());
         preloaded.push(data);
         chrome.storage.local.set({'index':{'index':timeIndex}});
-    } else if (data.msg === 'saveHistory') {
+    } else if (data.msg === 'saveHistory' && shouldArchive(data)) {
         delete data.msg;
         data.text = processPageText(data.text);
+        //console.log("Coming from Import History: " + data.text)
+
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
-
         chrome.storage.local.set(keyValue, function() {
-            console.log("Stored History item: " + data.title);
+            console.log("Stored History item: " + data.url);
         });
 
         timeIndex.push(time.toString());
+        //console.log(timeIndex)
+
         preloaded.push(data);
         chrome.storage.local.set({'index':{'index':timeIndex}});
     } else if (data.msg === 'setPreferences') {
@@ -364,73 +367,6 @@ function binarySearch(arr, value, lt, gt, i, j) {
     return binarySearch(arr, value, lt, gt, i, j);
 }
 
-function importHistory() {
-    chrome.history.search({text: ''}, function(history) {
-        var history_items = new Array(); 
-        for (var i = 0; i < history.length; i++) { 
-            var history_item_url = history[i].url;
-            if(history_item_url.search('file:///') === -1) {
-                var item = {
-                    url: history[i].url,
-                    lastVisitTime: new Date(history[i].lastVisitTime).toISOString()
-                }
-                history_items.push(item);
-            }
-        }
-        chrome.storage.local.set({history: JSON.stringify(history_items)});
-        localStorage.setItem('number_urls',history_items.length)
-    });
-}
 
-var initial = document.body.parentNode.innerHTML;
-function downloadHistoryUtil(history_items, index) {
-    if(parseInt(index) === history_items.length) {
-        console.log('Finished Downloading ' + parseInt(index) + ' items');
-        localStorage.setItem('downloaded_history_items', index);
-        return;
-    }
-    else {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                try {
-                    var doc = document.implementation.createHTMLDocument();
-                    url_html = xhttp.responseText;
-                    var body = doc.createElement('body');
-                    url_html = url_html.slice(url_html.search('<body>') + '<body>'.length, url_html.search('</body>'));
-                    body.innerHTML = url_html;
-                    var page_text = body.innerText;
-                    var page_title = url_html.slice(url_html.search('<title>') + '<title>'.length, url_html.search('</title>'));
-                    data = {
-                        msg: 'saveHistory',
-                        time: history_items[index].lastVisitTime,
-                        url: history_items[index].url,
-                        text: page_text,
-                        title: page_title
-                    }
-                    handleMessage(data, null, null);
-                } catch (err) {
-                    console.log('Download failed!: ' + err.message);
-                }
-                downloadHistoryUtil(history_items, index + 1);
-            } else if (xhttp.readyState == 4 && xhttp.status != 200) {
-                downloadHistoryUtil(history_items, index + 1);
-            }
-        };
-        xhttp.ontimeout = function() {
-            console.log('Timeout!!');
-            downloadHistoryUtil(history_items, index + 1);
-        }
-        xhttp.open('GET', history_items[index].url, true);
-        xhttp.send();
-    }
-}
-
-function downloadHistory() {
-    chrome.storage.local.get('history', function(result) {
-        var history_items = JSON.parse(result.history);
-        downloadHistoryUtil(history_items, 0);
-    });
-}
 
 init();

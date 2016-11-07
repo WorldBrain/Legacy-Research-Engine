@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html lang="en">
+   <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="semantic.min.css">
+        <link rel="stylesheet" href="notie.css">
+    </head>
+<body>
+    <h1>Importing your existing History</h1>
+    <hr />
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';"></span> 
+          <h3 style="margin-top:-2px">Important Note</h3>All your data is stored locally on your computer, we don't upload anything.
+        </div>
+
+  <h2 id="title_download">Step 2: Downloading History</h2>
+
+  <h3 id="close_message">Hang in there!</h3>
+
+  <p id="info_text">To make all your previously visited pages available for full-text search, we need to download them first. <br>Depending on the number of pages, this might take a while and might influence your browsing speed.<br> <strong>You can stop and resume the downloading process at any time.</strong></p>
+
+
+<button id="abort_button" style="float:right" class="ui red button">Stop Download</button>
+  
+    
+    <script type="text/javascript" src="../js/lib/readability.js"></script>
+    <script type="text/javascript" src="../js/background.js"></script>
+     <script type="text/javascript" src="../js/download_History.js"></script> 
+     <script type="text/javascript" src="../js/textprocessing.js"></script> 
+
+
+</body>
+</html>
