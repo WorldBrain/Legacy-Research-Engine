@@ -16,7 +16,7 @@ chrome.history.search({'text': '','maxResults': 200000, 'startTime':0 }, functio
         else {
             var item = {
                 url: history[i].url,
-                lastVisitTime: new Date(history[i].lastVisitTime).toISOString()
+                lastVisitTime: new Date(history[i].lastVisitTime).getTime()
             }}
         history_items.push(item);
     //console.log(history_items.length)    

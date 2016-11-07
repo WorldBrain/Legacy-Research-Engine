@@ -128,9 +128,8 @@ function handleMessage(data, sender, sendRespones) {
         var keyValue = {};
         keyValue[time] = data;
         //console.log("Coming from Browsing: " + data.text)
-
         chrome.storage.local.set(keyValue, function() {
-            console.log("Stored: " + data.title);
+            console.log("Stored: " + data.url);
         });
 
         timeIndex.push(time.toString());
@@ -139,17 +138,18 @@ function handleMessage(data, sender, sendRespones) {
     } else if (data.msg === 'saveHistory' && shouldArchive(data)) {
         delete data.msg;
         data.text = processPageText(data.text);
-        console.log("Coming from Import History: " + data.text)
+        //console.log("Coming from Import History: " + data.text)
 
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
-
         chrome.storage.local.set(keyValue, function() {
             console.log("Stored History item: " + data.url);
         });
 
         timeIndex.push(time.toString());
+        //console.log(timeIndex)
+
         preloaded.push(data);
         chrome.storage.local.set({'index':{'index':timeIndex}});
     } else if (data.msg === 'setPreferences') {
