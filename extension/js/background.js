@@ -98,6 +98,7 @@ function init() {
 function makePreloaded(index) {
     var preloaded_index = [];
     var millis = +CUTOFF_DATE;
+    console.log(millis)
     var i = Math.floor(binarySearch(index, millis, LT, GT, 0, index.length));
     for (var j = i; j < index.length; j++) {
         preloaded_index.push(index[j]);
@@ -127,7 +128,6 @@ function handleMessage(data, sender, sendRespones) {
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
-        //console.log("Coming from Browsing: " + data.text)
         chrome.storage.local.set(keyValue, function() {
             console.log("Stored: " + data.url);
         });
@@ -135,23 +135,22 @@ function handleMessage(data, sender, sendRespones) {
         timeIndex.push(time.toString());
         preloaded.push(data);
         chrome.storage.local.set({'index':{'index':timeIndex}});
-    } else if (data.msg === 'saveHistory' && shouldArchive(data)) {
-        delete data.msg;
-        data.text = processPageText(data.text);
-        //console.log("Coming from Import History: " + data.text)
 
-        var time = data.time;
-        var keyValue = {};
-        keyValue[time] = data;
-        chrome.storage.local.set(keyValue, function() {
-            console.log("Stored History item: " + data.url);
-        });
+        //Add to list of not indexing anymore
+        var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);    
+        existing_urls.push(data.url);
+        localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
+    
 
-        timeIndex.push(time.toString());
-        //console.log(timeIndex)
-
-        preloaded.push(data);
-        chrome.storage.local.set({'index':{'index':timeIndex}});
+    } else if (data.msg === 'saveHistory') {
+        prepare_to_store(data, function(text, keyValue, time){
+            build_db(keyValue, data, time, function(){
+                build_index(timeIndex);
+                preloaded.push(data);
+                console.log(preloaded)
+            })
+        })
+        
     } else if (data.msg === 'setPreferences') {
         preferences = data.preferences;
         chrome.storage.local.set({'preferences':preferences});
@@ -160,6 +159,29 @@ function handleMessage(data, sender, sendRespones) {
         chrome.storage.local.set({'blacklist':blacklist});
     }
 }
+
+function prepare_to_store(data,callback){
+        delete data.msg;
+        text = processPageText(data.text);
+        var time = data.time;
+        var keyValue = {};
+        keyValue[time] = data;
+        callback(text, keyValue, time)
+}
+
+function build_db(keyValue,data,time, callback){
+     chrome.storage.local.set(keyValue, function() {
+            console.log("Stored History item: " + data.url);
+            timeIndex.push(time.toString());
+            callback(timeIndex);
+        }
+    );
+}
+
+function build_index(timeIndex){
+    chrome.storage.local.set({'index':{'index':timeIndex}});
+}
+
 
 function omnibarHandler(text, suggest) {
     dispatchSuggestions(text, suggestionsComplete, suggest);
@@ -232,7 +254,7 @@ function shouldArchive(data) {
     var site = blacklist["SITE"];
     var page = blacklist["PAGE"];
     var regex = blacklist["REGEX"];
-    var url = data.url;
+    var url = data.url.replace("http://",  "").replace("https://", "");
 
     for (var i = 0; i < site.length; i++) {
         // var reg = new RegExp(escapeRegExp(page[i]) + ".*");

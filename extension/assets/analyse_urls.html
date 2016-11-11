@@ -15,9 +15,20 @@
         </div>
 
   <h2 id="main">Step 1: Analysing size & download time</h2>
-  <p>To make all your previously visited pages available for full-text search, we need to download them first. <br>Depending on the number of pages, this might take a while and might influence your browsing speed.</p>
+  <p>By default, the plugin only stores pages that you visit after installation.</p>
 
-  <h3>Results</h3>
+  <p>To make all your previously visited pages & your bookmarks available, we need to download them first. <br>This might take a while and influence your browsing speed.</p>
+  <strong>You can always pause and continue the download process.</strong>
+
+  <h2>Results of Analysis</h2>
+
+  <table style="margin-bottom:10px">
+    <tr>
+      <td><h3>Browsing history</h3></td>
+      <td><input type="checkbox" id="checkbox_history" style="margin-left: 15px; margin-right: 5px"/>select</td>
+    </tr>
+  </table>
+
 
   <p><strong># of URLs in your history: </strong>
 
@@ -30,14 +41,48 @@
   </p>
   <p><strong>Estimated time to download: </strong>
 
-        <span id="time_to_download"></span> hour(s)
+        ~<span id="time_to_download"></span> hour(s)
   </p>
 
 
-  <a href="download_history.html"><button style="float:right" class="ui green button">Import History Now</button></a>
+  <table style="margin-bottom:10px; margin-top:30px">
+    <tr>
+      <td><h3>Bookmarks</h3></td>
+      <td><input type="checkbox" id="checkbox_bookmarks" style="margin-left: 15px; margin-right: 5px"/>select</td>
+    </tr>
+  </table>
+
+  <p><strong># of URLs in your bookmarks: </strong>
+
+        <span id="amount_urls_bm"></span>
+  </p>
+
+  <p><strong>Estimated size on your hard drive: </strong>
+
+        <span id="size_urls_bm"></span> MB
+  </p>
+  <p><strong>Estimated time to download: </strong>
+
+        ~<span id="time_to_download_bm"></span> minute(s)
+  </p>
+
+<br>
+<br>
+<a href="download_history.html"><button style="float:right" class="ui green button">Import History Now</button></a>
+<br>
+<br>
+<div style="text-align: right">
+<p style="float: right"><strong>PRO TIP: </strong>Check <a href="preferences.html">your list for blacklisted pages</a> before starting. It could heavily reduce the download time</p>
+</div>
+
     
     <script type="text/javascript" src="../js/lib/readability.js"></script>
-     <script type="text/javascript" src="../js/import_history.js"></script>  
+     <script type="text/javascript" src="../js/preferences.js"></script> 
+     <script type="text/javascript" src="../js/import_history.js"></script>
+     <script type="text/javascript" src="../js/import_bookmarks.js"></script>
+     <script type="text/javascript" src="../js/background.js"></script> 
+
+
 
 
 

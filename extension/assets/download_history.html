@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="notie.css">
     </head>
 <body>
-    <h1>Importing your existing History</h1>
+    <h1>Importing your existing History & Bookmarks</h1>
     <hr />
         <div class="alert">
           <span class="closebtn" onclick="this.parentElement.style.display='none';"></span> 
@@ -18,13 +18,14 @@
 
   <h3 id="close_message">Hang in there!</h3>
 
-  <p id="info_text">To make all your previously visited pages available for full-text search, we need to download them first. <br>Depending on the number of pages, this might take a while and might influence your browsing speed.<br> <strong>You can stop and resume the downloading process at any time.</strong></p>
+  <p id="info_text">To make all your previously visited pages available for full-text search, we need to download them first. <br>Depending on the number of pages, this might take a while and might influence your browsing speed.<br> <strong>You can pause and continue the downloading process at any time via <a href="preferences.html">the preferences</a></strong></p>
 
 
-<button id="abort_button" style="float:right" class="ui red button">Stop Download</button>
+<button id="abort_button" style="float:right" class="ui red button">Pause Download</button>
   
     
     <script type="text/javascript" src="../js/lib/readability.js"></script>
+    <script type="text/javascript" src="../js/lib/lodash.js"></script>
     <script type="text/javascript" src="../js/background.js"></script>
      <script type="text/javascript" src="../js/download_History.js"></script> 
      <script type="text/javascript" src="../js/textprocessing.js"></script> 

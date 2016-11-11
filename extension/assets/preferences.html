@@ -12,17 +12,17 @@
         <br>
     	<div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <h3 style="margin-top:-2px">New Feature</h3>The ability to import your existing history. <a href="analyse_urls.html"> Import now>></a>
+  <h3 style="margin-top:-2px">New Feature</h3>The ability to import your existing history & bookmarks. <a href="analyse_urls.html"> Import now>></a>
     </div>
         <h1>Help & Frequently Asked Questions</h1>
  		<hr />
 
- 		You find <a href="http://www.worldbrain.io/faqs-plugin/">here</a>
+ 		Questions and answers you find <a href="http://www.worldbrain.io/faqs-plugin/">here</a>
 
         <h1>Preferences</h1>
         <hr />
         <h2>Blacklisted Websites</h2>
-        All major american banks are already blacklisted. To see a list, visit our <a href="https://github.com/WorldBrain/Research-Engine/blob/master/extension/js/blacklist2.js">GitHub repository</a>.
+        All major American banks are already blacklisted. To see a list, visit our <a href="https://github.com/WorldBrain/Research-Engine/blob/master/extension/js/blacklist2.js">GitHub repository</a>.
 
         <h4>Enter any valid regex</h4>
         <table class="ui table" id="blacklist_tbl">
@@ -31,12 +31,16 @@
         <button class="ui green button" id="add">Add</button>
         <button class="ui blue button" id="save">Save</button>
         <button class="ui red button" id="clear-rules">Clear Rules</button>
-
-        <h2>Import your existing History</h2>
+        <br>
+        <br>
+        <h1>Your History</h1>
+        <hr />
+        <h2>Import Existing History</h2>
         <p>To also search through the browsing history before the time of installing the plugin, you have to import it</p>
         <a href="analyse_urls.html"><button class="ui green button">Import History</button></a>
 
-        <h2>Your History</h2>
+        <h2>Stored History</h2>
+        <p>These are the history items we stored for you on your computer</p>
         <div class="ui input">
             <input type="text" placeholder="Search by title or URL..." id="search_history"></input>
         </div>
@@ -46,6 +50,7 @@
         <button class="ui red button" id="clear-history">Clear History</button>
 
         <h2>Danger Zone!</h2>
+        <p>You really want to delete all data? Here you can. </p>
         <button class="ui red button" id="clear">Clear All Data</button>
         </div>
         <script type="text/javascript" src="../js/lib/notie.min.js"></script>

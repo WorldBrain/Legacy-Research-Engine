@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="semantic.min.css">
+        <link rel="stylesheet" href="notie.css">
+    </head>
+    <header><img src="Banner.png" alt="Banner" width="100%"></header>
+      
+
+    <body>
+    	<div>
+        <br>
+    	<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"></span> 
+  <h3 style="margin-top:-2px">New Feature</h3>The ability to import your existing history & bookmarks. <a href="analyse_urls.html"> Import now>></a>
+    </div>
+
+        <h1>How to use</h1>
+        <hr />
+        <h3>Searching for keywords</h3>
+        <ol>
+            <li> Type in  <strong><code> w </code></strong>  +  <strong><code>space</code></strong>/<strong><code>tab</code></strong>  +  <strong><code>your search terms</code></strong> into the address bar.</li>
+            <li>The result are marked in the drop-down with the <img src="128.png" width="25px"> icon in the beginning.<br><br> <img src="dropdown.png" width="90%"></li>
+        </ol> 
+
+        <h3>Filtering by time</h3>
+        <code>before: "yesterday at 5pm" after: "three weeks ago" misinformation blog "critical thinking"</code>
+        <p>Searches for websites that you visited between yesterday at 5pm and 3 weeks ago containing the keywords “misinformation” and “blog” and “critical thinking”</p>
+
+        <code>-"funny meme" related "to cats"</code>
+        <p>Searches for websites you visited containing the keywords “related” and “to cats”, and <strong>without</strong> the phrase “funny meme”.</p>
+
+        <code>critical thinking after: "2 weeks ago"</code>
+        <p>Searches for websites you visited in the last 2 weeks containing the keywords “critical” and “thinking”</p>
+
+        <code>climate change after:11/29/2015 before:3/26/2016</code>
+        <p>Searches for websites you visited between 11/29/2015 and 3/26/2016 containing the keywords “climate” and “change”</p>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+
+        <script type="text/javascript" src="../js/lib/notie.min.js"></script>
+        <script type="text/javascript" src="../js/background.js"></script>
+        <script type="text/javascript" src="../js/preferences.js"></script>
+        
+    </body>
+</html>

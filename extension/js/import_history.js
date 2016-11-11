@@ -1,29 +1,45 @@
-function importHistory(){
-chrome.history.search({'text': '','maxResults': 200000, 'startTime':0 }, function(history) {
-    var history_items = new Array(); 
-
-    //create list of already downloaded urls, if not exists
-    if (localStorage.getItem('list_downloaded_urls')==null){
-            localStorage['list_downloaded_urls'] = JSON.stringify(['','']);
-            }
-
-    //adding all urls that are new to the list of urls to be downloaded
-    var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);    
-    for (var i = 0; i < history.length ; i++) { 
-        if (existing_urls.indexOf(history[i].url) > -1) {
-            continue;
-            }
-        else {
-            var item = {
-                url: history[i].url,
-                lastVisitTime: new Date(history[i].lastVisitTime).getTime()
-            }}
-        history_items.push(item);
-    //console.log(history_items.length)    
+document.getElementById('checkbox_history').addEventListener("click", function(){
+    var checkbox = document.getElementById('checkbox_history').checked;
+    if(checkbox == true){
+        localStorage.setItem('checkbox_history',true);
     }
-    console.log("TOTAL ITEMS IN HISTORY:" + history_items.length)    
-    chrome.storage.local.set({history: JSON.stringify(history_items)});
-    localStorage.setItem('number_urls',history_items.length)
+    else {
+        localStorage.setItem('checkbox_history',false);
+    }
+    ;})
+
+function importHistory(){
+    chrome.history.search({'text': '','maxResults': 200000, 'startTime':0 }, function(history) {
+        var history_items = new Array(); 
+
+        //create list of already downloaded urls, if not exists
+        if (localStorage.getItem('list_downloaded_urls')==null){
+                localStorage['list_downloaded_urls'] = JSON.stringify(['','']);
+        };
+
+        //adding all urls that are new to the list of urls to be downloaded
+        var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);    
+        for (var i = 0; i < history.length ; i++) { 
+
+            var archive = shouldArchive(history[i])
+
+            if (existing_urls.indexOf(history[i].url) > -1 || archive == false) {
+                continue;
+                }
+            else {
+                var item = {
+                    url: history[i].url,
+                    lastVisitTime: new Date(history[i].lastVisitTime).getTime()
+                }
+                history_items.push(item);    
+                //console.log(item) 
+            }  
+            
+
+        }
+        console.log("TOTAL ITEMS IN HISTORY:" + history_items.length)    
+        chrome.storage.local.set({history: JSON.stringify(history_items)});
+        localStorage.setItem('number_urls',history_items.length)
 
 
     //adding amount, time and size estimation to analyse_urls.html
@@ -33,5 +49,7 @@ chrome.history.search({'text': '','maxResults': 200000, 'startTime':0 }, functio
 
   })};
 
+
+
 //onpageload start request to chrome history api
-document.getElementById("main").onload = importHistory();
+document.body.onload = importHistory();
