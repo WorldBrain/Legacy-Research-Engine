@@ -98,7 +98,6 @@ function init() {
 function makePreloaded(index) {
     var preloaded_index = [];
     var millis = +CUTOFF_DATE;
-    console.log(millis)
     var i = Math.floor(binarySearch(index, millis, LT, GT, 0, index.length));
     for (var j = i; j < index.length; j++) {
         preloaded_index.push(index[j]);
@@ -147,7 +146,6 @@ function handleMessage(data, sender, sendRespones) {
             build_db(keyValue, data, time, function(){
                 build_index(timeIndex);
                 preloaded.push(data);
-                console.log(preloaded)
             })
         })
         
