@@ -28,6 +28,7 @@ function downloadUtil(download_items, index) {
         localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
 
         //changing information on downloaded_history.html AFTER succesfully working through list
+        document.getElementById('abort_button').remove();
         document.getElementById("title_download").innerHTML = "Success! Your History is imported!";
         document.getElementById("close_message").innerHTML = "To rebuild the search index with the new entries, THE EXTENSION RESTARTS IN 10 SECONDS.";
         document.getElementById("info_text").innerHTML = '';
@@ -44,7 +45,7 @@ function downloadUtil(download_items, index) {
             if (isAbortedByUser == true) {
                 localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
                 document.getElementById("title_download").innerHTML = "Download Stopped!";
-                document.getElementById("close_message").innerHTML = "The plugin will RESTART in 10 SECONDS. You can always resume your download via the settings.";
+                document.getElementById("close_message").innerHTML = "The extension will RESTART in 10 SECONDS. You can always resume your download via the settings.";
                 document.getElementById("info_text").innerHTML = '';
                 
                 restartPlugin();
