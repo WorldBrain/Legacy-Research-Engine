@@ -157,6 +157,7 @@
 
     function clearAllData() {
         chrome.storage.local.clear();
+        localStorage.removeItem('list_downloaded_urls')
         notie.alert(1, 'Deleted All Data. Restarting WorldBrain...', 2)
         setTimeout(function() {
             chrome.runtime.reload()

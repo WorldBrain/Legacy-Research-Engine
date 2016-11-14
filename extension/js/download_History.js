@@ -10,10 +10,6 @@ document.getElementById('abort_button').addEventListener("click", function(){
     document.getElementById('abort_button').remove();
 });
 
-window.addEventListener("beforeunload", function () {
-    localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
-  });
-
 
 
 

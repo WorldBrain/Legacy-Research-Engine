@@ -387,6 +387,10 @@ function binarySearch(arr, value, lt, gt, i, j) {
     return binarySearch(arr, value, lt, gt, i, j);
 }
 
+function restartPlugin(){
+    setTimeout(function(){
+    chrome.runtime.reload()}, 10000);
+};
 
 
 init();

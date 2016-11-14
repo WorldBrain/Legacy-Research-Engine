@@ -2,8 +2,8 @@
     "manifest_version": 2,
     "name": "WorldBrain - The (Re)search-Engine",
     "short_name":"WorldBrain",
-    "description": "Full-Text search your browser history! To activate, type 'w' + 'tab/space' into the address bar. Results are in the drop-down.",
-    "version": "0.0.0.8",
+    "description": "Full-Text search your browser history & bookmarks. All data is stored locally & Nothing leaves your computer.",
+    "version": "0.0.0.9",
     "content_scripts": [
         {
             "matches": [
