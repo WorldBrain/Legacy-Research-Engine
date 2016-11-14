@@ -7,7 +7,7 @@
         var tab = document.getElementById("blacklist_tbl")
         var row = tab.insertRow()
         var stringCell = row.insertCell()
-        stringCell.innerHTML = content ? content : ""
+        stringCell.innerHTML = content ? content : "Type your text here"
         stringCell.contentEditable = true
         stringCell.setAttribute("placeholder", "Add a site...");
 
@@ -69,7 +69,7 @@
 
     function getHistory(query="") {
         var history_table = document.getElementById("history_tbl")
-        history_table.innerHTML = "<table class='ui table' id='history_tbl'></table>"
+        history_table.innerHTML = "<table class='table table-hover' id='history_tbl'></table>"
         chrome.storage.local.get(function(results) {
             var allPages = []
             for (key in results) {

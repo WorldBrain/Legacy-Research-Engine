@@ -1,53 +1,245 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="semantic.min.css">
-        <link rel="stylesheet" href="notie.css">
-    </head>
-    <header><img src="Banner.png" alt="Banner" width="100%"></header>
-      
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <body>
-    	<div>
-        <br>
-    	<div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';"></span> 
-  <h3 style="margin-top:-2px">New Feature</h3>The ability to import your existing history & bookmarks. <a href="analyse_urls.html"> Import now>></a>
+	<title>How to use - WorldBrain's (Re)search-Engine</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar"  data-image="assets/img/background_sidebar.png">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://worldbrain.io" class="simple-text">
+                    <img src="assets/img/logo_dashboard.png" style="width: 90%; padding:3px">
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="about.html">
+                        <i class="pe-7s-info"></i>
+                        <p>About</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="preferences.html">
+                        <i class="pe-7s-user"></i>
+                        <p>Preferences</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="howto.html">
+                        <i class="pe-7s-help1"></i>
+                        <p>How to use</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:info@worldbrain.io">
+                        <i class="pe-7s-loop"></i>
+                        <p>Feedback</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="analyse_urls.html">
+                        <i class="pe-7s-download"></i>
+                        <p>Import History & Bookmarks</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
     </div>
 
-        <h1>How to use</h1>
-        <hr />
-        <h3>Searching for keywords</h3>
-        <ol>
-            <li> Type in  <strong><code> w </code></strong>  +  <strong><code>space</code></strong>/<strong><code>tab</code></strong>  +  <strong><code>your search terms</code></strong> into the address bar.</li>
-            <li>The result are marked in the drop-down with the <img src="128.png" width="25px"> icon in the beginning.<br><br> <img src="dropdown.png" width="90%"></li>
-        </ol> 
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" >How to use this extension</a>
+                </div>
+                 <div class="collapse navbar-collapse">
 
-        <h3>Filtering by time</h3>
-        <code>before: "yesterday at 5pm" after: "three weeks ago" misinformation blog "critical thinking"</code>
-        <p>Searches for websites that you visited between yesterday at 5pm and 3 weeks ago containing the keywords “misinformation” and “blog” and “critical thinking”</p>
+                    <!-- <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret"></b>
+                                    <span class="notification">5</span>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul> -->
 
-        <code>-"funny meme" related "to cats"</code>
-        <p>Searches for websites you visited containing the keywords “related” and “to cats”, and <strong>without</strong> the phrase “funny meme”.</p>
+                    <!-- <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               Account
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Dropdown
+                                    <b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li>    <a href="#">Separated link</a></li>
+                              </ul>
+                        </li>
+            
+                    </ul> -->
+                </div>
+            </div>
+        </nav>
 
-        <code>critical thinking after: "2 weeks ago"</code>
-        <p>Searches for websites you visited in the last 2 weeks containing the keywords “critical” and “thinking”</p>
+    <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h3 class="title">Searching for keywords</h3>
+                            </div>
+                             <div style="padding: 30px; padding-top:0px">
+                             <p><h4>Regular search:</h4></p>
+                                <p style="">
+                                    <ol>
+                                        <li> Type in  <strong><code> w </code></strong>  +  <strong><code>space</code></strong>/<strong><code>tab</code></strong>  +  <strong><code>your search terms</code></strong> into the address bar.</li>
+                                        <li>The result are marked in the drop-down with the <img src="128.png" width="25px"> icon in the beginning.<br><br> <img src="assets/img/dropdown.png" width="90%"></li>
+                                    </ol> 
+                                </p>
+                                <p><h4>Exclude words:</h4></p>
+                                <code>-"funny meme" related "to cats"</code>
+                                <p>Searches for websites you visited containing the keywords “related” and “to cats”, and <strong>without</strong> the phrase “funny meme”.</p>
+                            </div>
+                        </div>
+                    </div>
 
-        <code>climate change after:11/29/2015 before:3/26/2016</code>
-        <p>Searches for websites you visited between 11/29/2015 and 3/26/2016 containing the keywords “climate” and “change”</p>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h3 class="title">Filtering by time(span)</h3>
+                            </div>
+                             <div style="padding: 30px; padding-top:0px">
+                             <p><h4>Build your queries like that to filter by time:</h4></p>
+                                <p style="">
+                                  <code>before: "yesterday at 5pm" after: "three weeks ago" misinformation blog "critical thinking"</code>
+                                    <p>Searches for websites that you visited between yesterday at 5pm and 3 weeks ago containing the keywords “misinformation” and “blog” and “critical thinking”</p>
+
+                                    <code>critical thinking after: "2 weeks ago"</code>
+                                    <p>Searches for websites you visited in the last 2 weeks containing the keywords “critical” and “thinking”</p>
+
+                                    <code>climate change after:11/29/2015 before:3/26/2016</code>
+                                    <p>Searches for websites you visited between 11/29/2015 and 3/26/2016 containing the keywords “climate” and “change”</p>
+                            </div>
+                        </div>
+                    </div>
 
 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
+</body>
 
-        <script type="text/javascript" src="../js/lib/notie.min.js"></script>
-        <script type="text/javascript" src="../js/background.js"></script>
-        <script type="text/javascript" src="../js/preferences.js"></script>
-        
-    </body>
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Checkbox, Radio & Switch Plugins -->
+	<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+	<!--  Charts Plugin -->
+	<script src="assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="assets/js/light-bootstrap-dashboard.js"></script>
+
+	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+	<script src="assets/js/demo.js"></script>
+
+	<!-- <script type="text/javascript">
+    	$(document).ready(function(){
+
+        	demo.initChartist();
+
+        	$.notify({
+            	icon: 'pe-7s-gift',
+            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+    	});
+	</script> -->
+
 </html>
