@@ -123,12 +123,13 @@ function handleMessage(data, sender, sendRespones) {
     // data is from message
     if (data.msg === 'pageContent' && shouldArchive(data)) {
         delete data.msg;
+        console.log(data.text)
         data.text = processPageText(data.text);
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
         chrome.storage.local.set(keyValue, function() {
-            console.log("Stored: " + data.url);
+            console.log("Stored: " + data.url + "TEXT: " + data.text);
         });
 
         timeIndex.push(time.toString());
@@ -140,15 +141,6 @@ function handleMessage(data, sender, sendRespones) {
         existing_urls.push(data.url);
         localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
     
-
-    } else if (data.msg === 'saveHistory') {
-        prepare_to_store(data, function(text, keyValue, time){
-            build_db(keyValue, data, time, function(){
-                build_index(timeIndex);
-                preloaded.push(data);
-            })
-        })
-        
     } else if (data.msg === 'setPreferences') {
         preferences = data.preferences;
         chrome.storage.local.set({'preferences':preferences});
@@ -160,7 +152,7 @@ function handleMessage(data, sender, sendRespones) {
 
 function prepare_to_store(data,callback){
         delete data.msg;
-        text = processPageText(data.text);
+        text = data.text;
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
@@ -175,11 +167,6 @@ function build_db(keyValue,data,time, callback){
         }
     );
 }
-
-function build_index(timeIndex){
-    chrome.storage.local.set({'index':{'index':timeIndex}});
-}
-
 
 function omnibarHandler(text, suggest) {
     dispatchSuggestions(text, suggestionsComplete, suggest);
@@ -386,11 +373,6 @@ function binarySearch(arr, value, lt, gt, i, j) {
     }
     return binarySearch(arr, value, lt, gt, i, j);
 }
-
-function restartPlugin(){
-    setTimeout(function(){
-    chrome.runtime.reload()}, 10000);
-};
 
 
 init();

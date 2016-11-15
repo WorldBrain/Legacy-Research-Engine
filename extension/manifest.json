@@ -3,13 +3,13 @@
     "name": "WorldBrain - The (Re)search-Engine",
     "short_name":"WorldBrain",
     "description": "Full-Text search your browser history & bookmarks. All data is stored locally & Nothing leaves your computer.",
-    "version": "0.0.0.9",
+    "version": "0.0.1.0",
     "content_scripts": [
         {
             "matches": [
                 "<all_urls>"
             ],
-            "js": ["js/lib/stopwords_res.js", "js/lib/readability.js", "js/relevanttext.js", "js/content.js"]
+            "js": ["js/lib/stopwords_res.js", "js/lib/readability.js", "js/relevanttext.js", "js/content.js", "js/textract.js"]
         }
     ],
     "permissions": [

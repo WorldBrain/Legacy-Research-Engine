@@ -1,4 +1,5 @@
 var initial = document.body.parentNode.innerHTML;
+var get_text = require('./html.js')
 
 //open list of already indexed urls from local storage
 var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
@@ -9,8 +10,6 @@ document.getElementById('abort_button').addEventListener("click", function(){
     isAbortedByUser = true;
     document.getElementById('abort_button').remove();
 });
-
-
 
 
 function downloadUtil(download_items, index) {   
@@ -89,7 +88,7 @@ function downloadUtil(download_items, index) {
 
         function build_data(page_text,page_title,download_items,callback){
             data = {
-                        msg: 'saveHistory',
+                        msg: 'pageContent',
                         time: download_items[index].lastVisitTime,
                         url: download_items[index].url,
                         text: page_text,
@@ -182,50 +181,15 @@ function getcontent(xhttp,callback){
         url_html = xhttp.responseText;
         var doc = document.implementation.createHTMLDocument();
         doc.documentElement.innerHTML = url_html
-        
-        // get all visible text (and title) from HTML file
-        body_text = doc.body
-        divs = body_text.getElementsByTagName('div')
-
-        var page_text = ""
-
-            for (i = 0; i< divs.length; i++) {
-                    page_text += divs[i].textContent.replace(/\s+/g, " ")
-             }
         page_title = doc.title
 
-        callback(page_text, page_title)
-
-
-         // Alterntive 2: Reading out the Title and body of the article with Readbility. Upside: Clean body text. Downside, sometimes doesnt get the whole visible text on the page
-                //var article_title = readability.getArticleTitle(doc)
-                /*var article = readability.grabArticle(doc);
-                var article_title = readability.getArticleTitle(article);
-                var body_text =  readability.getInnerText(article);
-                            
-                */
-
-                // Alternative 3: using innerText method Upside: really every word in the text. Downside: a lot of clutter from skripts etc. 
-                /*body_text = doc.body.innerText
-                body_text = body_text.replace(/\s+/g, " ")
-                page_title = doc.title*/
-
-                //Alternative 4: Storing the whole html for now and reparsing the entries later (would allow user not to go and crawl their history again.)
-                
-
-                //TEST log
-                /*console.log("PAGE TITLE" + page_title)
-                console.log(visible);
-                console.log("BODY TEXT" + body_text)*/
-
-                //preparing message for storing article to DB      
-                //var text_to_save = article_title + body_text
-                //console.log(text_to_save)
-
+        // get all visible text from HTML file
+        get_text.extractFromText(url_html, function(err,text){
+          var page_text=text
+          callback(page_text, page_title)
+        })
 
 }
-
-
 
 
 // restarts the plugin after download, so that index can be rebuilt. 
