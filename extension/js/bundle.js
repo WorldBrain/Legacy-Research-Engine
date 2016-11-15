@@ -10,6 +10,7 @@ var isAbortedByUser = false;
 document.getElementById('abort_button').addEventListener("click", function(){
     isAbortedByUser = true;
     document.getElementById('abort_button').remove();
+    restartPlugin();
 });
 
 
@@ -43,8 +44,6 @@ function downloadUtil(download_items, index) {
                 document.getElementById("title_download").innerHTML = "Download Stopped!";
                 document.getElementById("close_message").innerHTML = "The extension will RESTART in 10 SECONDS. You can always resume your download via the settings.";
                 document.getElementById("info_text").innerHTML = '';
-                
-                restartPlugin();
                 console.log("Download Stopped")
             }
 
@@ -196,7 +195,7 @@ function getcontent(xhttp,callback){
 // restarts the plugin after download, so that index can be rebuilt. 
 function restartPlugin(){
     setTimeout(function(){
-    chrome.runtime.reload()}, 10000);
+    chrome.runtime.reload()}, 15000);
 };
 
 

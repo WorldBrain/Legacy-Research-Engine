@@ -123,13 +123,12 @@ function handleMessage(data, sender, sendRespones) {
     // data is from message
     if (data.msg === 'pageContent' && shouldArchive(data)) {
         delete data.msg;
-        console.log(data.text)
         data.text = processPageText(data.text);
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
         chrome.storage.local.set(keyValue, function() {
-            console.log("Stored: " + data.url + "TEXT: " + data.text);
+            console.log("Stored: " + data.url);
         });
 
         timeIndex.push(time.toString());
@@ -150,23 +149,6 @@ function handleMessage(data, sender, sendRespones) {
     }
 }
 
-function prepare_to_store(data,callback){
-        delete data.msg;
-        text = data.text;
-        var time = data.time;
-        var keyValue = {};
-        keyValue[time] = data;
-        callback(text, keyValue, time)
-}
-
-function build_db(keyValue,data,time, callback){
-     chrome.storage.local.set(keyValue, function() {
-            console.log("Stored History item: " + data.url);
-            timeIndex.push(time.toString());
-            callback(timeIndex);
-        }
-    );
-}
 
 function omnibarHandler(text, suggest) {
     dispatchSuggestions(text, suggestionsComplete, suggest);
