@@ -1,6 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var initial = document.body.parentNode.innerHTML;
 var get_text = require('./html.js')
+var get_progress_total = 0
+var get_progress_success = 0 
+var get_progress_failed = 0
 
 //open list of already indexed urls from local storage
 var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
@@ -62,17 +65,24 @@ function downloadUtil(download_items, index) {
                         });
                         //adding Url to list of already downloaded items.
                         existing_urls.push(download_items[index].url);
+                        update_progress_success()
+
 
                     } catch (err) {
                         console.log('Download failed!: ' + err.message +': ' + download_items[index].url);
                         localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
                         existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
+
+                        update_progress_failed()
+
                     }
                     downloadUtil(download_items, index + 1);
                 } 
 
                 else if (xhttp.readyState == 4 && xhttp.status != 200) {
-                    downloadUtil(download_items, index + 1);
+                        console.log('Download failed because!: ' + xhttp.status +': ' + download_items[index].url);
+                        update_progress_failed()
+                        downloadUtil(download_items, index + 1);
                     
                 }      
             }    
@@ -107,6 +117,7 @@ function gather_urls(callback){
         get_bookmarks(function(result2){
             var bookmarks_items = result2;
             var history_bookmarks_items = _.unionBy(bookmarks_items, history_items);
+            document.getElementById('total_urls').innerHTML = history_bookmarks_items.length; 
             callback(history_bookmarks_items)    
         })
     })
@@ -143,7 +154,7 @@ function get_history(callback){
         checked=checked_h
             if (checked=="true"){
                 chrome.storage.local.get('history', function(result) {
-                var history_items = JSON.parse(result.history);        
+                var history_items = JSON.parse(result.history);      
                 callback(history_items)
                 })
             }
@@ -163,6 +174,7 @@ function get_bookmarks(callback){
 
             if (checked=="true"){
                 chrome.storage.local.get('bookmarks', function(result) {
+                //console.log(history_items)
                 var bookmarks_items = JSON.parse(result.bookmarks);
                 callback(bookmarks_items)
                 })
@@ -197,6 +209,27 @@ function restartPlugin(){
     setTimeout(function(){
     chrome.runtime.reload()}, 15000);
 };
+
+// PROGRESS UPDATES if failed
+function update_progress_failed(){
+    // progress failed items
+    get_progress_failed += 1;
+    document.getElementById('download_failed').innerHTML = get_progress_failed;
+    // progress total items
+    get_progress_total += 1 ;
+    document.getElementById('total_progress').innerHTML = get_progress_total;
+
+}
+// PROGRESS UPDATES if successful
+function update_progress_success(){
+    // progress failed items
+    get_progress_success += 1;
+    document.getElementById('download_success').innerHTML = get_progress_success;
+    // progress total items
+    get_progress_total += 1 ;
+    document.getElementById('total_progress').innerHTML = get_progress_total;
+
+}
 
 
 document.body.onload = start_download();

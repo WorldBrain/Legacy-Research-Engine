@@ -45,8 +45,8 @@ function importBookmarks(){
 
     //adding amount, time and size estimation to analyse_urls.html
     document.getElementById("amount_urls_bm").innerHTML = bookmarks_items.length
-    document.getElementById("size_urls_bm").innerHTML = Math.ceil(bookmarks_items.length * 100 / 1000)  //100KB and /1000 to convert it into MB
-    document.getElementById("time_to_download_bm").innerHTML = Math.ceil(bookmarks_items.length * 1 / 60) // 1 seconds per download /3600 to calculate in hours
+    document.getElementById("size_urls_bm").innerHTML = Math.ceil(bookmarks_items.length * 15 / 1000)  //15KB and /1000 to convert it into MB
+    document.getElementById("time_to_download_bm").innerHTML = Math.ceil(bookmarks_items.length * 1.5 / 60) // 1.5 seconds per download /3600 to calculate in hours
 
   })};
 

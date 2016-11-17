@@ -44,8 +44,8 @@ function importHistory(){
 
     //adding amount, time and size estimation to analyse_urls.html
     document.getElementById("amount_urls").innerHTML = history_items.length
-    document.getElementById("size_urls").innerHTML = Math.ceil(history_items.length * 100 / 1000)  //100KB and /1000 to convert it into MB
-    document.getElementById("time_to_download").innerHTML = Math.ceil(history_items.length * 1 / 3600) // 1 seconds per download /3600 to calculate in hours
+    document.getElementById("size_urls").innerHTML = Math.ceil(history_items.length * 15 / 1000)  //15kB and /1000 to convert it into MB
+    document.getElementById("time_to_download").innerHTML = Math.ceil(history_items.length * 1.5 / 3600) // 1.5 seconds per download /3600 to calculate in hours
 
   })};
 

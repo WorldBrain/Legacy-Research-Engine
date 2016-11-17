@@ -201,7 +201,7 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
 }
 
 function clearCache() {
-    return;
+    
     var now = +(new Date());
 
     for (var time in cache) {
@@ -209,6 +209,7 @@ function clearCache() {
             delete cache[time];
         }
     }
+    return;
 }
 
 function escapeRegExp(str) {

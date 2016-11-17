@@ -70,7 +70,7 @@
                     </a>
                 </li>
                 <li>
-                    <a target="_blank" href="feedback.html">
+                    <a href="feedback.html">
                         <i class="pe-7s-loop"></i>
                         <p>Feedback</p>
                     </a>
@@ -172,8 +172,16 @@
                             </div>
                              <div style="padding: 30px;padding-top:0px">
                              
-                             <h4 id="close_message">Download started! <strong>DON'T LEAVE THIS PAGE!</strong></h4>
+                             <h4 id="close_message">Download started! <strong>DON'T LEAVE THIS PAGE WITHOUT PAUSING!</strong></h4>
                                     <p id="info_text">To make all your previously visited pages available for full-text search, we need to download them first. <br>Depending on the number of pages, this might take a while and might influence your browsing speed.<br> <strong>You can pause and continue the downloading process at any time via <a href="preferences.html">the preferences</a></strong></p>
+                                    <br>
+                                    <p>
+                                        <strong>TOTAL PROGRESS</strong>: <span id="total_progress">0</span>/<span id="total_urls">0</span>
+                                     <br>
+                                        Downloaded: <span id="download_success">0</span>
+                                      <br>
+                                        Failed: <span id="download_failed">0</span>
+                                    </p>
 
                                     <br>
                                     <button id="abort_button" style="float:left; margin-bottom:30px" class="btn btn-danger">Pause Download</button>
@@ -197,6 +205,7 @@
     <!--   Core JS Files   -->
     <script type="text/javascript" src="../js/bundle.js"></script> 
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="assets/js/tether.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="../js/lib/readability.js"></script>
     <script type="text/javascript" src="../js/lib/lodash.js"></script>
