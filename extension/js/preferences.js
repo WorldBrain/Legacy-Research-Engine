@@ -1,11 +1,13 @@
 (function() {
     var allPageDisplay = null;
 
+    // add element to the custom blacklist 
+    //TODO: check if element is already there before adding. 
     var add = function(type, content) {
         var tab = document.getElementById("blacklist_tbl")
         var row = tab.insertRow()
         var stringCell = row.insertCell()
-        stringCell.innerHTML = content ? content : ""
+        stringCell.innerHTML = content ? content : "Type your text here"
         stringCell.contentEditable = true
         stringCell.setAttribute("placeholder", "Add a site...");
 
@@ -67,7 +69,7 @@
 
     function getHistory(query="") {
         var history_table = document.getElementById("history_tbl")
-        history_table.innerHTML = "<table class='ui table' id='history_tbl'></table>"
+        history_table.innerHTML = "<table class='table table-hover' id='history_tbl'></table>"
         chrome.storage.local.get(function(results) {
             var allPages = []
             for (key in results) {
@@ -97,6 +99,12 @@
                 }
             }
         } else {
+            add("REGEX", ".google.");
+            add("REGEX", "asana.com");
+            add("REGEX", "login");
+            add("REGEX", "Login");
+            add("REGEX", ".paypal.");
+            add("REGEX", ".facebook.com/photo.php");
             add("SITE", "chrome-ui://newtab");
             save(false);
         }
@@ -149,6 +157,7 @@
 
     function clearAllData() {
         chrome.storage.local.clear();
+        localStorage.removeItem('list_downloaded_urls')
         notie.alert(1, 'Deleted All Data. Restarting WorldBrain...', 2)
         setTimeout(function() {
             chrome.runtime.reload()
@@ -208,9 +217,6 @@
     document.getElementById("search_history").onkeyup = function () {
         getHistory(document.getElementById("search_history").value);
     };
-
-    //document.getElementById("import_history_button").addEventListener("click", importHistory());
-
 
 })();
 

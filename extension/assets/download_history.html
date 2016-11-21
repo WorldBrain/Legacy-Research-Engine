@@ -168,72 +168,24 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h3 class="title">Step 1: Analysing size & download time</h3>
+                                <h3 class="title" id="title_download">Step 2: Download URLs</h3>
                             </div>
-                             <div style="padding: 30px">
-                                <p style="">
-                                    <p>By default, the plugin only stores pages that you visit after installing the plugin.</p>
-
-                                    <p>To make all your previously visited pages & your bookmarks available, we need to download them first. <br>This might take a while and influence your browsing speed.</p>
-                                    <strong>You can always pause and continue the download process.</strong>
-
-                                    <h4>Results of Analysis</h4>
-
-                                    <table style="margin-bottom:10px">
-                                    <tr>
-                                    <td><h5 style="font-size:20px">Browsing history</h5></td>
-                                    <td><input type="checkbox" class="checkbox-inline" id="checkbox_history" style="vertical-align:0%;margin-left: 15px; margin-right: 5px"/>select</td>
-                                    </tr>
-                                    </table>
-
-
-                                    <p><strong># of URLs in your history: </strong>
-
-                                    <span id="amount_urls"></span>
+                             <div style="padding: 30px;padding-top:0px">
+                             
+                             <h4 id="close_message">Download started! <strong>DON'T LEAVE THIS PAGE WITHOUT PAUSING!</strong></h4>
+                                    <p id="info_text">To make all your previously visited pages available for full-text search, we need to download them first. <br>Depending on the number of pages, this might take a while and might influence your browsing speed.<br> <strong>You can pause and continue the downloading process at any time via <a href="preferences.html">the preferences</a></strong></p>
+                                    <br>
+                                    <p>
+                                        <strong>TOTAL PROGRESS</strong>: <span id="total_progress">0</span>/<span id="total_urls">0</span>
+                                     <br>
+                                        Downloaded: <span id="download_success">0</span>
+                                      <br>
+                                        Failed: <span id="download_failed">0</span>
                                     </p>
 
-                                    <p><strong>Estimated size on your hard drive: </strong>
-
-                                    <span id="size_urls"></span> MB
-                                    </p>
-                                    <p><strong>Estimated time to download: </strong>
-
-                                    ~<span id="time_to_download"></span> hour(s)
-                                    </p>
-
-
-                                    <table style="margin-bottom:10px; margin-top:30px">
-                                    <tr>
-                                    <td><h5 style="font-size:20px">Bookmarks</h5></td>
-                                    <td ><input type="checkbox" id="checkbox_bookmarks" style="vertical-align:0%;margin-left: 15px; margin-right: 5px"/>select</td>
-                                    </tr>
-                                    </table>
-
-                                    <p><strong># of URLs in your bookmarks: </strong>
-
-                                    <span id="amount_urls_bm"></span>
-                                    </p>
-
-                                    <p><strong>Estimated size on your hard drive: </strong>
-
-                                    <span id="size_urls_bm"></span> MB
-                                    </p>
-                                    <p><strong>Estimated time to download: </strong>
-
-                                    ~<span id="time_to_download_bm"></span> minute(s)
-
-                                </p>
                                     <br>
-                                    <br>
-                                   <a href="download_history.html"><button style="float:left" class="btn btn-success">Import Now</button></a>
-                                    
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <div style="text-align: left; margin-bottom:30px">
-                                    <p style="float: left"><strong>PRO TIP: </strong>Check <a href="preferences.html">your list for blacklisted pages</a> before starting. It could heavily reduce the download time</p>
-                                    </div>
-
+                                    <button id="abort_button" style="float:left; margin-bottom:30px" class="btn btn-danger">Pause Download</button>
+                                    <br><br>
                             </div>
                         </div>
                     </div>
@@ -251,13 +203,17 @@
 </body>
 
     <!--   Core JS Files   -->
+    <script type="text/javascript" src="../js/bundle.js"></script> 
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="assets/js/tether.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="../js/lib/readability.js"></script>
-    <script type="text/javascript" src="../js/preferences.js"></script> 
-    <script type="text/javascript" src="../js/import_history.js"></script>
-    <script type="text/javascript" src="../js/import_bookmarks.js"></script>
-    <script type="text/javascript" src="../js/background.js"></script> 
+    <script type="text/javascript" src="../js/lib/lodash.js"></script>
+    <script type="text/javascript" src="../js/background.js"></script>
+    <!-- <script type="text/javascript" src="../js/download_History.js"></script>  -->
+    <script type="text/javascript" src="../js/textprocessing.js"></script> 
+
+
 
 
 	<!--  Checkbox, Radio & Switch Plugins -->

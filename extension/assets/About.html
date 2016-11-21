@@ -19,9 +19,6 @@
 
     <!--  Light Bootstrap Table core CSS    -->
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
 
 
@@ -51,7 +48,7 @@
             </div>
 
             <ul class="nav">
-                <li>
+                <li class="active">
                     <a href="about.html">
                         <i class="pe-7s-info"></i>
                         <p>About</p>
@@ -75,12 +72,13 @@
                         <p>Feedback</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="analyse_urls.html">
                         <i class="pe-7s-download"></i>
                         <p>Import History & Bookmarks</p>
                     </a>
                 </li>
+                
                 <li class="active-pro">
                     <div style="white-space: nowrap; margin-left:60px; margin-right:60px; margin-bottom:30px">
                     <a href="http://www.github.com/WorldBrain" target="_blank"><img style="margin:5px"class="icon icons8-GitHub" src="data:image/png;base64,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" width="50" height="50"></a>                  
@@ -104,7 +102,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" >Importing History & Bookmarks</a>
+                    <a class="navbar-brand" >About the WorldBrain Project</a>
                 </div>
                  <div class="collapse navbar-collapse">
 
@@ -135,7 +133,7 @@
                         </li>
                     </ul> -->
 
-                    <!-- <ul class="nav navbar-nav navbar-right">
+                  <!--   <ul class="nav navbar-nav navbar-right">
                         <li>
                            <a href="">
                                Account
@@ -168,76 +166,63 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h3 class="title">Step 1: Analysing size & download time</h3>
+                                <h3 class="title">Our Vision</h3>
                             </div>
                              <div style="padding: 30px">
                                 <p style="">
-                                    <p>By default, the plugin only stores pages that you visit after installing the plugin.</p>
+                                    <strong>
+                                    WorldBrain is an open-source project that aims to battle (scientific) misinformation by developing a quality score for web content/sources and an expert ranking for users/authors/scientists in a given field.
+                                    </strong>
+                                    <br>
+                                    <br>Our first step is a search engine for personal knowledge. It lets you search through all of your knowledge sources at once. (Evernote, History, Bookmarks, G-Drive, local filesystem, social networks)<br>
+                                    In later stages users can <strong>voluntarily share</strong> metadata about their browsing behaviour with their friends, the community and WorldBrain. <br>
 
-                                    <p>To make all your previously visited pages & your bookmarks available, we need to download them first. <br>This might take a while and influence your browsing speed.</p>
-                                    <strong>You can always pause and continue the download process.</strong>
-
-                                    <h4>Results of Analysis</h4>
-
-                                    <table style="margin-bottom:10px">
-                                    <tr>
-                                    <td><h5 style="font-size:20px">Browsing history</h5></td>
-                                    <td><input type="checkbox" class="checkbox-inline" id="checkbox_history" style="vertical-align:0%;margin-left: 15px; margin-right: 5px"/>select</td>
-                                    </tr>
-                                    </table>
-
-
-                                    <p><strong># of URLs in your history: </strong>
-
-                                    <span id="amount_urls"></span>
-                                    </p>
-
-                                    <p><strong>Estimated size on your hard drive: </strong>
-
-                                    <span id="size_urls"></span> MB
-                                    </p>
-                                    <p><strong>Estimated time to download: </strong>
-
-                                    ~<span id="time_to_download"></span> hour(s)
-                                    </p>
-
-
-                                    <table style="margin-bottom:10px; margin-top:30px">
-                                    <tr>
-                                    <td><h5 style="font-size:20px">Bookmarks</h5></td>
-                                    <td ><input type="checkbox" id="checkbox_bookmarks" style="vertical-align:0%;margin-left: 15px; margin-right: 5px"/>select</td>
-                                    </tr>
-                                    </table>
-
-                                    <p><strong># of URLs in your bookmarks: </strong>
-
-                                    <span id="amount_urls_bm"></span>
-                                    </p>
-
-                                    <p><strong>Estimated size on your hard drive: </strong>
-
-                                    <span id="size_urls_bm"></span> MB
-                                    </p>
-                                    <p><strong>Estimated time to download: </strong>
-
-                                    ~<span id="time_to_download_bm"></span> minute(s)
-
+                                    (We will never have access to your data without your prior approval.<strong> Ever.</strong>)
+<br>
+                                    If you share your data with us, we analyse it to develop the quality/trust scores and uncover related content. (i.e. counter perspectives or unsourced studies)
+                                    <br><br>
+                                    The tool is built on the basis of <a href="https://github.com/lengstrom/falcon">Falcon</a>, another open-source tool that provides the initial history search functionality.
+                                    <br><br>
+                                    <a href="https://wrldbra.in/WorldBrain-Pitch-Deck"><strong>Read more </strong></a>about it in our project overview.
                                 </p>
-                                    <br>
-                                    <br>
-                                   <a href="download_history.html"><button style="float:left" class="btn btn-success">Import Now</button></a>
-                                    
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <div style="text-align: left; margin-bottom:30px">
-                                    <p style="float: left"><strong>PRO TIP: </strong>Check <a href="preferences.html">your list for blacklisted pages</a> before starting. It could heavily reduce the download time</p>
-                                    </div>
-
                             </div>
                         </div>
                     </div>
 
+
+                     <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h3 class="title">What happens with my data?</h3>
+                            </div>
+                            <br>
+                             <div style="padding: 30px; padding-top:15px">
+                                <p style="">
+                                     We have no access to your data and won't ever have without your prior approval.
+                                    Your data truly stays yours.
+                                    <br>
+                                    In later stages you can <strong>voluntarily</strong> share parts of your metadata with your friends, the community and WorldBrain.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                   
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h3 class="title">Current Status</h3>
+                            </div>
+                             <div style="padding: 30px; padding-top:0px">
+                                <p>
+                                    <h4>Latest Upgrades</h4> the ability to import your existing history & your bookmarks. <a href="analyse_urls.html">Import now>></a>
+                                    <h4>Next Feature</h4> 
+                                    a web-based results and filter view. Practically a mini Google page.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
 
 
@@ -253,12 +238,6 @@
     <!--   Core JS Files   -->
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="../js/lib/readability.js"></script>
-    <script type="text/javascript" src="../js/preferences.js"></script> 
-    <script type="text/javascript" src="../js/import_history.js"></script>
-    <script type="text/javascript" src="../js/import_bookmarks.js"></script>
-    <script type="text/javascript" src="../js/background.js"></script> 
-
 
 	<!--  Checkbox, Radio & Switch Plugins -->
 	<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
