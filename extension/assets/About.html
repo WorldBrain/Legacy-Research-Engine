@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>How to use - WorldBrain's (Re)search-Engine</title>
+	<title>About - WorldBrain's (Re)search-Engine</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -19,9 +19,6 @@
 
     <!--  Light Bootstrap Table core CSS    -->
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
 
 
@@ -51,7 +48,7 @@
             </div>
 
             <ul class="nav">
-                <li>
+                <li class="active">
                     <a href="about.html">
                         <i class="pe-7s-info"></i>
                         <p>About</p>
@@ -69,7 +66,7 @@
                         <p>Preferences</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="howto.html">
                         <i class="pe-7s-rocket"></i>
                         <p>How to use</p>
@@ -124,7 +121,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" >How to use this extension</a>
+                    <a class="navbar-brand" >About the WorldBrain Project</a>
                 </div>
                  <div class="collapse navbar-collapse">
 
@@ -155,6 +152,7 @@
                         </li>
                     </ul> -->
 
+            
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                            <a href="https://patreon.com/user?u=3682460">
@@ -188,42 +186,94 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h3 class="title">Searching for keywords</h3>
+                                <h3 class="title">Getting Started</h3>
                             </div>
-                             <div style="padding: 30px; padding-top:0px">
-                             <p><h4>Regular search:</h4></p>
-                                <p style="">
-                                    <ol>
-                                        <li> Type in  <strong><code> w </code></strong>  +  <strong><code>space</code></strong>/<strong><code>tab</code></strong>  +  <strong><code>your search terms</code></strong> into the address bar.</li>
-                                        <li>The result are marked in the drop-down with the <img src="128.png" width="25px"> icon in the beginning.<br><br> <img src="assets/img/dropdown.png" width="90%"></li>
-                                    </ol> 
+                            <br>
+                             <div style="padding: 30px; padding-top:15px">
+                                    <h4 style="margin-top:0px">How to use the tool</h4>
+                                    <p>
+                                    Just type in <code>w</code> + <code>space / tab</code> + <code>your keywords</code> into the address bar. <br>
+                                    For more search options you can visit our <a href="howto.html"> full guide</a>.</p>
+                                    <h4>Importing your existing History & Bookmarks</h4>
+                                    <p>By default, WorldBrain only makes the pages available you visit after installing the extension.<br>
+                                    BUT you can import them <a href="analyse_urls.html">here</a>.</p>
                                 </p>
-                                <p><h4>Exclude words:</h4></p>
-                                <code>-"funny meme" related "to cats"</code>
-                                <p>Searches for websites you visited containing the keywords “related” and “to cats”, and <strong>without</strong> the phrase “funny meme”.</p>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+
+
+
+
 
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h3 class="title">Filtering by time(span)</h3>
+                                <h3 class="title">Our Vision</h3>
                             </div>
-                             <div style="padding: 30px; padding-top:0px">
-                             <p><h4>Build your queries like that to filter by time:</h4></p>
+                             <div style="padding: 30px">
                                 <p style="">
-                                  <code>before: "yesterday at 5pm" after: "three weeks ago" misinformation blog "critical thinking"</code>
-                                    <p>Searches for websites that you visited between yesterday at 5pm and 3 weeks ago containing the keywords “misinformation” and “blog” and “critical thinking”</p>
+                                    <strong>
+                                    WorldBrain is an open-source project that aims to battle (scientific) misinformation by developing a quality score for web content/sources and an expert ranking for users/authors/scientists in a given field.
+                                    </strong>
+                                    <br>
+                                    <br>Our first step is a search engine for personal knowledge. It lets you search through all of your knowledge sources at once. (Evernote, History, Bookmarks, G-Drive, local filesystem, social networks)<br>
+                                    In later stages users can <strong>voluntarily share</strong> metadata about their browsing behaviour with their friends, the community and WorldBrain. <br>
 
-                                    <code>critical thinking after: "2 weeks ago"</code>
-                                    <p>Searches for websites you visited in the last 2 weeks containing the keywords “critical” and “thinking”</p>
-
-                                    <code>climate change after:11/29/2015 before:3/26/2016</code>
-                                    <p>Searches for websites you visited between 11/29/2015 and 3/26/2016 containing the keywords “climate” and “change”</p>
+                                    (We will never have access to your data without your prior approval.<strong> Ever.</strong>)
+<br>
+                                    If you share your data with us, we analyse it to develop the quality/trust scores and uncover related content. (i.e. counter perspectives or unsourced studies)
+                                    <br><br>
+                                    The tool is built on the basis of <a href="https://github.com/lengstrom/falcon">Falcon</a>, another open-source tool that provides the initial history search functionality.
+                                    <br><br>
+                                    <a href="https://wrldbra.in/WorldBrain-Pitch-Deck"><strong>Read more </strong></a>about it in our project overview.
+                                </p>
                             </div>
                         </div>
                     </div>
+
+
+                     <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h3 class="title">What happens with my data?</h3>
+                            </div>
+                            <br>
+                             <div style="padding: 30px; padding-top:15px">
+                                <p style="">
+                                     We have no access to your data and won't ever have without your prior approval.
+                                    Your data truly stays yours.
+                                    <br>
+                                    In later stages you can <strong>voluntarily</strong> share parts of your metadata with your friends, the community and WorldBrain.
+                                    <br><br>
+                                    For more detailed questions you can visit <a href="FAQ.html">our FAQ</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                   
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h3 class="title">Current Status</h3>
+                            </div>
+                             <div style="padding: 30px; padding-top:0px">
+                                <p>
+                                    <h4>Latest Upgrades</h4> the ability to import your existing history & your bookmarks. <a href="analyse_urls.html">Import now>></a>
+                                    <h4>Next Feature</h4> 
+                                    a web-based results and filter view. Practically a mini Google page.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
 
 
             </div>
