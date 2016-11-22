@@ -2,8 +2,8 @@
     "manifest_version": 2,
     "name": "WorldBrain - The (Re)search-Engine",
     "short_name":"WorldBrain",
-    "description": "Full-Text search your browser history & bookmarks. All data is stored locally & Nothing leaves your computer.",
-    "version": "0.0.1.0",
+    "description": "To activate, type 'w' followed by a tab or space into the Omnibox. Then enter your term and press enter to submit.",
+    "version": "0.0.0.3",
     "content_scripts": [
         {
             "matches": [
@@ -17,8 +17,7 @@
         "<all_urls>",
         "storage",
         "tabs",
-        "history",
-        "bookmarks"
+        "history"
     ],
     "browser_action": {
         "default_icon": {
@@ -35,6 +34,6 @@
     "omnibox": { "keyword" : "w" },
     "options_page": "assets/preferences.html",
     "background": {
-        "scripts": ["js/blacklist2.js", "js/lib/chrono.min.js", "js/textprocessing.js", "js/queryparser.js", "js/background.js", "js/lib/readability.js", "js/lib/lodash.js"]
+        "scripts": ["js/blacklist2.js", "js/lib/chrono.min.js", "js/textprocessing.js", "js/queryparser.js", "js/background.js", "js/lib/readability.js"]
     }
 }

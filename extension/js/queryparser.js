@@ -2,7 +2,7 @@ var BEFORE = /(\s|^)before:/i;
 var AFTER = /(\s|^)after:/i;
 var NEGATIVE = /(\s|^)-/i;
 var QUOTEREGEX = /["']/;
-var DEFAULT_DATE_OFFSET = 20000;
+var DEFAULT_DATE_OFFSET = 14;
 var PARSERS = [parseDate, parseNegative, parseExact, parseKeywords, normalize];
 
 var CUTOFF_DATE = new Date();
