@@ -2,16 +2,17 @@
     "manifest_version": 2,
     "name": "WorldBrain - The (Re)search-Engine",
     "short_name":"WorldBrain",
-    "description": "Full-Text search your browser history & bookmarks. All data is stored locally & Nothing leaves your computer.",
-    "version": "0.0.1.0",
+    "description": "Full-Text search the pages you visited and bookmarked. All data is stored locally & nothing leaves your computer.",
+    "version": "0.0.1.2",
     "content_scripts": [
         {
             "matches": [
                 "<all_urls>"
             ],
-            "js": ["js/lib/stopwords_res.js", "js/lib/readability.js", "js/relevanttext.js", "js/content.js"]
+            "js": ["js/compatibility.js","js/pdf.min.js","js/pdf.min.worker.js","js/pdftotext.js","js/bundle.js","js/background.js","js/lib/stopwords_res.js", "js/lib/readability.js", "js/relevanttext.js", "js/content.js"]
         }
     ],
+    "web_accessible_resources": ["js/pdf.min.worker.js"],
     "permissions": [
         "unlimitedStorage",
         "<all_urls>",
@@ -35,6 +36,6 @@
     "omnibox": { "keyword" : "w" },
     "options_page": "assets/preferences.html",
     "background": {
-        "scripts": ["js/blacklist2.js", "js/lib/chrono.min.js", "js/textprocessing.js", "js/queryparser.js", "js/background.js", "js/lib/readability.js", "js/lib/lodash.js"]
+        "scripts": ["js/compatibility.js","js/pdf.min.js","js/pdftotext.js","js/pdf.min.worker.js","js/bundle.js","js/lib/pouchdb-6.0.7.min.js","js/lib/pdf2text_bundle.js", "js/lib/pouchdb.quick-search.min.js", "js/blacklist2.js", "js/lib/chrono.min.js", "js/textprocessing.js", "js/queryparser.js", "js/background.js", "js/lib/readability.js", "js/lib/lodash.js"]
     }
 }
