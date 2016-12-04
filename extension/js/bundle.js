@@ -36,95 +36,107 @@ function downloadUtil(download_items, index) {
     }
 
 
-    else {
-        // IF PDF SEND TO SEPARATE XMLHTTP REQUEST
-        if (download_items[index].url.includes(".pdf") === true){
-            try{
-                openPDF(download_items[index].url, download_items[index].lastVisitTime)
-                downloadUtil(download_items, index + 1);
-                existing_urls.push(download_items[index].url);
-                    
-            }
-            catch (err) {
-                console.log(err)
-                downloadUtil(download_items, index + 1);
-
-            }
-        }
-
-        // IF REST SEND 
         else {
-                var xhttp = new XMLHttpRequest();
 
-                // check if user cancelled download
-                xhttp.onreadystatechange = function() {
-                    if (isAbortedByUser == true) {
-                        localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
-                        document.getElementById("title_download").innerHTML = "Download Stopped!";
-                        document.getElementById("close_message").innerHTML = "The extension will RESTART in 10 SECONDS. You can always resume your download via the settings.";
-                        document.getElementById("info_text").innerHTML = '';
-                        console.log("Download Stopped")
+            try{
+                
+                // IF PDF SEND TO SEPARATE XMLHTTP REQUEST
+                if (download_items[index].url.includes(".pdf") === true){
+                    try{
+                        openPDF(download_items[index].url, download_items[index].lastVisitTime)
+                        downloadUtil(download_items, index + 1);
+                        existing_urls.push(download_items[index].url);
+                            
                     }
+                    catch (err) {
+                        console.log(err)
+                        downloadUtil(download_items, index + 1);
 
-                    // if not, continue with download
-                    else {
-                        if (xhttp.readyState == 4 && xhttp.status == 200) {
-                            
-                            //callback nesting to extract the content from xhttp request
-                            try {
+                    }
+                }
 
-                                getcontent(xhttp, function(page_text,page_title){    
-                                    // build the message that is sent to the "handleMessage"-function in background.js that stores it to DB           
-                                     build_data(page_text,page_title,download_items, function(data){
-                                        handleMessage(data,null,null);
-                                     })
-                                
-                                });
-                                //adding Url to list of already downloaded items.
-                                existing_urls.push(download_items[index].url);
-                                update_progress_success()
-                                downloadUtil(download_items, index + 1);
+                // IF REST SEND 
+                else {
+                        var xhttp = new XMLHttpRequest();
 
-
-                            } catch (err) {
-                                console.log('Download failed!: ' + err.message +': ' + download_items[index].url);
+                        // check if user cancelled download
+                        xhttp.onreadystatechange = function() {
+                            if (isAbortedByUser == true) {
                                 localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
-                                existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
-                                update_progress_failed()
-                                downloadUtil(download_items, index + 1);
-
+                                document.getElementById("title_download").innerHTML = "Download Stopped!";
+                                document.getElementById("close_message").innerHTML = "The extension will RESTART in 10 SECONDS. You can always resume your download via the settings.";
+                                document.getElementById("info_text").innerHTML = '';
+                                console.log("Download Stopped")
                             }
-                        } 
 
-                        else if (xhttp.readyState == 4 && xhttp.status != 200) {
-                                console.log('Download failed because!: ' + xhttp.status +': ' + download_items[index].url);
-                                update_progress_failed()
-                                downloadUtil(download_items, index + 1);
-                            
-                        }      
-                    }    
-            
+                            // if not, continue with download
+                            else {
+                                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                                    
+                                    //callback nesting to extract the content from xhttp request
+                                    try {
 
-                };
-            xhttp.ontimeout = function() {
-                console.log('Timeout!!');
-                downloadUtil(download_items, index + 1);
-            }
-            xhttp.open('GET', download_items[index].url, true);
-            xhttp.send();
+                                        getcontent(xhttp, function(page_text,page_title){    
+                                            // build the message that is sent to the "handleMessage"-function in background.js that stores it to DB           
+                                             build_data(page_text,page_title,download_items, function(data){
+                                                handleMessage(data,null,null);
+                                             })
+                                        
+                                        });
+                                        //adding Url to list of already downloaded items.
+                                        existing_urls.push(download_items[index].url);
+                                        update_progress_success()
+                                        downloadUtil(download_items, index + 1);
 
-            function build_data(page_text,page_title,download_items,callback){
-                data = {
-                            msg: 'pageContent',
-                            time: download_items[index].lastVisitTime,
-                            url: download_items[index].url,
-                            text: page_text,
-                            title: page_title
+
+                                    } catch (err) {
+                                        console.log('Download failed!: ' + err.message +': ' + download_items[index].url);
+                                        localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
+                                        existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
+                                        update_progress_failed()
+                                        downloadUtil(download_items, index + 1);
+
+                                    }
+                                } 
+
+                                else if (xhttp.readyState == 4 && xhttp.status != 200) {
+                                        console.log('Download failed because!: ' + xhttp.status +': ' + download_items[index].url);
+                                        update_progress_failed()
+                                        downloadUtil(download_items, index + 1);
+                                    
+                                }      
+                            }    
+                    
+
+                        };
+                        xhttp.ontimeout = function() {
+                        console.log('Timeout!!');
+                        downloadUtil(download_items, index + 1);
                         }
-                callback(data)
-            };
-        }
+                        xhttp.open('GET', download_items[index].url, true);
+                        xhttp.send();
 
+                        function build_data(page_text,page_title,download_items,callback){
+                            data = {
+                                        msg: 'pageContent',
+                                        time: download_items[index].lastVisitTime,
+                                        url: download_items[index].url,
+                                        text: page_text,
+                                        title: page_title
+                                    }
+                            callback(data)
+                        };
+                }
+
+            }
+    
+            catch (err){
+                console.log(err)
+                update_progress_failed()
+                downloadUtil(download_items, index + 1);
+
+
+            }
     }
 }
 
@@ -317,7 +329,7 @@ module.exports = {
   extractFromText: extractFromText
 };
 
-},{"cheerio":4,"fs":68}],3:[function(require,module,exports){
+},{"cheerio":4,"fs":70}],3:[function(require,module,exports){
 module.exports = {
 	trueFunc: function trueFunc(){
 		return true;
@@ -2123,8 +2135,8 @@ exports.update = function(arr, parent) {
 
 // module.exports = $.extend(exports);
 
-}).call(this,{"isBuffer":require("../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":77,"htmlparser2":51}],12:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../usr/local/lib/node_modules/watchify/node_modules/is-buffer/index.js")})
+},{"../../../../../usr/local/lib/node_modules/watchify/node_modules/is-buffer/index.js":77,"htmlparser2":51}],12:[function(require,module,exports){
 /**
  * Module dependencies
  */
@@ -6490,7 +6502,7 @@ WritableStream.prototype._write = function(chunk, encoding, cb){
 	this._parser.write(chunk);
 	cb();
 };
-},{"./Parser.js":46,"buffer":72,"inherits":52,"readable-stream":70,"stream":92,"string_decoder":93}],51:[function(require,module,exports){
+},{"./Parser.js":46,"buffer":72,"inherits":52,"readable-stream":69,"stream":92,"string_decoder":93}],51:[function(require,module,exports){
 var Parser = require("./Parser.js"),
     DomHandler = require("domhandler");
 
@@ -24763,8 +24775,6 @@ function parse(formula){
 }
 
 },{}],68:[function(require,module,exports){
-
-},{}],69:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -24880,9 +24890,11 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
+},{}],69:[function(require,module,exports){
+
 },{}],70:[function(require,module,exports){
-arguments[4][68][0].apply(exports,arguments)
-},{"dup":68}],71:[function(require,module,exports){
+arguments[4][69][0].apply(exports,arguments)
+},{"dup":69}],71:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -26787,7 +26799,7 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":69,"ieee754":75,"isarray":78}],73:[function(require,module,exports){
+},{"base64-js":68,"ieee754":75,"isarray":78}],73:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -28599,7 +28611,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":82,"./internal/streams/BufferList":87,"_process":80,"buffer":72,"buffer-shims":71,"core-util-is":73,"events":74,"inherits":76,"isarray":78,"process-nextick-args":79,"string_decoder/":93,"util":70}],85:[function(require,module,exports){
+},{"./_stream_duplex":82,"./internal/streams/BufferList":87,"_process":80,"buffer":72,"buffer-shims":71,"core-util-is":73,"events":74,"inherits":76,"isarray":78,"process-nextick-args":79,"string_decoder/":93,"util":69}],85:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
