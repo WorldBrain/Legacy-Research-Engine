@@ -45,7 +45,7 @@ function getContentPDF(blob, callback) {
 
             Promise.all(promises).then( function(){
                 totalContent = totalContent.join(" ");
-                console.log(totalContent)
+                //console.log(totalContent)
                 callback(totalContent)
             });
 
