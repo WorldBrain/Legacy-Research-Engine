@@ -1,3 +1,14 @@
+///////
+//
+//  IMPORTANT:  TO WORK ON THIS CODE YOU NEED BROWSERIFY,  BECAUSE 
+//              THE CODE IS BUNDLED INTO JS/BUNDLE.JS
+//
+//              DOWNLOAD IT HERE: browserify.org
+//
+///////
+
+
+
 var initial = document.body.parentNode.innerHTML;
 var get_text = require('./html.js')
 var get_progress_total = 0
@@ -38,7 +49,7 @@ function downloadUtil(download_items, index) {
         else {
 
             try{
-                
+
                 // IF PDF SEND TO SEPARATE XMLHTTP REQUEST
                 if (download_items[index].url.includes(".pdf") === true){
                     try{
