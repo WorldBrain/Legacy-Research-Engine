@@ -10,11 +10,27 @@ window.setTimeout((function(){
             relText = document.body.innerText
         }
         }*/
-    chrome.runtime.sendMessage({
+
+    // CHECK IF PDF
+    if (url.includes(".pdf") === true){
+        openPDF(url,epochTime)
+        }
+
+    // IF NOT, GET CONTENT VIA BROWSER AND STORE IT
+    else {
+        chrome.runtime.sendMessage({
         "msg":'pageContent',
         "time": epochTime,
         "url": url,
         "text": document.body.innerText, //relText,
         "title": document.title,
-    });
+    });}
 }), 1000);
+
+
+
+
+
+
+
+

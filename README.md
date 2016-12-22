@@ -23,7 +23,7 @@ If you don't feel comfortable installing a Chrome extension that can read and mo
 `-"cat food" just "a dog"`
 - Searches for websites you visited containing the keywords "just" and "a dog", and without the phrase "cat food".
 
-`ethereum medium after:"two weeks ago"` 
+`ethereum medium` 
 - Searches for websites you visited in the last 2 weeks containing the keywords "ethereum" and "medium"
 
 `ethereum medium after:11/29/2015 before:3/26/2016` 
