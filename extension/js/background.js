@@ -1,20 +1,24 @@
 var MILLIS_BEFORE_CLEAR = 1000 * 60; // 60 seconds
 var CLEAR_DELAY = 20000;
 var MAX_URL_LEN_SHOWN = 50;
-var LT = function(a,b) {return a < b};
-var GT = function(a,b) {return a > b};
-var LT_OBJ = function(a,b) {
+var LT = function (a, b) {
+    return a < b
+};
+var GT = function (a, b) {
+    return a > b
+};
+var LT_OBJ = function (a, b) {
     return a.time < b.time;
 }
 
 var db
 
-var GT_OBJ = function(a,b) {
+var GT_OBJ = function (a, b) {
     return a.time > b.time;
 }
 
-Array.max = function( array ){
-    return Math.max.apply(Math,array);
+Array.max = function (array) {
+    return Math.max.apply(Math, array);
 };
 
 
@@ -27,11 +31,16 @@ chrome.omnibox.onInputChanged.addListener(omnibarHandler);
 chrome.omnibox.onInputEntered.addListener(acceptInput);
 chrome.runtime.onMessage.addListener(handleMessage);
 chrome.runtime.onInstalled.addListener(function (object) {
-    chrome.storage.local.get("shouldOpenTab", function(item) {
+    chrome.storage.local.get("shouldOpenTab", function (item) {
         if (Object.keys(item).length == 0) {
-            chrome.tabs.create({url: "assets/about.html"}, function (tab) {
-            });
-            chrome.storage.local.set({"shouldOpenTab": {"dontShow": true}})
+            chrome.tabs.create({
+                url: "assets/about.html"
+            }, function (tab) {});
+            chrome.storage.local.set({
+                "shouldOpenTab": {
+                    "dontShow": true
+                }
+            })
         }
     })
 });
@@ -42,31 +51,44 @@ function acceptInput(text, disposition) {
         return;
     }
     switch (disposition) {
-    case "currentTab":
-        chrome.tabs.update({url: text});
-        break;
-    case "newForegroundTab":
-        chrome.tabs.create({url: text});
-        break;
-    case "newBackgroundTab":
-        chrome.tabs.create({url: text, active: false});
-        break;
+        case "currentTab":
+            chrome.tabs.update({
+                url: text
+            });
+            break;
+        case "newForegroundTab":
+            chrome.tabs.create({
+                url: text
+            });
+            break;
+        case "newBackgroundTab":
+            chrome.tabs.create({
+                url: text,
+                active: false
+            });
+            break;
     }
 }
 
 function init() {
 
-    /*db = new PouchDB('main')
-    //db.plugin()
-    var remoteCouch = false;*/
+    db = new PouchDB('main')
+        // db.plugin()
+    var remoteCouch = false;
 
     window.preloaded = [];
     window.cache = {};
-    chrome.storage.local.get(['blacklist', 'preferences'], function(items) {
+    chrome.storage.local.get(['blacklist', 'preferences'], function (items) {
         var obj = items['blacklist'];
         if (obj === undefined || !('PAGE' in obj && 'SITE' in obj && 'REGEX' in obj)) {
-            window.blacklist = {'PAGE':[], 'REGEX':[], 'SITE':[]}; // show example in page
-            chrome.storage.local.set({'blacklist':blacklist});
+            window.blacklist = {
+                'PAGE': [],
+                'REGEX': [],
+                'SITE': []
+            }; // show example in page
+            chrome.storage.local.set({
+                'blacklist': blacklist
+            });
         } else {
             window.blacklist = obj;
         }
@@ -74,26 +96,34 @@ function init() {
         var obj = items['preferences'];
         if (obj === undefined) {
             window.preferences = {};
-            chrome.storage.local.set({'preferences':preferences});
+            chrome.storage.local.set({
+                'preferences': preferences
+            });
         } else {
             window.preferences = obj;
         }
     });
 
-    chrome.storage.local.get('index', function(items) {
+    chrome.storage.local.get('index', function (items) {
         var obj = items['index'];
         if (obj === undefined) {
             window.timeIndex = [];
-            chrome.storage.local.get(null, function(items) {
+            chrome.storage.local.get(null, function (items) {
                 for (var key in items) {
                     if (key != 'index') {
                         timeIndex.push(items[key].time.toString());
                     }
                 }
 
-                timeIndex.sort(function(a,b) {return parseInt(a) - parseInt(b)}); // soonest last
+                timeIndex.sort(function (a, b) {
+                    return parseInt(a) - parseInt(b)
+                }); // soonest last
                 makePreloaded(timeIndex);
-                chrome.storage.local.set({'index':{'index':timeIndex}});
+                chrome.storage.local.set({
+                    'index': {
+                        'index': timeIndex
+                    }
+                });
             });
 
         } else {
@@ -111,13 +141,15 @@ function makePreloaded(index) {
         preloaded_index.push(index[j]);
     }
 
-    chrome.storage.local.get(preloaded_index, function(items) {
+    chrome.storage.local.get(preloaded_index, function (items) {
         window.preloaded = [];
         for (var key in items) {
             preloaded.push(items[key]);
         }
 
-        preloaded.sort(function(a,b){return a.time-b.time});
+        preloaded.sort(function (a, b) {
+            return a.time - b.time
+        });
     });
 }
 
@@ -132,33 +164,40 @@ function handleMessage(data, sender, sendRespones) {
     if (data.msg === 'pageContent' && shouldArchive(data)) {
         delete data.msg;
         data.text = processPageText(data.text);
-        //console.log("TEST"+ data.text)
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
-        chrome.storage.local.set(keyValue, function() {
+        chrome.storage.local.set(keyValue, function () {
             console.log("Stored: " + data.url);
         });
 
 
-        //store_url(data);
-        //show_url()
+        store_url(data);
+        show_url()
 
         timeIndex.push(time.toString());
         preloaded.push(data);
-        chrome.storage.local.set({'index':{'index':timeIndex}});
+        chrome.storage.local.set({
+            'index': {
+                'index': timeIndex
+            }
+        });
 
         //Add to list of not indexing anymore
-        var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);    
+        var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
         existing_urls.push(data.url);
         localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
         //search_pouch('test')
     } else if (data.msg === 'setPreferences') {
         preferences = data.preferences;
-        chrome.storage.local.set({'preferences':preferences});
+        chrome.storage.local.set({
+            'preferences': preferences
+        });
     } else if (data.msg === 'setBlacklist') {
         blacklist = data.blacklist;
-        chrome.storage.local.set({'blacklist':blacklist});
+        chrome.storage.local.set({
+            'blacklist': blacklist
+        });
     }
 }
 
@@ -167,7 +206,7 @@ function handleMessage(data, sender, sendRespones) {
 ///////////
 ////////// // Early work on pouchDB search implementation
 ///////////
-/*function store_url(data) {
+function store_url(data) {
     var item = {
         _id: data.time.toString(),
         title: data.title,
@@ -176,41 +215,44 @@ function handleMessage(data, sender, sendRespones) {
         url: data.url,
     };
     //console.log(item)
-    db.put(item, function callback(err, result){
-        if(!err) {
+    db.put(item, function callback(err, result) {
+        if (!err) {
             console.log('Successfully stored the page: ' + data.url)
-        }
-        else {
+        } else {
             console.log('Error on URL: ' + data.url)
         }
 
     });
-}*/
+}
 
-/*function show_url(){
+function show_url() {
     db.allDocs({
-       include_docs: true, descending:true 
-    }, function(err,doc){
+        include_docs: true,
+        descending: true
+    }, function (err, doc) {
         console.log(doc);
     });
-}*/
+}
 
-/*function search_pouch(query, text, cb, suggestCb ){
-    //console.log(query)
+function search_pouch(query, text, cb, suggestCb) {
+    // console.log(query)
     db.search({
         query: query.text,
         fields: ['text'],
         include_docs: true
-    }).then(function(res){
+    }).then(function (res) {
         console.log("RESULTS: ")
+
         console.log(res.rows)
 
-        //console.log(doc.LastVisitTime)
-        return makeSuggestions(query, res.rows, cb, suggestCb)
-    }).catch(function(err){
+        if (res.rows.length > 0) {
+            console.log("Returning suggestions now");
+            return makeSuggestions(query, res.rows, cb, suggestCb)
+        }
+    }).catch(function (err) {
         console.log(err)
     });
-}*/
+}
 
 
 ///////////
@@ -218,7 +260,8 @@ function handleMessage(data, sender, sendRespones) {
 //////////
 
 function omnibarHandler(text, suggest) {
-    dispatchSuggestions(text, suggestionsComplete, suggest);
+    if(text.length > 0)
+        dispatchSuggestions_alt(text, suggestionsComplete, suggest);
 }
 
 function suggestionsComplete(suggestions, shouldDate, suggestCb) {
@@ -226,12 +269,13 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
     var i;
     for (i = 0; i < suggestions.length; i++) {
         var elem = suggestions[i];
-        var urlToShow = elem.url;
+        console.log(elem);
+        var urlToShow = elem.doc.url;
         if (urlToShow.length >= MAX_URL_LEN_SHOWN) {
-            urlToShow = urlToShow.substring(0,47) + '...';
+            urlToShow = urlToShow.substring(0, 47) + '...';
         }
         var description = "<url>" + escape(urlToShow) + "</url> "
-        var date = new Date(elem.time);
+        var date = new Date(elem.doc.LastVisitTime);
         var hour = date.getHours();
         if (hour > 12) {
             hour -= 12;
@@ -248,27 +292,34 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
             }
         }
 
-        var fmt =  (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getUTCFullYear().toString().substring(2,4);
+        var fmt = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getUTCFullYear().toString().substring(2, 4);
         if (shouldDate) {
             description += ':: <match>' + escape(fmt + " " + hour) + '</match> ';
         } else {
             description += ':: ' + escape(fmt) + ' ';
         }
 
-        description += '- ' + escape(elem.title);
-        res.push({content:elem.url, description:description});
+        description += '- ' + escape(elem.doc.title);
+        res.push({
+            content: elem.doc.url,
+            description: description
+        });
     }
     if (res.length > 0) {
-        chrome.omnibox.setDefaultSuggestion({description: "Select an option below"});
+        chrome.omnibox.setDefaultSuggestion({
+            description: "Select an option below"
+        });
     } else {
-        chrome.omnibox.setDefaultSuggestion({description: "No results found"})
+        chrome.omnibox.setDefaultSuggestion({
+            description: "No results found"
+        })
     }
     suggestCb(res);
     window.setTimeout(clearCache, CLEAR_DELAY);
 }
 
 function clearCache() {
-    
+
     var now = +(new Date());
 
     for (var time in cache) {
@@ -289,17 +340,17 @@ function shouldArchive(data) {
     var site = blacklist["SITE"];
     var page = blacklist["PAGE"];
     var regex = blacklist["REGEX"];
-    var url = data.url.replace("http://",  "").replace("https://", "");
+    var url = data.url.replace("http://", "").replace("https://", "");
 
     for (var i = 0; i < site.length; i++) {
         // var reg = new RegExp(escapeRegExp(page[i]) + ".*");
-        if (url.indexOf(site[i].replace("http://",  "").replace("https://", "")) != -1) {
+        if (url.indexOf(site[i].replace("http://", "").replace("https://", "")) != -1) {
             return false;
         }
     }
 
     for (var i = 0; i < page.length; i++) {
-        if (cleanURL(data.url).indexOf(page[i].replace("http://",  "").replace("https://", ""))) {
+        if (cleanURL(data.url).indexOf(page[i].replace("http://", "").replace("https://", ""))) {
             return false;
         }
     }
@@ -314,14 +365,15 @@ function shouldArchive(data) {
 }
 
 function makeSuggestions(query, candidates, cb, suggestCb) {
+    
     var res = [];
     var urls = {};
     var keywords = query.keywords;
-    //console.log(keywords)
     var keywordsLen = keywords.length;
     var negative = query.negative;
     var negativeLen = negative.length;
     var j = 0;
+
     for (var i = candidates.length - 1; i > -1; i--) {
         var text = candidates[i].text;
         var isMatching = true;
@@ -333,14 +385,14 @@ function makeSuggestions(query, candidates, cb, suggestCb) {
 
         if (isMatching) {
             for (var k = 0; k < keywordsLen; k++) {
-                if (text.indexOf(keywords[k]) === -1) {
+                if (text != null && text.indexOf(keywords[k]) === -1) {
                     isMatching = false;
                     break;
                 }
             }
 
             if (isMatching) {
-                var cleanedURL = cleanURL(candidates[i].url);
+                var cleanedURL = cleanURL(candidates[i].doc.url);
                 if (!(cleanedURL in urls)) {
                     res.push(candidates[i]);
                     urls[cleanedURL] = true;
@@ -352,8 +404,7 @@ function makeSuggestions(query, candidates, cb, suggestCb) {
             }
         }
     }
-
-    cb(res,query.shouldDate,suggestCb);
+    cb(res, query.shouldDate, suggestCb);
 }
 
 function cleanURL(url) {
@@ -362,75 +413,77 @@ function cleanURL(url) {
 
 
 // Early work on pouchDB search implementation
-/*function dispatchSuggestions_alt(text,cb,suggestCb){
+function dispatchSuggestions_alt(text, cb, suggestCb) {
     var query = makeQueryFromText(text);
     query.text = text;
     if (query.before !== false && query.after !== false && query.after >= query.before) return;
 
-    query.keywords.sort(function(a,b){return b.length-a.length});
+    query.keywords.sort(function (a, b) {
+        return b.length - a.length
+    });
 
     search_pouch(query, text, cb, suggestCb)
-}*/
-
-
-function dispatchSuggestions(text, cb, suggestCb) {
-    var query = makeQueryFromText(text);
-    query.text = text;
-    if (query.before !== false && query.after !== false && query.after >= query.before) return;
-
-    query.keywords.sort(function(a,b){return b.length-a.length});
-
-    if (query.after >= CUTOFF_DATE) {
-        var start = Math.floor(binarySearch(preloaded, {'time':+query.after}, LT_OBJ,
-                                            GT_OBJ, 0, preloaded.length));
-        var end;
-        if (query.before) {
-            end = Math.ceil(binarySearch(preloaded, {'time':+query.before}, LT_OBJ,
-                                         GT_OBJ, 0, preloaded.length));
-        } else {
-            end = preloaded.length;
-        }
-
-        makeSuggestions(query, preloaded.slice(start, end), cb, suggestCb)
-    } else {
-        var start = Math.floor(binarySearch(timeIndex, +query.after, LT,
-                                            GT, 0, timeIndex.length));
-        var end;
-        if (query.before) {
-            end = Math.ceil(binarySearch(timeIndex, +query.before, LT,
-                                         GT, 0, timeIndex.length));
-        } else {
-            end = timeIndex.length;
-        }
-
-        window.sorted = [];
-        var get = timeIndex.slice(start, end);
-        var index = Math.ceil(binarySearch(get, +CUTOFF_DATE, LT, GT, 0, get.length));
-        if (index < get.length) {
-            sorted = preloaded.slice(0, get.length - index + 1);
-        }
-        get = get.slice(0,index);
-
-        chrome.storage.local.get(get, function(items) {
-            for (var key in items) {
-                sorted.push(items[key]);
-            }
-            sorted.sort(function(a,b) {return a.time - b.time});
-            makeSuggestions(query, sorted, cb, suggestCb);
-        });
-    }
 }
+
+
+// function dispatchSuggestions(text, cb, suggestCb) {
+//     var query = makeQueryFromText(text);
+//     query.text = text;
+//     if (query.before !== false && query.after !== false && query.after >= query.before) return;
+
+//     query.keywords.sort(function(a,b){return b.length-a.length});
+
+//     if (query.after >= CUTOFF_DATE) {
+//         var start = Math.floor(binarySearch(preloaded, {'time':+query.after}, LT_OBJ,
+//                                             GT_OBJ, 0, preloaded.length));
+//         var end;
+//         if (query.before) {
+//             end = Math.ceil(binarySearch(preloaded, {'time':+query.before}, LT_OBJ,
+//                                          GT_OBJ, 0, preloaded.length));
+//         } else {
+//             end = preloaded.length;
+//         }
+
+//         makeSuggestions(query, preloaded.slice(start, end), cb, suggestCb)
+//     } else {
+//         var start = Math.floor(binarySearch(timeIndex, +query.after, LT,
+//                                             GT, 0, timeIndex.length));
+//         var end;
+//         if (query.before) {
+//             end = Math.ceil(binarySearch(timeIndex, +query.before, LT,
+//                                          GT, 0, timeIndex.length));
+//         } else {
+//             end = timeIndex.length;
+//         }
+
+//         window.sorted = [];
+//         var get = timeIndex.slice(start, end);
+//         var index = Math.ceil(binarySearch(get, +CUTOFF_DATE, LT, GT, 0, get.length));
+//         if (index < get.length) {
+//             sorted = preloaded.slice(0, get.length - index + 1);
+//         }
+//         get = get.slice(0,index);
+
+//         chrome.storage.local.get(get, function(items) {
+//             for (var key in items) {
+//                 sorted.push(items[key]);
+//             }
+//             sorted.sort(function(a,b) {return a.time - b.time});
+//             makeSuggestions(query, sorted, cb, suggestCb);
+//         });
+//     }
+// }
 
 function binarySearch(arr, value, lt, gt, i, j) {
     if (Math.abs(j - i) <= 1) {
-        return (i + j)/2;
+        return (i + j) / 2;
     }
 
-    var m = Math.floor((i + j)/2)
+    var m = Math.floor((i + j) / 2)
     var cmpVal = arr[m];
     if (gt(cmpVal, value)) {
         j = m;
-    } else if (lt(cmpVal, value)){
+    } else if (lt(cmpVal, value)) {
         i = m;
     } else {
         return m;
