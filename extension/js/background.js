@@ -239,7 +239,11 @@ function search_pouch(query, text, cb, suggestCb) {
     db.search({
         query: query.text,
         fields: ['text'],
-        include_docs: true
+        include_docs: true,
+        filter: function(doc) {
+            if (query.before != false && doc.LastVisitTime <= query.before.getTime() && query.LastVisitTime > doc.after.getTime())
+                return doc;
+        }
     }).then(function (res) {
         console.log("RESULTS: ")
 
