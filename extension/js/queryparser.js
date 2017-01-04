@@ -138,6 +138,7 @@ function parseDate(query) {
     }
 
     query.text = text;
+    // console.log(query);
     return query;
 }
 

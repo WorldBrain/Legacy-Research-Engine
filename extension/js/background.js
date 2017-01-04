@@ -75,7 +75,15 @@ function init() {
     db = new PouchDB('main')
         // db.plugin()
     var remoteCouch = false;
-
+    db.search({
+        fields: ['text'],
+        build: true
+    }).then(function (info) {
+        // if build was successful, info is {"ok": true}
+    }).catch(function (err) {
+        // handle error
+        console.log(err);
+    });
     window.preloaded = [];
     window.cache = {};
     chrome.storage.local.get(['blacklist', 'preferences'], function (items) {
@@ -111,6 +119,7 @@ function init() {
             chrome.storage.local.get(null, function (items) {
                 for (var key in items) {
                     if (key != 'index') {
+                        // if(items[key].time != null)
                         timeIndex.push(items[key].time.toString());
                     }
                 }
@@ -235,23 +244,40 @@ function show_url() {
 }
 
 function search_pouch(query, text, cb, suggestCb) {
-    // console.log(query)
+    console.log(query);
+    // ,
+        // filter: function (doc) {
+        //     console.log("Inside Filter");
+        //     // console.log(query);
+        //     if (query.before != false && doc.LastVisitTime <= query.before.getTime() && query.LastVisitTime >= doc.after.getTime()) {
+        //         console.log("Comparison 2");
+        //         return doc;
+        //     }
+        //     else if (doc.LastVisitTime >= query.after.getTime()) {
+        //         console.log("Comparison 1");
+        //         return doc;
+        //     }
+        // }
     db.search({
         query: query.text,
         fields: ['text'],
-        include_docs: true,
-        filter: function(doc) {
-            if (query.before != false && doc.LastVisitTime <= query.before.getTime() && query.LastVisitTime > doc.after.getTime())
-                return doc;
-        }
+        include_docs: true
     }).then(function (res) {
-        console.log("RESULTS: ")
-
-        console.log(res.rows)
-
+        // console.log("RESULTS: ")
+        // console.log(res.rows)
+        var results = [];
+        for(var i = 0; i < res.rows.length ; i++) {
+            // console.log(res.rows[i]);
+            var doc = res.rows[i];
+            if (query.before != false) {
+                if (doc.doc.LastVisitTime <= query.before.getTime() && doc.doc.LastVisitTime >= query.after.getTime())
+                    results.push(doc);
+            }
+            else if (doc.doc.LastVisitTime >= query.after.getTime())
+                results.push(doc);
+        }
         if (res.rows.length > 0) {
-            console.log("Returning suggestions now");
-            return makeSuggestions(query, res.rows, cb, suggestCb)
+            return makeSuggestions(query, results, cb, suggestCb);
         }
     }).catch(function (err) {
         console.log(err)
@@ -264,7 +290,7 @@ function search_pouch(query, text, cb, suggestCb) {
 //////////
 
 function omnibarHandler(text, suggest) {
-    if(text.length > 0)
+    if (text.length > 0)
         dispatchSuggestions_alt(text, suggestionsComplete, suggest);
 }
 
@@ -273,7 +299,6 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
     var i;
     for (i = 0; i < suggestions.length; i++) {
         var elem = suggestions[i];
-        console.log(elem);
         var urlToShow = elem.doc.url;
         if (urlToShow.length >= MAX_URL_LEN_SHOWN) {
             urlToShow = urlToShow.substring(0, 47) + '...';
@@ -369,7 +394,7 @@ function shouldArchive(data) {
 }
 
 function makeSuggestions(query, candidates, cb, suggestCb) {
-    
+
     var res = [];
     var urls = {};
     var keywords = query.keywords;
@@ -419,13 +444,12 @@ function cleanURL(url) {
 // Early work on pouchDB search implementation
 function dispatchSuggestions_alt(text, cb, suggestCb) {
     var query = makeQueryFromText(text);
-    query.text = text;
+    // query.text = query.text.trim();
     if (query.before !== false && query.after !== false && query.after >= query.before) return;
 
     query.keywords.sort(function (a, b) {
         return b.length - a.length
     });
-
     search_pouch(query, text, cb, suggestCb)
 }
 
