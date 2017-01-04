@@ -15,7 +15,7 @@
         var selectCell = document.createElement('select');
         selectCell.innerHTML = '<option value="PAGE">Specific Page</option> \
                         <option value="SITE">Entire Website</option> \
-                        <option value="REGEX">Regex</option>'
+                        <option value="REGEX">all URLs containing...</option>'
         selectCell.value = type
 
         typeCell.appendChild(selectCell);
@@ -99,12 +99,8 @@
                 }
             }
         } else {
-            add("REGEX", ".google.");
-            add("REGEX", "asana.com");
             add("REGEX", "login");
             add("REGEX", "Login");
-            add("REGEX", ".paypal.");
-            add("REGEX", ".facebook.com/photo.php");
             add("SITE", "chrome-ui://newtab");
             save(false);
         }
