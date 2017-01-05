@@ -1,0 +1,39 @@
+{
+  "name": "research-engine",
+  "version": "1.0.0",
+  "description": "Worldbrain.io research engine",
+  "main": "index.js",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.4",
+    "npm-run-all": "^4.0.0"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "watchify": "^3.8.0"
+  },
+  "scripts": {
+    "build": "npm-run-all build:*",
+    "watch": "npm-run-all --parallel watch:*",
+    "build:copy-manifest": "cpx src/manifest.json build",
+    "watch:copy-manifest": "cpx src/manifest.json build --watch",
+    "build:copy-js": "cpx 'src/js/**/*.*' build/js",
+    "watch:copy-js": "cpx 'src/js/**/*.*' build/js --watch",
+    "build:copy-assets": "cpx 'src/assets/**/*.*' build/assets",
+    "watch:copy-assets": "cpx 'src/assets/**/*.*' build/assets --watch",
+    "build:browserify": "mkdir -p ./build/js && browserify src/js-browserify/download_urls.js -o build/js/bundle.js",
+    "watch:browserify": "mkdir -p ./build/js && watchify src/js-browserify/download_urls.js -o build/js/bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WorldBrain/Research-Engine.git"
+  },
+  "author": "Worldbrain",
+  "license": "GPL 3",
+  "bugs": {
+    "url": "https://github.com/WorldBrain/Research-Engine/issues"
+  },
+  "homepage": "https://github.com/WorldBrain/Research-Engine#readme"
+}

@@ -11,6 +11,7 @@
 
 var initial = document.body.parentNode.innerHTML;
 var get_text = require('./html.js')
+var _ = require('lodash')
 var get_progress_total = 0
 var get_progress_success = 0 
 var get_progress_failed = 0

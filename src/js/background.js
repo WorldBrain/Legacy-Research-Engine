@@ -1,4 +1,4 @@
-var MILLIS_BEFORE_CLEAR = 1000 * 60; // 60 seconds
+var MILLIS_BEFORE_CLEAR = 1000 * 60; // 60 seconds 
 var CLEAR_DELAY = 20000;
 var MAX_URL_LEN_SHOWN = 50;
 var LT = function(a,b) {return a < b};
