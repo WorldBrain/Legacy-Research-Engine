@@ -9,7 +9,7 @@ document.getElementById('checkbox_history').addEventListener("click", function()
     ;})
 
 function importHistory(){
-    chrome.history.search({'text': '','maxResults': 200000, 'startTime':0 }, function(history) {
+        chrome.history.search({'text': '','maxResults': 200000, 'startTime':0 }, function(history) {
         var history_items = new Array(); 
 
         //create list of already downloaded urls, if not exists
