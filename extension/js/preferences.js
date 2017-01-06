@@ -101,6 +101,7 @@
         } else {
             add("REGEX", "login");
             add("REGEX", "Login");
+            add("REGEX", "paypal.com");
             add("SITE", "chrome-ui://newtab");
             save(false);
         }
