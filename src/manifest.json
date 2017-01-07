@@ -36,6 +36,6 @@
     "omnibox": { "keyword" : "w" },
     "options_page": "assets/preferences.html",
     "background": {
-        "scripts": ["js/compatibility.js","js/pdf.min.js","js/pdftotext.js","js/pdf.min.worker.js","js/bundle.js","js/lib/pouchdb-6.0.7.min.js","js/lib/pdf2text_bundle.js", "js/lib/pouchdb.quick-search.min.js", "js/blacklist2.js", "js/lib/chrono.min.js", "js/textprocessing.js", "js/queryparser.js", "js/background.js", "js/lib/readability.js", "js/lib/lodash.js"]
+        "scripts": ["js/compatibility.js","js/pdf.min.js","js/pdftotext.js","js/pdf.min.worker.js","js/bundle.js","js/lib/pouchdb-6.0.7.min.js","js/lib/pdf2text_bundle.js", "js/lib/pouchdb.quick-search.min.js", "js/blacklist2.js", "js/lib/chrono.min.js", "js/textprocessing.js", "js/queryparser.js", "js/background.js", "js/lib/readability.js"]
     }
 }
