@@ -17,7 +17,9 @@ var get_progress_success = 0
 var get_progress_failed = 0
 
 //open list of already indexed urls from local storage
-var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
+var existing_urls = localStorage['list_downloaded_urls'];
+if(existing_urls != null)
+  existing_urls = JSON.parse(existing_urls)
 var isAbortedByUser = false;    
 
 // activiator in case user cancelles download
