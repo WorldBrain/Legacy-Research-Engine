@@ -75,7 +75,7 @@ This tool is originally released under the name "[Falcon](https://github.com/len
 
 ## License
 
-Currently the tool is released under GPL-3, as this has been the license of *Falcon*. 
+Currently the (Re)search-Engine is released under GPL-3, as this has been the license of *Falcon*. 
 We aim to release it under a more liberal license as soon as we have replaced all the code from the original Falcon tool. 
 
 Our goal is to provide a set of reusable libraries, so that this client can be adapted to as many work-flows as possible. 
