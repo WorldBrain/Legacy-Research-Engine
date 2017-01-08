@@ -6,6 +6,18 @@ Welcome to the WorldBrain project. We want to work on the goal of an increased (
 
 **Our first software,** The (Re)search engine, is an open-source search engine for a user’s digital knowledge. It lets them full-text search all the pages they visited and bookmarked, as well as other places like Evernote, Pocket, Google Drive, Asana, Mendeley etc. ([Watch 2 min Intro Video](worldbrain.io/intro))
 
+## Table of Content
+
+ 1. [Status & Development Roadmap](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#status-development-roadmap)
+ 2. [How to get involved](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-get-involved)
+ 2. [How to use the extension](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-use-the-extension)
+ 1. [FAQs](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#faq)
+ 3. [Installation (as user & developer)](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#installation)
+ 7. [How to get in touch with us](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-get-in-touch-with-us)
+ 4. [Acknowledgements](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#acknowledgements)
+ 8. [Licence](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#license)
+
+
 ## Status & Development Roadmap
 
 [Here](https://github.com/WorldBrain/START-HERE/blob/master/ROADMAPS.md) you find the long term roadmap. 
@@ -25,8 +37,12 @@ To change that, we are adding a web-based results and filter view (much like a g
 
 More info in our [projects section](https://github.com/WorldBrain/Research-Engine/projects)
 
-### Want to contribute?
-Just leave a comment under the respective issue or contact us via email (info@worldbrain.io), if you are unsure about where to contribute. 
+## How to get involved
+
+ - If you are **JAVASCRIPT DEVELOPER** you can check out [our current projects](https://github.com/WorldBrain/Research-Engine/projects)
+ - Into **DECENTRALISATION**? You can join [our discussion](https://github.com/WorldBrain/Research-Engine/issues/43) about decentralising our server infrastructure.
+ - Wanna help with **MARKETING**? Contact Oliver via email: oli@worldbrain.io
+ - Wanna help us with **MONEYYYZ**? Wohoo! You can do so by [supporting us on Patreon](http://patreon.com/WorldBrain) 
 
 ## How to use the extension
 
@@ -66,9 +82,13 @@ Fork the project, then...
 - Click *load unpacked extension* (top left)
 - Select the ```/build``` folder from the project
 
+## How to get in touch with us
+
+ 1. via Email: [info@worldbrain.io](mailto:info@worldbrain.io)
+ 2. Request Slack Invitation: [http://worldbrain.slack.com](http://worldbrain.slack.com)
 
 
-## Acknowledgement
+## Acknowledgements
 
 This tool is originally released under the name "[Falcon](https://github.com/lengstrom/falcon)" and will be further developed to fit the needs of the scientific research community.  The original programmers are [@andrewilyas](https://github.com/andrewilyas) and [@lengstrom](https://github.com/lengstrom).
 
