@@ -5,6 +5,8 @@ Chrome extension for full-text browsing history & bookmarks search.
 **To activate**, press `w`, then `space` or `tab`, in the omnibar to start searching your previously visited websites! 
 Every time you visit a website in Chrome, WorldBrain indexes all the text on the page so that the site can be easily found later. Then, for example, if you type `w <tab> mugwort`, WorldBrain will show the websites you visited containing the text "mugwort"! 
 
+You can watch a short 2 minute video here: [worldbrain.io*/*tutorial](http://worldbrain.io/tutorial)
+
 ## More options:
 - Import existing history and bookmarks via the dashboard. (Reachable via the small brain icon in the top-right corner of the browser)
 - Use `before:date` and `after:date` to search your history in a certain time range
