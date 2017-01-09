@@ -2,7 +2,7 @@
 
 Welcome to the WorldBrain project. We want to work on the goal of an increased (scientific) literacy in our global society through a better information quality on the internet.
 
-**WorldBrain is an open-source project that aims to battle (scientific) misinformation by developing open source search tools for professional web-researchers like science communicators, STEM students, journalists and librarians and online debaters to find, rate and share qualitative and trustworthy web content/notes with their friends, followers and the public.** ([Watch the 5 min Vision Video](http://worldbrain.io/vision))
+**WorldBrain is an open-source project that aims to battle (scientific) misinformation by developing open source search tools for professional web-researchers like science communicators, STEM students, journalists and librarians and online debaters to find, rate and share qualitative and trustworthy web content/notes with their friends, followers and the public.** ([Watch the 3.5 min Vision Video](http://worldbrain.io/vision))
 
 **Our first software,** The (Re)search engine, is an open-source search engine for a user’s digital knowledge. It lets them full-text search all the pages they visited and bookmarked, as well as other places like Evernote, Pocket, Google Drive, Asana, Mendeley etc. ([Watch 2 min Intro Video](worldbrain.io/intro))
 
