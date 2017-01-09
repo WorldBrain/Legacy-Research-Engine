@@ -2,8 +2,8 @@
     "manifest_version": 2,
     "name": "WorldBrain - The (Re)search-Engine",
     "short_name":"WorldBrain",
-    "description": "Full-Text search the pages you visited and bookmarked. All data is stored locally & nothing leaves your computer.",
-    "version": "0.0.1.3",
+    "description": "Full-Text search the pages & PDFs you visited and bookmarked. All data is stored locally & nothing leaves your computer.",
+    "version": "0.0.1.4",
     "content_scripts": [
         {
             "matches": [
