@@ -20,7 +20,7 @@ function getContentPDF(blob, callback) {
       var arrayBuffer;
       var fileReader = new FileReader();
       fileReader.onload = function(a) {
-          PDFJS.workerSrc = chrome.extension.getURL('js/pdf.min.worker.js');
+          PDFJS.workerSrc = chrome.extension.getURL('js/pdf.worker.js');
           PDFJS.getDocument(a.target.result).then(function(pdf) {
             var items = [];
             var pagesRemaining = pdf.pdfInfo.numPages;
