@@ -1,50 +1,101 @@
 # WorldBrain (Re)Search Engine
 
-Chrome extension for flexible full text browsing history search. **Press `w`, then `space` or `tab`, in the omnibar to start searching your previously visited websites**! 
+Welcome to the WorldBrain project. We want to work on the goal of an increased (scientific) literacy in our global society through a better information quality on the internet.
 
-Every time you visit a website in Chrome, WorldBrain indexes all the text on the page so that the site can be easily found later. Then, for example, if you type `w <tab> mugwort`, WorldBrain will show the websites you visited containing the text "mugwort"! 
+**WorldBrain is an open-source project that aims to battle (scientific) misinformation by developing open source search tools for professional web-researchers like science communicators, STEM students, journalists and librarians and online debaters to find, rate and share qualitative and trustworthy web content/notes with their friends, followers and the public.** ([Watch the 5 min Vision Video](http://worldbrain.io/vision))
 
+**Our first software,** The (Re)search engine, is an open-source search engine for a user’s digital knowledge. It lets them full-text search all the pages they visited and bookmarked, as well as other places like Evernote, Pocket, Google Drive, Asana, Mendeley etc. ([Watch 2 min Intro Video](worldbrain.io/intro))
 
-**This tool is originally released under the name "[Falcon](https://github.com/lengstrom/falcon)" and will be further developed to fit the needs of the scientific research community.  The original programmers are [@andrewilyas](https://github.com/andrewilyas) and [@lengstrom](https://github.com/lengstrom).**
-## Demo
-<img src="demo.gif" alt="Example Usage" width="880px"/>
+## Table of Content
 
-## Installation
-[Install from the Chrome store here](https://chrome.google.com/webstore/detail/worldbrain-the-research-e/abkfbakhjpmblaafnpgjppbmioombali/related). (If you don't feel comfortable with that, look at [Transparent Installation](#transparent-installation)).
-## Transparent Installation
-If you don't feel comfortable installing a Chrome extension that can read and modify all data on the websites you visit from the webstore (we wouldn't either!), you can clone it on your local machine, read through our code to verify that it is not malicious, and then install it as an unpacked local extension through the menu in `chrome://extensions/`. This way you also won't receive any automatic updates, as well. 
-
-
-## Examples
-
-`before: "yesterday at 5pm" after: "three weeks ago" emscripten blog "anish athalye"` 
-- Searches for websites that you browsed between yesterday at 5pm and 3 weeks ago containing the keywords "emscripten" and "blog" and "anish athalye"
-
-`-"cat food" just "a dog"`
-- Searches for websites you visited containing the keywords "just" and "a dog", and without the phrase "cat food".
-
-`ethereum medium` 
-- Searches for websites you visited in the last 2 weeks containing the keywords "ethereum" and "medium"
-
-`ethereum medium after:11/29/2015 before:3/26/2016` 
-- Searches for websites you visited between 11/29/2015 and 3/26/2016 containing the keywords "ethereum" and "medium"
+ 1. [Status & Development Roadmap](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#status-development-roadmap)
+ 2. [How to get involved](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-get-involved)
+ 2. [How to use the extension](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-use-the-extension)
+ 1. [FAQs](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#faq)
+ 3. [Installation (as user & developer)](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#installation)
+ 7. [How to get in touch with us](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-get-in-touch-with-us)
+ 4. [Acknowledgements](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#acknowledgements)
+ 8. [Licence](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#license)
 
 
+## Status & Development Roadmap
 
-## Preferences Page
-To manage which URLs WorldBrain can index, delete websites from the index, and more, go to the preferences page.
+[Here](https://github.com/WorldBrain/START-HERE/blob/master/ROADMAPS.md) you find the long term roadmap. 
 
-!["Extension Bar"](https://cloud.githubusercontent.com/assets/7870039/19575579/98d64ea4-970f-11e6-958b-8bdc9fd87baf.png "Extension Bar")
+### Current Stage
+
+In it's current stage, the chrome extension lets you full-text search all the web pages and PDFs you visited and bookmarked.
+
+### Under Development
+We are currently working on replacing the DB with PouchDB and the default search implementation with [PouchDB Quick Search](https://github.com/nolanlawson/pouchdb-quick-search/) 
+
+### Up next
+#### Web-view for results and more filter options.
+Currently the results can only be shown in the drop down of the adress bar and filters only applied by entering queries.
+
+To change that, we are adding a web-based results and filter view (much like a google results page), where all results can be shown and a variety of filters applied. 
+
+More info in our [projects section](https://github.com/WorldBrain/Research-Engine/projects)
+
+## How to get involved
+
+ - If you are **JAVASCRIPT DEVELOPER** you can check out [our current projects](https://github.com/WorldBrain/Research-Engine/projects)
+ - Into **DECENTRALISATION**? You can join [our discussion](https://github.com/WorldBrain/Research-Engine/issues/43) about decentralising our server infrastructure.
+ - Wanna help with **MARKETING**? Contact Oliver via email: oli@worldbrain.io
+ - Wanna help us with **MONEYYYZ**? Wohoo! You can do so by [supporting us on Patreon](http://patreon.com/WorldBrain) 
+
+## How to use the extension
+
+You can watch our ["How to use the Research-Engine" Demo Video (2min)](http://worldbrain.io/tutorial)
+
+**or** for a more detailed description, visit the text-based [tutorial](https://github.com/WorldBrain/Research-Engine/blob/master/TUTORIAL.md).
 
 ## FAQ
-### "Will this index my bank statements?"
-Nope! We have a blacklist of domains to avoid indexing that includes the majority of banking websites. You can edit them and add your own in the preferences page! If you accidentally visit a page that is indexed that you don't want indexed, you can go into preferences and delete it from your indexed pages. 
+You can reach our FAQ here: [reddit.com*/*r*/*WorldBrain](http://reddit.com/r/WorldBrain/)
 
-### "Do you store any information remotely?"
-No, all information is stored locally! No data leaves your computer over the network.
+## Installation
 
-## More Details
-- Use `before:date` and `after:date` to search your history in a certain time range
-  - You can use natural language along with quotes to specify dates as well, e.g. `before:"yesterday at 5pm"`
-- Use quotations to look for exact matches of strings containing whitespace
-- Only documents containing all words will be returned
+### AS A USER
+[Install from the Chrome store here](https://chrome.google.com/webstore/detail/worldbrain-the-research-e/abkfbakhjpmblaafnpgjppbmioombali/related). (If you don't feel comfortable with that, look at [Transparent Installation](#transparent-installation)).
+#### Transparent Installation
+If you don't feel comfortable installing a Chrome extension that can read and modify all data on the websites you visit from the webstore (we wouldn't either!), you can clone this repository on your local machine, read through our code to verify that it is not malicious, and then install it as an unpacked local extension through the menu in `chrome://extensions/`. **But this way you also won't receive any updates**.
+
+### AS A DEVELOPER
+
+Fork the project, then...
+
+#### Prerequisites
+- Install ```browserify``` and ```watchify``` with ```npm install -g browserify```
+- Run ```npm install``` to install dependencies
+
+#### While Developing
+- ```npm run watch```
+
+#### Build
+- ```npm run build```
+
+#### Activate & Test the plugin on your browser
+
+###### In Chrome
+- go to ```chrome://extensions/```
+- Activate *Developer Mode* (top right)
+- Click *load unpacked extension* (top left)
+- Select the ```/build``` folder from the project
+
+## How to get in touch with us
+
+ 1. via Email: [info@worldbrain.io](mailto:info@worldbrain.io)
+ 2. Request Slack Invitation: [http://worldbrain.slack.com](http://worldbrain.slack.com)
+
+
+## Acknowledgements
+
+This tool is originally released under the name "[Falcon](https://github.com/lengstrom/falcon)" and will be further developed to fit the needs of the scientific research community.  The original programmers are [@andrewilyas](https://github.com/andrewilyas) and [@lengstrom](https://github.com/lengstrom).
+
+
+## License
+
+Currently the (Re)search-Engine is released under GPL-3, as this has been the license of *Falcon*. 
+We aim to release it under a more liberal license as soon as we have replaced all the code from the original Falcon tool. 
+
+Our goal is to provide a set of reusable libraries, so that this client can be adapted to as many work-flows as possible. 
