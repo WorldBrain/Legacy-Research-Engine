@@ -29,7 +29,7 @@ In it's current stage, the chrome extension lets you full-text search all the we
 ### Under Development
 We are currently working on replacing the DB with PouchDB and the default search implementation with [PouchDB Quick Search](https://github.com/nolanlawson/pouchdb-quick-search/) 
 
-View all ["UNDER DEVELOPMENT" issues]()
+View all ["UNDER DEVELOPMENT" issues](https://github.com/WorldBrain/Research-Engine/issues?q=is%3Aissue+is%3Aopen+label%3A%22UNDER+DEVELOPMENT%22)
 
 ### Up next
 #### Web-view for results and more filter options.
