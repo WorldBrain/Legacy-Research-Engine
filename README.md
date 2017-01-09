@@ -29,6 +29,8 @@ In it's current stage, the chrome extension lets you full-text search all the we
 ### Under Development
 We are currently working on replacing the DB with PouchDB and the default search implementation with [PouchDB Quick Search](https://github.com/nolanlawson/pouchdb-quick-search/) 
 
+View all ["UNDER DEVELOPMENT" issues]()
+
 ### Up next
 #### Web-view for results and more filter options.
 Currently the results can only be shown in the drop down of the adress bar and filters only applied by entering queries.
@@ -39,7 +41,7 @@ More info in our [projects section](https://github.com/WorldBrain/Research-Engin
 
 ## How to get involved
 
- - If you are **JAVASCRIPT DEVELOPER** you can check out [our current projects](https://github.com/WorldBrain/Research-Engine/projects)
+ - If you are **JAVASCRIPT DEVELOPER** you can check out [our current projects](https://github.com/WorldBrain/Research-Engine/projects) and [open tasks](https://github.com/WorldBrain/Research-Engine/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
  - Into **DECENTRALISATION**? You can join [our discussion](https://github.com/WorldBrain/Research-Engine/issues/43) about decentralising our server infrastructure.
  - Wanna help with **MARKETING**? Contact Oliver via email: oli@worldbrain.io
  - Wanna help us with **MONEYYYZ**? Wohoo! You can do so by [supporting us on Patreon](http://patreon.com/WorldBrain) 
