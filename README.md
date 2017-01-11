@@ -26,6 +26,13 @@ Welcome to the WorldBrain project. We want to work on the goal of an increased (
 
 In it's current stage, the chrome extension lets you full-text search all the web pages and PDFs you visited and bookmarked.
 
+#### Features
+
+ - full-text search history & bookmarks
+ - import existing history and bookmarks
+ - blacklisting urls, domains 
+ - supports PDFs you visited online
+
 ### Under Development
 We are currently working on replacing the DB with PouchDB and the default search implementation with [PouchDB Quick Search](https://github.com/nolanlawson/pouchdb-quick-search/) 
 
