@@ -5,11 +5,14 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Import - WorldBrain's (Re)search-Engine</title>
+	<title>Contribute - WorldBrain's (Re)search-Engine</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
+    <link rel="stylesheet" href="assets/css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="assets/css/style.css"> <!-- Resource style -->
+    <script src="assets/js/modernizr.js"></script> <!-- Modernizr -->
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -19,9 +22,6 @@
 
     <!--  Light Bootstrap Table core CSS    -->
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
 
 
@@ -57,7 +57,7 @@
                         <p>About</p>
                     </a>
                 </li>
-                  <li class="active">
+                  <li>
                     <a href="analyse_urls.html">
                         <i class="pe-7s-download"></i>
                         <p>Import History & Bookmarks</p>
@@ -76,7 +76,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="FAQ.html">
+                    <a href="http://worldbrain.io/faq">
                         <i class="pe-7s-help1"></i>
                         <p>Frequently asked Questions</p>
                     </a>
@@ -95,7 +95,8 @@
                     </div>
                     <br>
                     <div style="white-space: nowrap; margin-left:42px; margin-bottom:30px">
-                    <a href="https://patreon.com/user?u=3682460"><img style="margin:5px" class="icon icons8-Message" src="assets/img/patreon_logo_white.png" width="30" height="30"></a>
+                    <a href="http://worldbrain.io/patreon_feed">
+                    <img style="margin:5px" class="icon icons8-Message" src="assets/img/patreon_logo_white.png" width="30" height="30"></a>
                     <a href="http://www.github.com/WorldBrain" target="_blank"><img style="margin:5px"class="icon icons8-GitHub" src="data:image/png;base64,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" width="30" height="30"></a>                  
                     <a href="http://www.facebook.com/realworldbrain" target="_blank"><img style="margin:5px" class="icon icons8-Facebook" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAC10lEQVRoQ+1ai3HTQBTc7QAqgFQQqADoAFcAHZBUAFRAUgGkApIKCBUkqYCkA6hgmVXuPGf7ZF0snyTP6GY8ceyT7+17+z7Se0TLkvQBwFsAr8KrbesQn98C8OuS5FXuQK5/KOk9gG8AXg4h4Q5n3AM4JXmZXrsCRJIBnIQNDwDOAFyTtDZGW5LMCrPDsr0IgpyRPI1CLYFIstCfwhdG7P8ntyQZjBXudU6yUXwDJNDpZ/jy9dgW6NJesNBN2LcwzSKQP8EnJmuJjC9Hy9yTPKKkjwC+A3ggOVUHzxpJkh3fPrMwkB8AHGoPxhoRVeIvFwZirjkqTN43MvSy3Jb/1kDUeD25kVO6nG4K3y/lHwNIqBqceK3R1C+vAZj3zlu/S6LnKEBC2HSYLw0qTUTaZvnBgQQQvwA8s7YBOMi4dvqbOK+zt0H6rwNQJ+XHABKDygVJh/ytq5TygwJJKofiXDVVIE/OVVMF4mj0BsA7kn6/XJLsM58BOIptBIGutDA0tVpzVVJZZH3mkIA0IHPW6goIoXJ/VFIpF0t+tG3PtjP6nj8lavUqkaoDiQekVsrxPbdvzbLP06SZKRzrUmtfQEZ39j7cl+QSxeWMC0e/b12DUatLozkJJX0JuaWznJk6kFgJfCVpUAdrkdZK4FCd/Yikb7TGt0iP8PuPpOuwrau6j6Snz5m9yxyPT0nrJsTZIgVWyCqpTwYuPXP2kQJNzT5SoKSNLTO1CrQ2U6tASTO1eilJkh/hH9ds9NRy9qQpejdI660ikNgQbVpvflTpnkVnL2IX0/uaikBiN3oR29OxO1qlIVoDSNIIbZ7wDzIwsG8grQMDwfzpCMcJyfNdqdR6X51puD61aJXkMZM4XrI6whEPXptHMd18QVFTsui+ekcgwQJuS9i5Y+thCcJnt405GUCcwtmXYfb1O55aMmPax5zWblgczWIL2XlmzHWXDJ6tAIhC/QfJdOM+5ZDCYAAAAABJRU5ErkJggg==" width="30" height="30"></a>
                     <a href="http://www.twitter.com/realworldbrain" target="_blank">
@@ -103,7 +104,6 @@
                     </a>
                     <a href="mailto:info@worldbrain.io" target="_blank">
                     <img style="margin:5px" class="icon icons8-Message" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAC4ElEQVRoQ+2Z7XETMRCG360AOoAOgAoIFRAqgFRAUgF0gFMBSQVABUAFQAfQAVSwzHOz8pxl2fflO9s3t/8ysaR99uPVyjbNxGwmHFpATi2TS0aWjIwUAXN3H2nvSbedH4iZnWXjp4paZ2Q2IJKemdnPSQt74GHu/lTSD7ap98hfSS/OBSYgvkp6mIPwNzA3ZnY3MFijLnf3N5I+JIgc5F7S6/Dg6lRh3P2tpFX4ufZ5o9nd/TpI+dydmV2NGtqOm7v7R0lkA6NyVjtVK9LGggomFlByRzN3pw/w6VLSP0nXqWL2ym800jdJDyShZIjAUWACgqZGoYC4qAtS4z0SMGTkScDQN5PKc/jwSdJjSb8oq9yHRhDqKKJBZoCZVJ4zeQWCTGxVRSuQGgwqgaJNIs9Zn6JM9ESxtFuDpA53d8psdHnO5dXMkkoVxaYzSGSHTdeKdmh5zuS11V3WC6QGQ6mhaAeR54K80tSf2+h9b5CAQQoPIs9N8toEMwgkYC4koe8YstxZnvPBr88EPggkHKBXyEyyTvLs7gSCO6KaXvsGpDdINnlWlxTy2EXRCvJKz6XLt5PE9wJxd0ZnnMY29D2TZ3T/tlTfu+Q1eiXdVyxdmdnNQXskDqEMKAesmjzzQ7JIIwY48yV66mUEIe1RlNfCHq/2zXmtM5LNO1tDWwEGR5FO5Llk7HFpZoAWLRtaf0sCpjjntQLJorNz3inA0MCUIGM3cxrGegDJUuMkXZjzii/XRpDslr1vGhWaarnv/92dEuZViG099vY9rIhmff5fP2L6OjN0XVRGmiY23kdFkOyC+hO1POkbpKFvKM1H9SfFFkjUdFKi7wHRWMtDo91lffQNMM9jHX1Y+Vz67vfWzNJd0eWcyT7r7u8lvasfWAdBFltPnZN5vVuiUUSmgUrm6yDz+Mp0Nl9izwbk2DU/9Pz5/GI1NBKnsv4sf24rBW8BOZWSSn4sGVkyMlIE/gNVxynB/uEqKQAAAABJRU5ErkJggg==" width="30" height="30"></a>
-
 
 
 
@@ -124,7 +124,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" >Importing History & Bookmarks</a>
+                    <a class="navbar-brand" >Contribute to this Open Source Project</a>
                 </div>
                  <div class="collapse navbar-collapse">
 
@@ -155,11 +155,11 @@
                         </li>
                     </ul> -->
 
-                    
+                   
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="https://patreon.com/user?u=3682460">
-                               Support us on Patreon <img src="assets/img/patreon_logo_black.png" width="25px" style="margin-left:10px">
+                           <a href="http://worldbrain.io/patreon_feed">
+                               Follow our progress on Patreon <img src="assets/img/patreon_logo_black.png" width="25px" style="margin-left:10px">
                             </a>
                         </li>
                         <!-- <li class="dropdown">
@@ -182,87 +182,112 @@
                 </div>
             </div>
         </nav>
-
-    <div class="content">
+        <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="header">
-                                <h3 class="title">Step 1: Analysing size & download time</h3>
-                            </div>
-                             <div style="padding: 30px">
-                                <p style="">
-                                    <p>By default, the plugin only stores pages that you visit after installing the plugin.</p>
+                            <section style="margin-top:0px" class="cd-faq">
 
-                                    <p>To make all your previously visited pages & your bookmarks available, we need to download them first. <br>This might take a while and influence your browsing speed.</p>
-                                    <strong>You can always pause and continue the download process.</strong>
-
-                                    <h4>Results of Analysis</h4>
-
-                                    <table style="margin-bottom:10px">
-                                    <tr>
-                                    <td><h5 style="font-size:20px">Browsing history</h5></td>
-                                    <td><input type="checkbox" class="checkbox-inline" id="checkbox_history" style="vertical-align:0%;margin-left: 15px; margin-right: 5px"/>select</td>
-                                    </tr>
-                                    </table>
-
-
-                                    <p><strong># of URLs in your history: </strong>
-
-                                    <span id="amount_urls"></span>
-                                    </p>
-
-                                    <p><strong>Estimated size on your hard drive: </strong>
-
-                                    <span id="size_urls"></span> MB
-                                    </p>
-                                    <p><strong>Estimated time to download: </strong>
-
-                                    ~<span id="time_to_download"></span> hour(s)
-                                    </p>
-
-
-                                    <table style="margin-bottom:10px; margin-top:30px">
-                                    <tr>
-                                    <td><h5 style="font-size:20px">Bookmarks</h5></td>
-                                    <td ><input type="checkbox" id="checkbox_bookmarks" style="vertical-align:0%;margin-left: 15px; margin-right: 5px"/>select</td>
-                                    </tr>
-                                    </table>
-
-                                    <p><strong># of URLs in your bookmarks: </strong>
-
-                                    <span id="amount_urls_bm"></span>
-                                    </p>
-
-                                    <p><strong>Estimated size on your hard drive: </strong>
-
-                                    <span id="size_urls_bm"></span> MB
-                                    </p>
-                                    <p><strong>Estimated time to download: </strong>
-
-                                    ~<span id="time_to_download_bm"></span> minute(s)
-
+                                <h3>Thanks for your interest in helping us out!</h3>                                
+                                <p>As an Open-Source project in our current state we are relying a lot on the help of the community to build our tools.
+                                <br>To help us cover our ongoing expenses you can <a href="http://worldbrain.io/patreon_feed">support us on Patreon.</a>
                                 </p>
-                                    <br>
-                                    <br>
-                                   <a href="download_history.html"><button style="float:left" class="btn btn-success">Import Now</button></a>
-                                    
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <div style="text-align: left; margin-bottom:30px">
-                                    <p style="float: left"><strong>PRO TIP: </strong>Check <a href="preferences.html">your list for blacklisted pages</a> before starting. It could heavily reduce the download time</p>
-                                    </div>
 
-                            </div>
+                                
+                                <br>
+
+                                <p>These are the areas where we currently need some more manual support. Let's do some awesome stuff together!</p>
+                                <h3 style="margin-bottom:-30px">Areas to contribute</h3>
+                                <div class="cd-faq-items">
+                        
+                                <h4>Development</h4>
+                                        <ul id="basics" class="cd-faq-group">
+                                            
+                                            <li>
+                                                <a class="cd-faq-trigger" href="#0">Current project: Web-based search & filter interface</a>
+                                                <div class="cd-faq-content">
+                                                    <p>
+                                                        Currently users can only search via the address bar, which is limited in the amount of results and filter options. We want to give them an optional web based results view.
+                                                        </p>
+                                                        <br>
+                                                        <h5>Related subtasks:</h5>
+                                                        <ol>
+                                                            <li>
+                                                            1. Implementing PouchDB as our storage system. <a href="https://github.com/WorldBrain/Research-Engine/issues/4">Learn more >></a>
+                                                            </li>
+                                                            <li>
+                                                            2. Designing web-interface. <a href="https://github.com/WorldBrain/Research-Engine/issues/24">Learn more >></a></li>
+                                                            3. Building web-interface. <a href="https://github.com/WorldBrain/Research-Engine/issues/25">Learn more >></a>
+                                                            </li>
+                                                        </ol>
+                                                        <br>
+                                                        <h5>Mockup of the interface:</h5>
+                                                        <img src="assets/img/mockup_results.png" width="100%">
+
+                                                </div> <!-- cd-faq-content -->
+                                            </li>
+                                        </ul> <!-- cd-faq-group -->
+                                        
+                                        <h4>Design</h4>
+                                        <ul id="mobile" class="cd-faq-group">
+                                            
+                                            <li>
+                                                <a class="cd-faq-trigger" href="#0">Overhauling our Website</a>
+                                                <div class="cd-faq-content">
+                                                    <p>Our project's website as it stands today is a Wordpress template with many restrictions. There are a lot of things to communicate, that have no proper space. <br>
+                                                    For example a better and more visual explanation of our vision(s), the team etc. 
+                                                    Every person with a design background would immediately spot all the tiny mismatches in the design.
+                                                    <br><br>
+
+                                                    Help us having a professional looking website for our project.<br> 
+                                                    If that sounds like something for you, write us an email at <a href="mailto:info@worldbrain.io">info@worldbrain.io</a>
+
+
+                                                    </p>
+                                                </div> <!-- cd-faq-content -->
+                                            </li>
+
+
+                                        </ul> <!-- cd-faq-group -->
+                                        <h4>Video</h4>
+                                            <ul id="mobile" class="cd-faq-group">
+                                            <li>
+                                                <a class="cd-faq-trigger" href="#video">Making a project/product explanation video</a>
+                                                <div class="cd-faq-content">
+                                                    <p>To communicate our project's purpose, how to use the tool and our product visions precisely and concisely, we need to make a short 2-3 minute professionally looking video.
+                                                    <br>
+                                                    <br>
+                                                    If you are an video animator or filmmaker, and that sounds like something for you, write us an email at <a href="mailto:info@worldbrain.io">info@worldbrain.io</a>
+                                                    </p>
+                                                </div> <!-- cd-faq-content -->
+                                            </li>
+
+
+                                        </ul> <!-- cd-faq-group -->
+                                </section> <!-- cd-faq -->
+
+
+
+
                         </div>
+                    
+                             <h3>Contact us</h3>
+                                <div>
+                                    <strong>Github:</strong> <a href="https://www.github.com/WorldBrain">github.com/WorldBrain</a><br>
+                                    <strong>Email:</strong> <a href="mailto:info@worldbrain.io">info@worldbrain.io</a>
+                                </div>
+                                <br><br>
+
+                                </div> <!-- cd-faq-items -->
+                                    <a href="#0" class="cd-close-panel">Close</a>
+
                     </div>
 
 
-
-
             </div>
+        </div>
+
         </div>
 
     </div>
@@ -274,13 +299,9 @@
     <!--   Core JS Files   -->
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="../js/lib/readability.js"></script>
-    <script type="text/javascript" src="../js/background.js"></script>
-    <script type="text/javascript" src="../js/preferences.js"></script> 
-    <script type="text/javascript" src="../js/import_history.js"></script>
-    <script type="text/javascript" src="../js/import_bookmarks.js"></script>
-     
-
+    <script src="assets/js/jquery-2.1.1.js"></script>
+    <script src="assets/js/jquery.mobile.custom.min.js"></script>
+    <script src="assets/js/main.js"></script> <!-- Resource jQuery -->
 
 	<!--  Checkbox, Radio & Switch Plugins -->
 	<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>

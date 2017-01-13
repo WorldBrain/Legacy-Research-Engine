@@ -1,4 +1,4 @@
-var MILLIS_BEFORE_CLEAR = 1000 * 60; // 60 seconds
+var MILLIS_BEFORE_CLEAR = 1000 * 60; // 60 seconds 
 var CLEAR_DELAY = 20000;
 var MAX_URL_LEN_SHOWN = 50;
 var LT = function (a, b) {
@@ -46,7 +46,6 @@ chrome.runtime.onInstalled.addListener(function (object) {
 });
 
 function acceptInput(text, disposition) {
-    // disposition: "currentTab", "newForegroundTab", or "newBackgroundTab"
     if (!ValidURL(text)) {
         return;
     }
@@ -210,11 +209,6 @@ function handleMessage(data, sender, sendRespones) {
     }
 }
 
-
-
-///////////
-////////// // Early work on pouchDB search implementation
-///////////
 function store_url(data) {
     var item = {
         _id: data.time.toString(),
@@ -223,7 +217,6 @@ function store_url(data) {
         LastVisitTime: data.time,
         url: data.url,
     };
-    //console.log(item)
     db.put(item, function callback(err, result) {
         if (!err) {
             console.log('Successfully stored the page: ' + data.url)
@@ -244,30 +237,13 @@ function show_url() {
 }
 
 function search_pouch(query, text, cb, suggestCb) {
-    console.log(query);
-    // ,
-        // filter: function (doc) {
-        //     console.log("Inside Filter");
-        //     // console.log(query);
-        //     if (query.before != false && doc.LastVisitTime <= query.before.getTime() && query.LastVisitTime >= doc.after.getTime()) {
-        //         console.log("Comparison 2");
-        //         return doc;
-        //     }
-        //     else if (doc.LastVisitTime >= query.after.getTime()) {
-        //         console.log("Comparison 1");
-        //         return doc;
-        //     }
-        // }
     db.search({
         query: query.text,
         fields: ['text'],
         include_docs: true
     }).then(function (res) {
-        // console.log("RESULTS: ")
-        // console.log(res.rows)
         var results = [];
         for(var i = 0; i < res.rows.length ; i++) {
-            // console.log(res.rows[i]);
             var doc = res.rows[i];
             if (query.before != false) {
                 if (doc.doc.LastVisitTime <= query.before.getTime() && doc.doc.LastVisitTime >= query.after.getTime())
@@ -276,18 +252,33 @@ function search_pouch(query, text, cb, suggestCb) {
             else if (doc.doc.LastVisitTime >= query.after.getTime())
                 results.push(doc);
         }
-        if (res.rows.length > 0) {
-            return makeSuggestions(query, results, cb, suggestCb);
+        var final_results = [];
+        if(query.negative.length > 0) {
+            var negative_text = query.negative.join(" ");
+            db.search({
+                query: negative_text,
+                fields: ['text'],
+                include_docs: true
+            }).then(function(res_negative) {
+                if(res_negative.total_rows > 0) {
+                    var array_ids = results.map(function(e) {return e.id});
+                    var array_neg_ids = res_negative.rows.map(function(e) {return e.id});
+                    for(var i = 0; i < array_ids.length ; i++)
+                        if(array_neg_ids.indexOf(array_ids[0]) < 0)
+                            final_results.push(results[i]);
+                }
+            });
+        } else {
+            final_results = results;
+        }
+        console.log(final_results);
+        if (final_results.length > 0) {
+            return makeSuggestions(query, final_results, cb, suggestCb);
         }
     }).catch(function (err) {
         console.log(err)
     });
 }
-
-
-///////////
-///////////
-//////////
 
 function omnibarHandler(text, suggest) {
     if (text.length > 0)
@@ -364,15 +355,12 @@ function escapeRegExp(str) {
 }
 
 function shouldArchive(data) {
-    // blacklist =  {"REGEX", "PAGE", "SITE"}
-    // custom / regex, DEFAULT_BLACKLIST
     var site = blacklist["SITE"];
     var page = blacklist["PAGE"];
     var regex = blacklist["REGEX"];
     var url = data.url.replace("http://", "").replace("https://", "");
 
     for (var i = 0; i < site.length; i++) {
-        // var reg = new RegExp(escapeRegExp(page[i]) + ".*");
         if (url.indexOf(site[i].replace("http://", "").replace("https://", "")) != -1) {
             return false;
         }
@@ -402,7 +390,6 @@ function makeSuggestions(query, candidates, cb, suggestCb) {
     var negative = query.negative;
     var negativeLen = negative.length;
     var j = 0;
-
     for (var i = candidates.length - 1; i > -1; i--) {
         var text = candidates[i].text;
         var isMatching = true;
@@ -441,10 +428,8 @@ function cleanURL(url) {
 }
 
 
-// Early work on pouchDB search implementation
 function dispatchSuggestions_alt(text, cb, suggestCb) {
     var query = makeQueryFromText(text);
-    // query.text = query.text.trim();
     if (query.before !== false && query.after !== false && query.after >= query.before) return;
 
     query.keywords.sort(function (a, b) {

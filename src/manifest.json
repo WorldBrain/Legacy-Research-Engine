@@ -1,0 +1,41 @@
+{
+    "manifest_version": 2,
+    "name": "WorldBrain - The (Re)search-Engine",
+    "short_name":"WorldBrain",
+    "description": "Full-Text search the pages & PDFs you visited and bookmarked. All data is stored locally & nothing leaves your computer.",
+    "version": "0.0.1.5",
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": ["js/compatibility.js","js/pdf.js","js/pdf.worker.js","js/pdftotext.js", "js/background.js","js/lib/stopwords_res.js", "js/lib/readability.js", "js/relevanttext.js", "js/content.js"]
+        }
+    ],
+    "web_accessible_resources": ["js/pdf.worker.js"],
+    "permissions": [
+        "unlimitedStorage",
+        "<all_urls>",
+        "storage",
+        "tabs",
+        "history",
+        "bookmarks"
+    ],
+    "browser_action": {
+        "default_icon": {
+            "19": "assets/19.png",
+            "38": "assets/38.png"
+          },
+        "default_popup": "assets/popup.html"
+    },
+    "icons": {
+        "16": "assets/16.png",
+        "48": "assets/48.png",
+        "128": "assets/128.png"
+    },
+    "omnibox": { "keyword" : "w" },
+    "options_page": "assets/preferences.html",
+    "background": {
+        "scripts": ["js/compatibility.js","js/pdf.js","js/pdftotext.js","js/pdf.worker.js","js/lib/pouchdb-6.0.7.min.js","js/lib/pdf2text_bundle.js", "js/lib/pouchdb.quick-search.min.js", "js/blacklist2.js", "js/lib/chrono.min.js", "js/textprocessing.js", "js/queryparser.js", "js/background.js", "js/lib/readability.js"]
+    }
+}

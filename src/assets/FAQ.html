@@ -5,11 +5,14 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>About - WorldBrain's (Re)search-Engine</title>
+	<title>FAQ - WorldBrain's (Re)search-Engine</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
+    <link rel="stylesheet" href="assets/css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="assets/css/style.css"> <!-- Resource style -->
+    <script src="assets/js/modernizr.js"></script> <!-- Modernizr -->
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -30,7 +33,6 @@
 </head>
 <body>
 
-
 <div class="wrapper">
     <div class="sidebar"  data-image="assets/img/background_sidebar.png">
 
@@ -41,7 +43,7 @@
 
     -->
 
-        <div class="sidebar-wrapper">
+    	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://worldbrain.io" class="simple-text">
                     <img src="assets/img/logo_dashboard.png" style="width: 90%; padding:3px">
@@ -49,7 +51,7 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="about.html">
                         <i class="pe-7s-info"></i>
                         <p>About</p>
@@ -73,8 +75,8 @@
                         <p>How to use</p>
                     </a>
                 </li>
-                <li>
-                    <a href="FAQ.html">
+                <li class="active">
+                    <a href="http://worldbrain.io/faq">
                         <i class="pe-7s-help1"></i>
                         <p>Frequently asked Questions</p>
                     </a>
@@ -93,7 +95,7 @@
                     </div>
                     <br>
                     <div style="white-space: nowrap; margin-left:42px; margin-bottom:30px">
-                    <a href="https://patreon.com/user?u=3682460"><img style="margin:5px" class="icon icons8-Message" src="assets/img/patreon_logo_white.png" width="30" height="30"></a>
+                    <a href="http://worldbrain.io/patreon_feed"><img style="margin:5px" class="icon icons8-Message" src="assets/img/patreon_logo_white.png" width="30" height="30"></a>
                     <a href="http://www.github.com/WorldBrain" target="_blank"><img style="margin:5px"class="icon icons8-GitHub" src="data:image/png;base64,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" width="30" height="30"></a>                  
                     <a href="http://www.facebook.com/realworldbrain" target="_blank"><img style="margin:5px" class="icon icons8-Facebook" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAC10lEQVRoQ+1ai3HTQBTc7QAqgFQQqADoAFcAHZBUAFRAUgGkApIKCBUkqYCkA6hgmVXuPGf7ZF0snyTP6GY8ceyT7+17+z7Se0TLkvQBwFsAr8KrbesQn98C8OuS5FXuQK5/KOk9gG8AXg4h4Q5n3AM4JXmZXrsCRJIBnIQNDwDOAFyTtDZGW5LMCrPDsr0IgpyRPI1CLYFIstCfwhdG7P8ntyQZjBXudU6yUXwDJNDpZ/jy9dgW6NJesNBN2LcwzSKQP8EnJmuJjC9Hy9yTPKKkjwC+A3ggOVUHzxpJkh3fPrMwkB8AHGoPxhoRVeIvFwZirjkqTN43MvSy3Jb/1kDUeD25kVO6nG4K3y/lHwNIqBqceK3R1C+vAZj3zlu/S6LnKEBC2HSYLw0qTUTaZvnBgQQQvwA8s7YBOMi4dvqbOK+zt0H6rwNQJ+XHABKDygVJh/ytq5TygwJJKofiXDVVIE/OVVMF4mj0BsA7kn6/XJLsM58BOIptBIGutDA0tVpzVVJZZH3mkIA0IHPW6goIoXJ/VFIpF0t+tG3PtjP6nj8lavUqkaoDiQekVsrxPbdvzbLP06SZKRzrUmtfQEZ39j7cl+QSxeWMC0e/b12DUatLozkJJX0JuaWznJk6kFgJfCVpUAdrkdZK4FCd/Yikb7TGt0iP8PuPpOuwrau6j6Snz5m9yxyPT0nrJsTZIgVWyCqpTwYuPXP2kQJNzT5SoKSNLTO1CrQ2U6tASTO1eilJkh/hH9ds9NRy9qQpejdI660ikNgQbVpvflTpnkVnL2IX0/uaikBiN3oR29OxO1qlIVoDSNIIbZ7wDzIwsG8grQMDwfzpCMcJyfNdqdR6X51puD61aJXkMZM4XrI6whEPXptHMd18QVFTsui+ekcgwQJuS9i5Y+thCcJnt405GUCcwtmXYfb1O55aMmPax5zWblgczWIL2XlmzHWXDJ6tAIhC/QfJdOM+5ZDCYAAAAABJRU5ErkJggg==" width="30" height="30"></a>
                     <a href="http://www.twitter.com/realworldbrain" target="_blank">
@@ -101,7 +103,6 @@
                     </a>
                     <a href="mailto:info@worldbrain.io" target="_blank">
                     <img style="margin:5px" class="icon icons8-Message" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAC4ElEQVRoQ+2Z7XETMRCG360AOoAOgAoIFRAqgFRAUgF0gFMBSQVABUAFQAfQAVSwzHOz8pxl2fflO9s3t/8ysaR99uPVyjbNxGwmHFpATi2TS0aWjIwUAXN3H2nvSbedH4iZnWXjp4paZ2Q2IJKemdnPSQt74GHu/lTSD7ap98hfSS/OBSYgvkp6mIPwNzA3ZnY3MFijLnf3N5I+JIgc5F7S6/Dg6lRh3P2tpFX4ufZ5o9nd/TpI+dydmV2NGtqOm7v7R0lkA6NyVjtVK9LGggomFlByRzN3pw/w6VLSP0nXqWL2ym800jdJDyShZIjAUWACgqZGoYC4qAtS4z0SMGTkScDQN5PKc/jwSdJjSb8oq9yHRhDqKKJBZoCZVJ4zeQWCTGxVRSuQGgwqgaJNIs9Zn6JM9ESxtFuDpA53d8psdHnO5dXMkkoVxaYzSGSHTdeKdmh5zuS11V3WC6QGQ6mhaAeR54K80tSf2+h9b5CAQQoPIs9N8toEMwgkYC4koe8YstxZnvPBr88EPggkHKBXyEyyTvLs7gSCO6KaXvsGpDdINnlWlxTy2EXRCvJKz6XLt5PE9wJxd0ZnnMY29D2TZ3T/tlTfu+Q1eiXdVyxdmdnNQXskDqEMKAesmjzzQ7JIIwY48yV66mUEIe1RlNfCHq/2zXmtM5LNO1tDWwEGR5FO5Llk7HFpZoAWLRtaf0sCpjjntQLJorNz3inA0MCUIGM3cxrGegDJUuMkXZjzii/XRpDslr1vGhWaarnv/92dEuZViG099vY9rIhmff5fP2L6OjN0XVRGmiY23kdFkOyC+hO1POkbpKFvKM1H9SfFFkjUdFKi7wHRWMtDo91lffQNMM9jHX1Y+Vz67vfWzNJd0eWcyT7r7u8lvasfWAdBFltPnZN5vVuiUUSmgUrm6yDz+Mp0Nl9izwbk2DU/9Pz5/GI1NBKnsv4sf24rBW8BOZWSSn4sGVkyMlIE/gNVxynB/uEqKQAAAABJRU5ErkJggg==" width="30" height="30"></a>
-
 
 
 
@@ -122,7 +123,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" >About the WorldBrain Project</a>
+                    <a class="navbar-brand" >Frequently Asked Questions</a>
                 </div>
                  <div class="collapse navbar-collapse">
 
@@ -153,11 +154,11 @@
                         </li>
                     </ul> -->
 
-            
+                
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="https://patreon.com/user?u=3682460">
-                               Support us on Patreon <img src="assets/img/patreon_logo_black.png" width="25px" style="margin-left:10px">
+                           <a href="http://worldbrain.io/patreon_feed">
+                               Follow our progress on Patreon <img src="assets/img/patreon_logo_black.png" width="25px" style="margin-left:10px">
                             </a>
                         </li>
                         <!-- <li class="dropdown">
@@ -180,104 +181,150 @@
                 </div>
             </div>
         </nav>
-
-    <div class="content">
+        <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="header">
-                                <h3 class="title">Getting Started</h3>
-                            </div>
-                            <br>
-                             <div style="padding: 30px; padding-top:15px">
-                                    <h4 style="margin-top:0px">How to use the tool</h4>
-                                    <p>
-                                    Just type in <code>w</code> + <code>space / tab</code> + <code>your keywords</code> into the address bar. <br>
-                                    For more search options you can visit our <a href="howto.html"> full guide</a>.</p>
-                                    <h4>Importing your existing History & Bookmarks</h4>
-                                    <p>By default, WorldBrain only makes the pages available you visit after installing the extension.<br>
-                                    BUT you can import them <a href="analyse_urls.html">here</a>.</p>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-
-
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="header">
-                                <h3 class="title">Our Vision</h3>
-                            </div>
-                             <div style="padding: 30px">
-                                <p style="">
-                                    <strong>
-                                    WorldBrain is an open-source project that aims to battle (scientific) misinformation by developing a quality score for web content/sources and an expert ranking for users/authors/scientists in a given field.
-                                    </strong>
-                                    <br>
-                                    <br>Our first step is a search engine for personal knowledge. It lets you search through all of your knowledge sources at once. (Evernote, History, Bookmarks, G-Drive, local filesystem, social networks)<br>
-                                    In later stages users can <strong>voluntarily share</strong> metadata about their browsing behaviour with their friends, the community and WorldBrain. <br>
-
-                                    (We will never have access to your data without your prior approval.<strong> Ever.</strong>)
-<br>
-                                    If you share your data with us, we analyse it to develop the quality/trust scores and uncover related content. (i.e. counter perspectives or unsourced studies)
-                                    <br><br>
-                                    The tool is built on the basis of <a href="https://github.com/lengstrom/falcon">Falcon</a>, another open-source tool that provides the initial history search functionality.
-                                    <br><br>
-                                    <a href="https://wrldbra.in/WorldBrain-Pitch-Deck"><strong>Read more </strong></a>about it in our project overview.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                     <div class="col-md-8">
-                        <div class="card">
-                            <div class="header">
-                                <h3 class="title">What happens with my data?</h3>
-                            </div>
-                            <br>
-                             <div style="padding: 30px; padding-top:15px">
-                                <p style="">
-                                     We have no access to your data and won't ever have without your prior approval.
-                                    Your data truly stays yours.
-                                    <br>
-                                    In later stages you can <strong>voluntarily</strong> share parts of your metadata with your friends, the community and WorldBrain.
-                                    <br><br>
-                                    For more detailed questions you can visit <a href="FAQ.html">our FAQ</a>.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                   
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="header">
-                                <h3 class="title">Current Status</h3>
-                            </div>
-                             <div style="padding: 30px; padding-top:0px">
+                            <section style="margin-top:0px" class="cd-faq">
+                                <div class="cd-faq-items">
                                 <p>
-                                    <h4>Latest Upgrades</h4> the ability to import your existing history & your bookmarks. <a href="analyse_urls.html">Import now>></a>
-                                    <h4>Next Feature</h4> 
-                                    a web-based results and filter view. Practically a mini Google page.
+                                    You have questions, which are not answered yet? Just leave a quick message at <a href="mailto:info@worldbrain.io">info@worldbrain.io</a> or post in <a href="https://www.reddit.com/r/WorldBrain/">our AMA subreddit</a>.
                                 </p>
-                            </div>
+                            
+                                <h4>Data & Privacy</h4>
+                                        <ul id="basics" class="cd-faq-group">
+                                            
+                                            <li>
+                                                <a class="cd-faq-trigger" href="#0">Who has access to my data?</a>
+                                                <div class="cd-faq-content">
+                                                    <p>
+                                                       <strong>NOBODY.</strong> Everything is stored and processed locally and nothing ever leaves your computer <strong>without your prior approval</strong>.<br>
+                                                       In later stages you can <strong>voluntarily and modularly</strong> share metadata with anybody you like. (friends, organisations, researchers, data scientists...or WorldBrain)
+                                                       <br>
+                                                       This will be a completely open ecosystem in which you as a user are fully in control over how your data is used and by whom.  
+                                                       <br><br>
+
+                                                       Don't believe us? That's the spirit...always stay critical. <br>
+                                                       Our code is open source and you can see what is running on your computer by checking <a href="http://www.github.com/WorldBrain/Research-Engine">our GithHub repository</a> or the data on <a href="http://stackoverflow.com/questions/14543896/where-does-chrome-store-extensions">your local filesystem.</a>
+                                                </div> <!-- cd-faq-content -->
+                                            </li>
+                                            <li>
+                                                <a class="cd-faq-trigger" href="#0">What kind of data is currently stored and processed?</a>
+                                                <div class="cd-faq-content">
+                                                    <p>
+                                                    <h5>User-unrelated data</h5>
+                                                    <ul>
+                                                        <li> - <code>url</code></li>
+                                                        <li> - <code>title of content</code></li>
+                                                        <li> - <code>content body text</code></li>
+                                                    </ul>
+                                                    <br>
+                                                     <h5>User-related data</h5>
+                                                    <ul>
+                                                        <li> - <code>LastVisitTime</code> of url</li>
+                                                    </ul>
+                                                    <br>
+                                                      <h5>How is the data analysed?</h5>
+                                                    <ul>
+                                                        <li> - building the search index</li>
+                                                    </ul>
+                                                    </p>
+                                                </div> <!-- cd-faq-content -->
+                                            </li>
+                                            <li>
+                                                <a class="cd-faq-trigger" href="#0">How much data is used on my system?</a>
+                                                <div class="cd-faq-content">
+                                                    <p>
+                                                    The plugin needs about 10-15kb of storage for each url you visit. <br>
+                                                    <br>
+                                                    If you are a heavy web user and visit 5000 pages per month, it needs about 75Mb of additional storage each month. 
+                                                    </p>
+                                                </div> <!-- cd-faq-content -->
+                                            </li>
+
+                                             <li>
+                                                <a class="cd-faq-trigger" href="#0">Does the extension slow down my browsing?</a>
+                                                <div class="cd-faq-content">
+                                                    <p>
+                                                    The plugin constantly blocks between 30-40MB of RAM, even in stress situations.<br>
+                                                    This should not influence your performance.
+                                                    <br>
+                                                    As a comparison, each tab running Facebook tab needs around 300MB.
+                                                    <br><br>
+                                                    If you run into any problem, don't hesitate to leave a quick message at <a href="mailto:info@worldbrain.io">info@worldbrain.io</a> and we get back to you as soon as possible.
+                                                    </p>
+                                                </div> <!-- cd-faq-content -->
+                                            </li>
+                                        </ul> <!-- cd-faq-group -->
+                                        
+                                        <h4>Help</h4>
+                                        <ul id="mobile" class="cd-faq-group">
+                                            
+                                            <li>
+                                                <a class="cd-faq-trigger" href="#0">I typed in <code>w</code> and <code>space / tab</code> and my my keywords, but cant find anything?</a>
+                                                <div class="cd-faq-content">
+                                                    <p>Possibly you have not visited any page after you installed the tool.
+                                                    <br>
+                                                    It only makes stuff available you visit after you install it.
+                                                    <br><br>
+
+                                                    To make your previous history and your bookmarks available, you have to import them first.
+                                                    <br><br>
+                                                    <a href="analyse_urls.html"><button class="btn btn-success">Import History</button></a>
+                                                    <br><br>
+                                                    If the problem still persists, just leave a quick message at <a href="mailto:info@worldbrain.io?subject=URGENT PROBLEM: ">info@worldbrain.io</a> and we get back to you as soon as possible. 
+                                                </div> <!-- cd-faq-content -->
+                                            </li>
+
+                                    
+
+                                        </ul> <!-- cd-faq-group -->
+                                        <h4>About the WorldBrain project</h4>
+                                        <ul id="mobile" class="cd-faq-group">
+                                            
+                                            <li>
+                                                <a class="cd-faq-trigger" href="#0">Who is behind all this?</a>
+                                                <div class="cd-faq-content">
+                                                    <p>
+                                                        We are a team 10 people consisting of Oliver Sauter, the founder of the project, and <a href="https://docs.google.com/presentation/d/1Pt2NiJwbXq7PNmuzpkqkgfo00fMVP0bxnZgMEakBKWs/edit#slide=id.g16a1e5d93d_17_12">9 contributors</a> that help the project out in their free time. 
+                                                        <br>
+                                                        In our contributor team we cover a wide range of expertise, from Full-Stack-Development, Dev-Ops, Machine Learning and Security.
+                                                        <br>
+                                                        <br>
+                                                        As a team we value critical thinking and deeply care about improving our greatest invention, the internet, by making it easier to sift through this vast amount of information we encounter on a daily basis. 
+                                                    </p>
+
+                                                </div> <!-- cd-faq-content -->
+                                            </li>
+                                            <li>
+                                                <a class="cd-faq-trigger" href="#0">Who is backing this financially?</a>
+                                                <div class="cd-faq-content">
+                                                    <p>
+                                                        Currently, the project is privately funded by Oliver Sauter, but now that we have our extension out, we are looking for grant and crowd-funding to cover our expenses.
+
+                                                        You can support us on Patreon with a monthly donation of your choice. 
+                                                    </p>
+
+                                                </div> <!-- cd-faq-content -->
+                                            </li>
+
+                                    
+
+                                        </ul> <!-- cd-faq-group -->
+                                </div> <!-- cd-faq-items -->
+                                    <a href="#0" class="cd-close-panel">Close</a>
+                                </section> <!-- cd-faq -->
+
+
+
                         </div>
                     </div>
-
 
 
             </div>
+        </div>
+
         </div>
 
     </div>
@@ -289,6 +336,9 @@
     <!--   Core JS Files   -->
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-2.1.1.js"></script>
+    <script src="assets/js/jquery.mobile.custom.min.js"></script>
+    <script src="assets/js/main.js"></script> <!-- Resource jQuery -->
 
 	<!--  Checkbox, Radio & Switch Plugins -->
 	<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
