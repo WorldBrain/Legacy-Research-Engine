@@ -69,6 +69,8 @@ You can reach our FAQ here: [reddit.com*/*r*/*WorldBrain](http://reddit.com/r/Wo
 #### Transparent Installation
 If you don't feel comfortable installing a Chrome extension that can read and modify all data on the websites you visit from the webstore (we wouldn't either!), you can clone this repository on your local machine, read through our code to verify that it is not malicious, and then install it as an unpacked local extension through the menu in `chrome://extensions/`. **But this way you also won't receive any updates**.
 
+Wanna know if the extension installed on your computer has the same code as here on GitHub? [See here](https://www.reddit.com/r/WorldBrain/comments/5ok2h8/how_do_i_know_that_the_code_on_my_computer_is_not/).
+
 ### AS A DEVELOPER
 
 Fork the project, then...
