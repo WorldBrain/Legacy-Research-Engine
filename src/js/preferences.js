@@ -30,7 +30,16 @@
             r.parentNode.removeChild(r);
         }
         enabledCell.appendChild(deleteThisCell);
+
     }
+
+
+    document.getElementById("restart_text").onclick = restartPlugin
+    
+    function restartPlugin(){
+          chrome.runtime.reload()
+        };
+
 
     function cutString(stringToCut) {
         if (stringToCut.length == 0)
