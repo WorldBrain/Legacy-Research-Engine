@@ -47,7 +47,7 @@
             var colOne = document.createElement("td")
             colOne.innerText =  cutString(pages[i].title) 
             var colTwo = document.createElement("td")
-            colTwo.innerText = cutString(pages[i].url)
+            colTwo.innerHTML = cutString(pages[i].url).link(pages[i].url)
             thisRow.appendChild(colOne)
             thisRow.appendChild(colTwo)
             var deletePage = document.createElement("td")
