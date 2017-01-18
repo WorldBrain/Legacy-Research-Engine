@@ -1,4 +1,4 @@
-# WorldBrain (Re)Search Engine
+# WorldBrain's (Re)search Engine
 
 Welcome to the WorldBrain project. We want to work on the goal of an increased (scientific) literacy in our global society through a better information quality on the internet.
 
