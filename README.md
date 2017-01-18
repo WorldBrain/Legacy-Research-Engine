@@ -26,14 +26,15 @@ With the software we build, we aim to gather a diverse community of people that 
 
 ### Current Stage
 
-In it's current stage, the chrome extension lets you full-text search all the web pages and PDFs you visited and bookmarked.
+Right now, the chrome extension lets you full-text search all the web pages and PDFs you visited and bookmarked.
 
-#### Features
+#### Full Feature Set
 
  - full-text search history & bookmarks
- - import existing history and bookmarks
- - blacklisting urls, domains 
+ - filter by time and minuswords
+ - blacklisting urls, domains, regex
  - supports PDFs you visited online
+ - import existing history and bookmarks
 
 ### Under Development
 We are currently working on replacing the DB with PouchDB and the default search implementation with [PouchDB Quick Search](https://github.com/nolanlawson/pouchdb-quick-search/) 
