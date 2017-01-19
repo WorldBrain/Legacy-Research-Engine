@@ -1,10 +1,12 @@
-# WorldBrain (Re)Search Engine
+# WorldBrain's (Re)search Engine
 
-Welcome to the WorldBrain project. We want to work on the goal of an increased (scientific) literacy in our global society through a better information quality on the internet.
+**Welcome to the WorldBrain project. We work on the goal of an increased (scientific) literacy in our global society through a better overall information quality on the internet.**
 
-**WorldBrain is an open-source project that aims to battle (scientific) misinformation by developing open source search tools for professional web-researchers like science communicators, STEM students, journalists and librarians and online debaters to find, rate and share qualitative and trustworthy web content/notes with their friends, followers and the public.** ([Watch the 3.5 min Vision Video](http://worldbrain.io/vision))
+Doing so by developing open-source search tools for professional web-researchers like science communicators, (STEM-) students, journalists, librarians and online debaters to effortlessly find, rate and share qualitative and trustworthy web content/notes with their friends, followers and the public. 
 
-**Our first software,** The (Re)search engine, is an open-source search engine for a user’s digital knowledge. It lets them full-text search all the pages they visited and bookmarked, as well as other places like Evernote, Pocket, Google Drive, Asana, Mendeley etc. ([Watch 2 min Intro Video](http://worldbrain.io/intro))
+With the software we build, we aim to gather a diverse community of people that loves working with fact-based and intellectually honest information. ([Watch the 3.5 min Vision Video](http://worldbrain.io/vision))
+
+**Our first tool,** The (Re)search engine, is an open-source & decentralised search engine for a user’s digital knowledge. It lets them full-text search all the pages they visited and bookmarked, as well as other places like Evernote, Pocket, Google Drive, Asana, Mendeley and many more. ([Watch 2 min Intro Video](http://worldbrain.io/intro)) ([DOWNLOAD HERE](http://worldbrain.io/download))
 
 ## Table of Content
 
@@ -24,14 +26,15 @@ Welcome to the WorldBrain project. We want to work on the goal of an increased (
 
 ### Current Stage
 
-In it's current stage, the chrome extension lets you full-text search all the web pages and PDFs you visited and bookmarked.
+Right now, the chrome extension lets you full-text search all the web pages and PDFs you visited and bookmarked.
 
-#### Features
+#### Full Feature Set
 
  - full-text search history & bookmarks
- - import existing history and bookmarks
- - blacklisting urls, domains 
+ - filter by time and minuswords
+ - blacklisting urls, domains, regex
  - supports PDFs you visited online
+ - import existing history and bookmarks
 
 ### Under Development
 We are currently working on replacing the DB with PouchDB and the default search implementation with [PouchDB Quick Search](https://github.com/nolanlawson/pouchdb-quick-search/) 
@@ -107,6 +110,6 @@ This tool is originally released under the name "[Falcon](https://github.com/len
 ## License
 
 Currently the (Re)search-Engine is released under GPL-3, as this has been the license of *Falcon*. 
-We aim to release it under a more liberal license as soon as we have replaced all the code from the original Falcon tool. 
+We aim to release it under a more liberal license (CC0, MIT, BSD-2/3) as soon as we have replaced all the code from the original Falcon tool. 
 
 Our goal is to provide a set of reusable libraries, so that this client can be adapted to as many work-flows as possible. 
