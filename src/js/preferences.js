@@ -13,9 +13,7 @@
 
         var typeCell = row.insertCell()
         var selectCell = document.createElement('select');
-        selectCell.innerHTML = '<option value="PAGE">All pages on this domain</option> \
-                        <option value="SITE">Only this exact URL</option> \
-                        <option value="REGEX">All URLs containing this text (Regex)</option>'
+        selectCell.innerHTML = '<option value="REGEX">All URLs containing this text (Regex)</option>'
         selectCell.value = type
 
         typeCell.appendChild(selectCell);
