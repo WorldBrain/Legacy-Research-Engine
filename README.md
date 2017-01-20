@@ -22,7 +22,7 @@ With the software we build, we aim to gather a diverse community of people that 
 
 ## Status & Development Roadmap
 
-[Here](https://github.com/WorldBrain/START-HERE/blob/master/ROADMAPS.md) you find the long term roadmap. 
+[Here](https://github.com/WorldBrain/Research-Engine/blob/master/ROADMAP.md) you find the long term roadmap. 
 
 ### Current Stage
 
