@@ -13,7 +13,7 @@ With the software we build, we aim to gather a diverse community of people that 
  1. [How to use the extension](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-use-the-extension)
  1. [Status & Development Roadmap](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#status-development-roadmap)
  2. [How to get involved](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-get-involved)
-  1. [FAQs](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#faq)
+ 1. [FAQs](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#faq)
  3. [Installation (as user & developer)](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#installation)
  7. [How to get in touch with us](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-get-in-touch-with-us)
  4. [Acknowledgements](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#acknowledgements)
