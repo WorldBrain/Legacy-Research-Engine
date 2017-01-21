@@ -58,9 +58,14 @@ More info in our [projects section](https://github.com/WorldBrain/Research-Engin
 
 ## How to use the extension
 
-You can watch our ["How to use the Research-Engine" Demo Video (2min)](http://worldbrain.io/tutorial)
+Just type in `w`+ `space`/`tab`+ `your keywords`into the address bar. 
 
-**or** for a more detailed description, visit the text-based [tutorial](https://github.com/WorldBrain/Research-Engine/blob/master/TUTORIAL.md).
+For more detailed description, you can watch our [Demo Video (2min)](http://worldbrain.io/tutorial) **or** read the text-based [tutorial](https://github.com/WorldBrain/Research-Engine/blob/master/TUTORIAL.md).
+
+![](http://g.recordit.co/UKIn0IdUpf.gif)
+
+
+
 
 ## FAQ
 You can reach our FAQ here: [reddit.com*/*r*/*WorldBrain](http://reddit.com/r/WorldBrain/)
