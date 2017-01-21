@@ -6,18 +6,27 @@ Doing so by developing open-source search tools for professional web-researchers
 
 With the software we build, we aim to gather a diverse community of people that loves working with fact-based and intellectually honest information. ([Watch the 3.5 min Vision Video](http://worldbrain.io/vision))
 
-**Our first tool,** The (Re)search engine, is an open-source & decentralised search engine for a user’s digital knowledge. It lets them full-text search all the pages they visited and bookmarked, as well as other places like Evernote, Pocket, Google Drive, Asana, Mendeley and many more. ([Watch 2 min Intro Video](http://worldbrain.io/intro)) ([DOWNLOAD HERE](http://worldbrain.io/download))
+**Our first tool,**is the (Re)search engine, a photographic memory for your web research. It's an open-source & decentralised search engine that lets you full-text search all the pages you visited and bookmarked, as well as other places like Evernote, Pocket, Google Drive, Asana, Mendeley and many more. ([Watch 2 min Intro Video](http://worldbrain.io/intro)) ([DOWNLOAD HERE](http://worldbrain.io/download))
 
 ## Table of Content
 
+ 1. [How to use the extension](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-use-the-extension)
  1. [Status & Development Roadmap](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#status-development-roadmap)
  2. [How to get involved](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-get-involved)
- 2. [How to use the extension](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-use-the-extension)
- 1. [FAQs](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#faq)
+  1. [FAQs](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#faq)
  3. [Installation (as user & developer)](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#installation)
  7. [How to get in touch with us](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-get-in-touch-with-us)
  4. [Acknowledgements](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#acknowledgements)
  8. [Licence](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#license)
+
+
+## How to use the extension
+
+Just type in `w`+ `space`/`tab`+ `your keywords`into the address bar. 
+
+For more detailed description, you can watch our [Demo Video (2min)](http://worldbrain.io/tutorial) **or** read the text-based [tutorial](https://github.com/WorldBrain/Research-Engine/blob/master/TUTORIAL.md).
+
+![](http://g.recordit.co/UKIn0IdUpf.gif)
 
 
 ## Status & Development Roadmap
@@ -55,17 +64,6 @@ More info in our [projects section](https://github.com/WorldBrain/Research-Engin
  - Into **DECENTRALISATION**? You can join [our discussion](https://github.com/WorldBrain/Research-Engine/issues/43) about decentralising our server infrastructure.
  - Wanna help with **MARKETING**? Contact Oliver via email: oli@worldbrain.io
  - Wanna help us with **MONEYYYZ**? Wohoo! You can do so by [supporting us on Patreon](http://patreon.com/WorldBrain) 
-
-## How to use the extension
-
-Just type in `w`+ `space`/`tab`+ `your keywords`into the address bar. 
-
-For more detailed description, you can watch our [Demo Video (2min)](http://worldbrain.io/tutorial) **or** read the text-based [tutorial](https://github.com/WorldBrain/Research-Engine/blob/master/TUTORIAL.md).
-
-![](http://g.recordit.co/UKIn0IdUpf.gif)
-
-
-
 
 ## FAQ
 You can reach our FAQ here: [reddit.com*/*r*/*WorldBrain](http://reddit.com/r/WorldBrain/)
