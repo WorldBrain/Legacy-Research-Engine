@@ -1,4 +1,4 @@
-# Full Tutorial for the (Re)Search Engine
+# Full Tutorial for the (Re)search-Engine
 
 Chrome extension for full-text browsing history & bookmarks search. 
 
@@ -30,6 +30,7 @@ You can watch a short 2 minute video here: [worldbrain.io*/*tutorial](http://wor
 
 ## Blacklist and Delete Pages
 To manage which URLs WorldBrain can index, delete websites from the index, and more, go to the preferences page.
+
 !["Extension Bar"](https://cloud.githubusercontent.com/assets/7870039/19575579/98d64ea4-970f-11e6-958b-8bdc9fd87baf.png "Extension Bar")
 
 
