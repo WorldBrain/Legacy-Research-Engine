@@ -13,7 +13,7 @@
 
         var typeCell = row.insertCell()
         var selectCell = document.createElement('select');
-        selectCell.innerHTML = '<option value="REGEX">All URLs containing this text (Regex)</option>'
+        selectCell.innerHTML = '<option value="REGEX">all URLs containing this text</option>'
         selectCell.value = type
 
         typeCell.appendChild(selectCell);
@@ -97,9 +97,9 @@
 
     chrome.storage.local.get('blacklist', function(result) {
         var bl = result.blacklist
-        if (Object.keys(bl).length > 0 && (bl['SITE'].length + bl['PAGE'].length + bl['REGEX'].length > 0)) {
+        if (Object.keys(bl).length > 0 && (bl['REGEX'].length > 0)) {
             var tab = document.getElementById("blacklist_tbl")
-            var fields = ["SITE", "PAGE", "REGEX"]
+            var fields = ["REGEX"]
             for (var j = 0; j < fields.length; j++) {
                 for (var i = 0; i < bl[fields[j]].length; i++) {
                     add(fields[j], bl[fields[j]][i])
@@ -109,7 +109,7 @@
             add("REGEX", "login");
             add("REGEX", "Login");
             add("REGEX", "paypal.com");
-            add("SITE", "chrome-ui://newtab");
+            add("REGEX", "chrome-ui://newtab");
             save(false);
         }
     });
