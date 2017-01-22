@@ -22,8 +22,8 @@
     "watch:copy-js": "cpx 'src/js/**/*.*' build/js --watch",
     "build:copy-assets": "cpx 'src/assets/**/*.*' build/assets",
     "watch:copy-assets": "cpx 'src/assets/**/*.*' build/assets --watch",
-    "build:browserify": "mkdir -p ./build/js && browserify src/js-browserify/download_urls.js -o build/js/bundle.js",
-    "watch:browserify": "mkdir -p ./build/js && watchify src/js-browserify/download_urls.js -o build/js/bundle.js",
+    "build:browserify": "mkdir -p ./build/js && browserify src/js-browserify/main.js -o build/js/bundle.js",
+    "watch:browserify": "mkdir -p ./build/js && watchify src/js-browserify/main.js -o build/js/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

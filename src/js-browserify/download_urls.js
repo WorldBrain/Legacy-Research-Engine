@@ -1,14 +1,3 @@
-///////
-//
-//  IMPORTANT:  TO WORK ON THIS CODE YOU NEED BROWSERIFY,  BECAUSE 
-//              THE CODE IS BUNDLED INTO JS/BUNDLE.JS
-//
-//              DOWNLOAD IT HERE: browserify.org
-//
-///////
-
-
-
 var initial = document.body.parentNode.innerHTML;
 var get_text = require('./html.js')
 var _ = require('lodash')

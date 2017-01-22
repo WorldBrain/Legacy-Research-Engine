@@ -5,6 +5,9 @@
     //TODO: check if element is already there before adding. 
     var add = function(type, content) {
         var tab = document.getElementById("blacklist_tbl")
+        console.log("TODO: preferences page - understand why row is missing")
+        if (!tab) return
+
         var row = tab.insertRow()
         var stringCell = row.insertCell()
         stringCell.innerHTML = content ? content : "Type your text here"
@@ -49,6 +52,9 @@
 
     function addHistoricPages(pages) {
         var history_table = document.getElementById("history_tbl")
+        console.log("TODO: preferences page -undertand why history_table is not present")
+        if(!history_table) return
+
         for(i in pages) {
             var thisRow = document.createElement("tr")
             var colOne = document.createElement("td")
@@ -76,7 +82,10 @@
 
     function getHistory(query="") {
         var history_table = document.getElementById("history_tbl")
-        history_table.innerHTML = "<table class='table table-hover' id='history_tbl'></table>"
+        console.log("TODO: preferences page -undertand why history_table is not found")
+        if (history_table)
+            history_table.innerHTML = "<table class='table table-hover' id='history_tbl'></table>"
+        
         chrome.storage.local.get(function(results) {
             var allPages = []
             for (key in results) {
@@ -196,31 +205,40 @@
 
     getHistory()
 
-    document.getElementById("save").onclick = save;
-    document.getElementById("add").onclick = add;
-    document.getElementById("loadmore").onclick = loadMore;
+    console.log("TODO: preferences page - fix the next ifs ")
+    if (document.getElementById("save")) document.getElementById("save").onclick = save;
+    if (document.getElementById("add")) document.getElementById("add").onclick = add;
+    if (document.getElementById("loadmore")) document.getElementById("loadmore").onclick = loadMore;
 
-    document.getElementById("clear").onclick = function () {
-        notie.confirm('Are you sure you want to do that?', 'Yes', 'Cancel', function() {
-            clearAllData();
-        });
+    if (document.getElementById("clear")) {   
+        document.getElementById("clear").onclick = function () {
+            notie.confirm('Are you sure you want to do that?', 'Yes', 'Cancel', function() {
+                clearAllData();
+            });
+        }
     }
 
-    document.getElementById("clear-rules").onclick = function () {
-        notie.confirm('Are you sure you want to do that?', 'Yes', 'Cancel', function() {
-            clearRules();
-        });
+    if (document.getElementById("clear-rules")) {   
+        document.getElementById("clear-rules").onclick = function () {
+            notie.confirm('Are you sure you want to do that?', 'Yes', 'Cancel', function() {
+                clearRules();
+            });
+        }
     }
 
-    document.getElementById("clear-history").onclick = function () {
-        notie.confirm('Are you sure you want to do that?', 'Yes', 'Cancel', function() {
-            clearHistory();
-        });
+    if (document.getElementById("clear-history")) { 
+        document.getElementById("clear-history").onclick = function () {
+            notie.confirm('Are you sure you want to do that?', 'Yes', 'Cancel', function() {
+                clearHistory();
+            });
+        }
     }
 
-    document.getElementById("search_history").onkeyup = function () {
-        getHistory(document.getElementById("search_history").value);
-    };
+    if (document.getElementById("search_history")) { 
+        document.getElementById("search_history").onkeyup = function () {
+            getHistory(document.getElementById("search_history").value);
+        };
+    }
 
 })();
 

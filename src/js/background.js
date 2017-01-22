@@ -7,6 +7,9 @@ var LT_OBJ = function(a,b) {
     return a.time < b.time;
 }
 
+console.log("TODO: understand what CUTOFF_DATE was originally")
+var CUTOFF_DATE = CUTOFF_DATE || 0 //TODO: understand what this was originally
+
 var db
 
 var GT_OBJ = function(a,b) {
