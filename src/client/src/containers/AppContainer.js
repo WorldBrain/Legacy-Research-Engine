@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import { createMemoryHistory, Router } from 'react-router'
+import { hashHistory, Router } from 'react-router'
 import { Provider } from 'react-redux'
-
-const history = createMemoryHistory(location)
 
 class AppContainer extends Component {
   static propTypes = {
@@ -20,7 +18,7 @@ class AppContainer extends Component {
     return (
       <Provider store={store}>
         <div style={{ height: '100%' }}>
-          <Router history={history} children={routes} />
+          <Router history={hashHistory} children={routes} />
         </div>
       </Provider>
     )

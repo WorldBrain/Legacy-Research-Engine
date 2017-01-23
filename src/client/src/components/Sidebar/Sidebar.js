@@ -6,7 +6,7 @@ import logoDashboard from "./assets/logo_dashboard.png"
 
 export const Sidebar = () => (
     <div className="sidebar">
-        <div className="sidebar-wrapper" style={{"background-image":`url("${sidebarBackground}")`, "background-size": "cover"}}>
+        <div className="sidebar-wrapper" style={{backgroundImage:`url("${sidebarBackground}")`, backgroundSize: "cover"}}>
           <div className="logo">
               <a href="http://worldbrain.io" className="simple-text">
                   <img src={logoDashboard} style={{width:"90%", padding:"3px"}} />
