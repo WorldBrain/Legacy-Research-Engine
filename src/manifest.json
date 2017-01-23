@@ -3,7 +3,7 @@
     "name": "WorldBrain - The (Re)search-Engine",
     "short_name":"WorldBrain",
     "description": "Full-Text search the pages & PDFs you visited and bookmarked. All data is stored locally & nothing leaves your computer.",
-    "version": "0.0.1.5",
+    "version": "0.0.1.9001",
     "content_scripts": [
         {
             "matches": [

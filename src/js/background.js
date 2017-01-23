@@ -13,6 +13,8 @@ var GT_OBJ = function(a,b) {
     return a.time > b.time;
 }
 
+
+
 Array.max = function( array ){
     return Math.max.apply(Math,array);
 };
@@ -285,11 +287,22 @@ function escapeRegExp(str) {
 
 function shouldArchive(data) {
     // blacklist =  {"REGEX", "PAGE", "SITE"}
-    // custom / regex, DEFAULT_BLACKLIST
+    var custom = JSON.parse(localStorage['blacklist_def']);
     var site = blacklist["SITE"];
     var page = blacklist["PAGE"];
     var regex = blacklist["REGEX"];
     var url = data.url.replace("http://",  "").replace("https://", "");
+
+    for (var i=0; i<custom.length; i++){
+        if (url.match("chrome/newtab?") !=null) {
+            return false;
+        }
+
+        else if (url.match(custom[i]) != null) {
+        console.log("blacklisted website, not stored: ", url)
+        return false;
+        }
+    }
 
     for (var i = 0; i < site.length; i++) {
         // var reg = new RegExp(escapeRegExp(page[i]) + ".*");
