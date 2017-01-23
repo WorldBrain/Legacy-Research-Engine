@@ -15,10 +15,10 @@ export const Sidebar = () => (
 
           <ul className="nav">
               <li>
-                  <a href="about.html">
+                  <Link to="/about" activeClassName="active">
                       <i className="pe-7s-info"></i>
                       <p>About</p>
-                  </a>
+                  </Link>
               </li>
                 <li>
                   <a href="analyse_urls.html">
@@ -44,11 +44,11 @@ export const Sidebar = () => (
                       <p>Frequently asked Questions</p>
                   </a>
               </li>
-              <li className="active">
-                  <a href="feedback.html">
+              <li>
+                  <Link to="/feedback" activeClassName="active">
                       <i className="pe-7s-loop"></i>
                       <p>Feedback</p>
-                  </a>
+                  </Link>
               </li>
               <li className="active-pro">
                   <div>
