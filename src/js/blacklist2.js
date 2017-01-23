@@ -1,5 +1,6 @@
 function store_default_blacklist(){
 	localStorage.setItem('blacklist_def', JSON.stringify(DEFAULT_BLACKLIST))
+	//console.log(JSON.parse(localStorage.getItem("blacklist_def")))
 }
 
 

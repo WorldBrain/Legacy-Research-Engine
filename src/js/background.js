@@ -151,7 +151,14 @@ function handleMessage(data, sender, sendRespones) {
         chrome.storage.local.set({'index':{'index':timeIndex}});
 
         //Add to list of not indexing anymore
-        var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);    
+
+        if (localStorage.getItem('list_downloaded_urls') == null){
+                localStorage['list_downloaded_urls'] = JSON.stringify([]);
+                var existing_urls = JSON.parse(localStorage.getItem('list_downloaded_urls'));
+            }
+        else {
+            var existing_urls = JSON.parse(localStorage.getItem('list_downloaded_urls'))
+            };
         existing_urls.push(data.url);
         localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
         //search_pouch('test')
@@ -287,22 +294,23 @@ function escapeRegExp(str) {
 
 function shouldArchive(data) {
     // blacklist =  {"REGEX", "PAGE", "SITE"}
-    var custom = JSON.parse(localStorage['blacklist_def']);
+    //var custom = JSON.parse(localStorage.getItem('blacklist_def'));     
     var site = blacklist["SITE"];
     var page = blacklist["PAGE"];
     var regex = blacklist["REGEX"];
     var url = data.url.replace("http://",  "").replace("https://", "");
+    //console.log(custom)
 
-    for (var i=0; i<custom.length; i++){
-        if (url.match("chrome/newtab?") !=null) {
-            return false;
-        }
+    // for (var i=0; i<custom.length; i++){
+    //     if (url.match("chrome/newtab?") !=null) {
+    //         return false;
+    //     }
 
-        else if (url.match(custom[i]) != null) {
-        console.log("blacklisted website, not stored: ", url)
-        return false;
-        }
-    }
+    //     else if (url.match(custom[i]) != null) {
+    //     console.log("blacklisted website, not stored: ", url)
+    //     return false;
+    //     }
+    // }
 
     for (var i = 0; i < site.length; i++) {
         // var reg = new RegExp(escapeRegExp(page[i]) + ".*");

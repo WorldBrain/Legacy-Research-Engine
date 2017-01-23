@@ -14,7 +14,7 @@ function importBookmarks(){
 
 		//create list of already downloaded urls, if not exists
 	    if (localStorage.getItem('list_downloaded_urls')==null){
-	            localStorage['list_downloaded_urls'] = JSON.stringify(['','']);
+	            localStorage['list_downloaded_urls'] = JSON.stringify([]);
 	    };
 
 	    //adding all urls that are new to the list of urls to be downloaded
