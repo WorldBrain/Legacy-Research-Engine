@@ -26,7 +26,7 @@ With the software we build, we aim to gather a diverse community of people that 
 
 For more detailed description, you can watch our [Demo Video (2min)](http://worldbrain.io/tutorial) **or** read the text-based [tutorial](https://github.com/WorldBrain/Research-Engine/blob/master/TUTORIAL.md).
 
-![](http://g.recordit.co/UKIn0IdUpf.gif)
+![](http://g.recordit.co/6T2Oh9eOUE.gif)
 
 
 ## Status & Development Roadmap
