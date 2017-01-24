@@ -1,4 +1,4 @@
-document.getElementById('checkbox_bookmarks').addEventListener("click", function(){
+/*document.getElementById('checkbox_bookmarks').addEventListener("click", function(){
 	var checkbox = document.getElementById('checkbox_bookmarks').checked;
 	if(checkbox == true){
 		localStorage.setItem('checkbox_bookmarks',true);
@@ -6,7 +6,7 @@ document.getElementById('checkbox_bookmarks').addEventListener("click", function
 	else {
 		localStorage.setItem('checkbox_bookmarks',false);
 	}
-	;})
+	;})*/
 	
 function importBookmarks(){
 	chrome.bookmarks.getRecent(100000 , function(bookmarks) {
@@ -14,7 +14,7 @@ function importBookmarks(){
 
 		//create list of already downloaded urls, if not exists
 	    if (localStorage.getItem('list_downloaded_urls')==null){
-	            localStorage['list_downloaded_urls'] = JSON.stringify([]);
+	            localStorage['list_downloaded_urls'] = JSON.stringify(['','']);
 	    };
 
 	    //adding all urls that are new to the list of urls to be downloaded
@@ -44,10 +44,10 @@ function importBookmarks(){
 	    localStorage.setItem('number_bookmarks',bookmarks_items.length)
 
     //adding amount, time and size estimation to analyse_urls.html
-    document.getElementById("amount_urls_bm").innerHTML = bookmarks_items.length
+    /*document.getElementById("amount_urls_bm").innerHTML = bookmarks_items.length
     document.getElementById("size_urls_bm").innerHTML = Math.ceil(bookmarks_items.length * 15 / 1000)  //15KB and /1000 to convert it into MB
     document.getElementById("time_to_download_bm").innerHTML = Math.ceil(bookmarks_items.length * 1.5 / 60) // 1.5 seconds per download /3600 to calculate in hours
-
+*/
   })};
 
 //onpageload start request to chrome history api

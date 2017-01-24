@@ -1,4 +1,4 @@
-document.getElementById('checkbox_history').addEventListener("click", function(){
+/*document.getElementById('checkbox_history').addEventListener("click", function(){
     var checkbox = document.getElementById('checkbox_history').checked;
     if(checkbox == true){
         localStorage.setItem('checkbox_history',true);
@@ -6,7 +6,7 @@ document.getElementById('checkbox_history').addEventListener("click", function()
     else {
         localStorage.setItem('checkbox_history',false);
     }
-    ;})
+    ;})*/
 
 function importHistory(){
         chrome.history.search({'text': '','maxResults': 200000, 'startTime':0 }, function(history) {
@@ -43,10 +43,10 @@ function importHistory(){
 
 
     //adding amount, time and size estimation to analyse_urls.html
-    document.getElementById("amount_urls").innerHTML = history_items.length
+    /*document.getElementById("amount_urls").innerHTML = history_items.length
     document.getElementById("size_urls").innerHTML = Math.ceil(history_items.length * 15 / 1000)  //15kB and /1000 to convert it into MB
     document.getElementById("time_to_download").innerHTML = Math.ceil(history_items.length * 1.5 / 3600) // 1.5 seconds per download /3600 to calculate in hours
-
+*/
   })};
 
 

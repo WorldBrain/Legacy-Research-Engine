@@ -1,10 +1,4 @@
-function store_default_blacklist(){
-	localStorage.setItem('blacklist_def', JSON.stringify(DEFAULT_BLACKLIST))
-	//console.log(JSON.parse(localStorage.getItem("blacklist_def")))
-}
-
-
-var DEFAULT_BLACKLIST=[
+DEFAULT_BLACKLIST=[
 "02bancorp.com",
 "100x100banco.com",
 "1822direkt.com",
@@ -14514,5 +14508,3 @@ var DEFAULT_BLACKLIST=[
 "bancaferoviara.ro",
 "bfer.ro"
 ];
-
-store_default_blacklist()
