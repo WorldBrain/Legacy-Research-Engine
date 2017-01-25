@@ -26,6 +26,8 @@ With the software we build, we aim to gather a diverse community of people that 
 
 For more detailed description, you can watch our [Demo Video (2min)](http://worldbrain.io/tutorial) **or** read the text-based [tutorial](https://github.com/WorldBrain/Research-Engine/blob/master/TUTORIAL.md).
 
+**Important** All your data is stored and processed locally
+
 ![](http://g.recordit.co/qgCwluEMpa.gif)
 
 
