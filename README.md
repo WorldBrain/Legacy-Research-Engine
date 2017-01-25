@@ -6,7 +6,10 @@ Doing so by developing open-source search tools for professional web-researchers
 
 With the software we build, we aim to gather a diverse community of people that loves working with fact-based and intellectually honest information. ([Watch the 3.5 min Vision Video](http://worldbrain.io/vision))
 
-**Our first tool** is the *(Re)search-engine*, a photographic memory for your web research. It's an open-source & decentralised search engine that lets you full-text search all the pages you visited and bookmarked, and later also other places like Evernote, Pocket, Google Drive, Asana, Mendeley and many more. ([Watch 2 min Intro Video](http://worldbrain.io/intro)) ([DOWNLOAD HERE](http://worldbrain.io/download))
+### **Our first tool** is the *(Re)search-engine*, a photographic memory for your web research. 
+
+It's an open-source & decentralised search engine that lets you **full-text search all the pages you visited and bookmarked**, and later also other places like Evernote, Pocket, Google Drive, Asana, Mendeley and many more.
+([Watch 2 min Intro Video](http://worldbrain.io/intro)) ([DOWNLOAD HERE](http://worldbrain.io/download))
 
 ## Table of Content
 
@@ -22,7 +25,7 @@ With the software we build, we aim to gather a diverse community of people that 
 
 ## How to use the extension
 
-([DOWNLOAD HERE](http://worldbrain.io/download)), then type in `w`+ `space`/`tab`+ `your keywords`into the address bar. 
+([Download it here](http://worldbrain.io/download)), then type in `w`+ `space`/`tab`+ `your keywords`into the address bar. 
 
 For more detailed description, you can watch our [Demo Video (2min)](http://worldbrain.io/tutorial) **or** read the text-based [tutorial](https://github.com/WorldBrain/Research-Engine/blob/master/TUTORIAL.md).
 
