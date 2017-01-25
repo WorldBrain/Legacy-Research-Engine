@@ -6,15 +6,15 @@ Doing so by developing open-source search tools for professional web-researchers
 
 With the software we build, we aim to gather a diverse community of people that loves working with fact-based and intellectually honest information. ([Watch the 3.5 min Vision Video](http://worldbrain.io/vision))
 
-### **Our first tool** is the *(Re)search-engine*, a photographic memory for your web research. 
+### Our first tool is the *(Re)search-engine*, a photographic memory for your web research. 
 
-It's an open-source & decentralised search engine that lets you **full-text search all the pages you visited and bookmarked**, and later also other places like Evernote, Pocket, Google Drive, Asana, Mendeley and many more.
+It's an open-source & decentralised chrome extension to **full-text search all the pages you visited and bookmarked**, and later also all the apps you use to organise your knowledge (i.e. Evernote, Pocket, Google Drive, Asana, Mendeley)
 ([Watch 2 min Intro Video](http://worldbrain.io/intro)) ([DOWNLOAD HERE](http://worldbrain.io/download))
 
 ## Table of Content
 
  1. [How to use the extension](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-use-the-extension)
- 1. [Status & Development Roadmap](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#status-development-roadmap)
+ 1. [Status & Development Roadmap](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#status--development-roadmap)
  2. [How to get involved](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#how-to-get-involved)
  1. [FAQs](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#faq)
  3. [Installation (as user & developer)](https://github.com/WorldBrain/Research-Engine/blob/master/README.md#installation)
