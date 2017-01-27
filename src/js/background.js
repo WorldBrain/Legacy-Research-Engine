@@ -13,8 +13,6 @@ var GT_OBJ = function(a,b) {
     return a.time > b.time;
 }
 
-
-
 Array.max = function( array ){
     return Math.max.apply(Math,array);
 };
@@ -58,10 +56,18 @@ function acceptInput(text, disposition) {
 
 function init() {
 
-    /*db = new PouchDB('main')
-    //db.plugin()
-    var remoteCouch = false;*/
-
+    db = new PouchDB('main')
+    // db.plugin()
+    var remoteCouch = false;
+    db.search({
+        fields: ['title','url','text'],
+        build: true
+    }).then(function (info) {
+        // if build was successful, info is {"ok": true}
+    }).catch(function (err) {
+        // handle error
+        console.log(err);
+    });
     window.preloaded = [];
     window.cache = {};
     chrome.storage.local.get(['blacklist', 'preferences'], function(items) {
@@ -143,7 +149,7 @@ function handleMessage(data, sender, sendRespones) {
         });
 
 
-        //store_url(data);
+        store_url(data);
         //show_url()
 
         timeIndex.push(time.toString());
@@ -151,14 +157,14 @@ function handleMessage(data, sender, sendRespones) {
         chrome.storage.local.set({'index':{'index':timeIndex}});
 
         //Add to list of not indexing anymore
-
+        var existing_urls = [];
         if (localStorage.getItem('list_downloaded_urls') == null){
                 localStorage['list_downloaded_urls'] = JSON.stringify([]);
                 var existing_urls = JSON.parse(localStorage.getItem('list_downloaded_urls'));
             }
         else {
             var existing_urls = JSON.parse(localStorage.getItem('list_downloaded_urls'))
-            };
+        };
         existing_urls.push(data.url);
         localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
         //search_pouch('test')
@@ -171,12 +177,7 @@ function handleMessage(data, sender, sendRespones) {
     }
 }
 
-
-
-///////////
-////////// // Early work on pouchDB search implementation
-///////////
-/*function store_url(data) {
+function store_url(data) {
     var item = {
         _id: data.time.toString(),
         title: data.title,
@@ -184,47 +185,89 @@ function handleMessage(data, sender, sendRespones) {
         LastVisitTime: data.time,
         url: data.url,
     };
-    //console.log(item)
-    db.put(item, function callback(err, result){
-        if(!err) {
+    db.put(item, function callback(err, result) {
+        if (!err) {
             console.log('Successfully stored the page: ' + data.url)
-        }
-        else {
+        } else {
             console.log('Error on URL: ' + data.url)
         }
 
     });
-}*/
+}
 
-/*function show_url(){
+/*function show_url() {
     db.allDocs({
-       include_docs: true, descending:true 
-    }, function(err,doc){
+        include_docs: true,
+        descending: true
+    }, function (err, doc) {
         console.log(doc);
     });
 }*/
 
-/*function search_pouch(query, text, cb, suggestCb ){
-    //console.log(query)
+function search_pouch(query, text, cb, suggestCb) {
+    
+
+    for(var i = 0 ; i < query.keywords.length ; i++) 
+        if(query.keywords[i].length == 0)
+            query.keywords.splice(i, 1)
+    console.log(query);
+    // Regular search through PouchDB
     db.search({
         query: query.text,
-        fields: ['text'],
-        include_docs: true
-    }).then(function(res){
-        console.log("RESULTS: ")
-        console.log(res.rows)
+        fields: ['title','url','text'],
+        include_docs: true,
+        build: false
+    }).then(function (res) {
 
-        //console.log(doc.LastVisitTime)
-        return makeSuggestions(query, res.rows, cb, suggestCb)
-    }).catch(function(err){
+        var results = [];
+        for(var i = 0; i < res.rows.length ; i++) {
+            var doc = res.rows[i];
+            if (query.before != false) {
+                if (doc.doc.LastVisitTime <= query.before.getTime() && doc.doc.LastVisitTime >= query.after.getTime())
+                    results.push(doc);
+            }
+            else if (doc.doc.LastVisitTime >= query.after.getTime())
+                results.push(doc);
+        }
+
+        // If Minuswords are entered in the query
+        var final_results = [];
+        if(query.negative.length > 0) {
+
+        	//calculating the precision, if more than 1 minus word is entered: https://github.com/nolanlawson/pouchdb-quick-search#minimum-should-match-mm
+        	var full_percent = 100
+        	divisor = query.negative.length
+        	var mm = 100 / divisor + "%"
+
+        	// searching for two minus words
+        	query.negative= query.negative.join(" ")
+            db.search({
+                query: query.negative,
+                fields: ['title','url','text'],
+                mm: mm,
+                include_docs: true,
+                build: false
+            }).then(function (res_negative) {
+                for(var i = 0 ; i < res.rows.length ; i++) {
+                    var flag = 0;
+                    for(var j = 0 ; j < res_negative.rows.length ; j++) {
+                        if(res.rows[i].id === res_negative.rows[j].id)
+                            flag = 1;
+                    }
+                    if(flag === 0)
+                        final_results.push(res.rows[i]);
+                }
+                return suggestionsComplete(final_results, query.shouldDate, suggestCb);
+            });
+        } else {
+            final_results = results;
+        }
+        if(final_results.length > 0) 
+            return suggestionsComplete(final_results, query.shouldDate, suggestCb);
+    }).catch(function (err) {
         console.log(err)
     });
-}*/
-
-
-///////////
-///////////
-//////////
+}
 
 function omnibarHandler(text, suggest) {
     dispatchSuggestions(text, suggestionsComplete, suggest);
@@ -235,19 +278,20 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
     var i;
     for (i = 0; i < suggestions.length; i++) {
         var elem = suggestions[i];
-        var urlToShow = elem.url;
+        var urlToShow = elem.doc.url;
         if (urlToShow.length >= MAX_URL_LEN_SHOWN) {
             urlToShow = urlToShow.substring(0,47) + '...';
         }
         var description = "<url>" + escape(urlToShow) + "</url> "
-        var date = new Date(elem.time);
+        var date = new Date(elem.doc.LastVisitTime);
         var hour = date.getHours();
+        var minutes = date.getMinutes();
         if (hour > 12) {
             hour -= 12;
             if (hour === 12) {
-                hour = hour.toString + 'am';
+                hour = hour.toString + ":" + minutes + 'am';
             } else {
-                hour = hour.toString() + "pm";
+                hour = hour.toString() + ":" + minutes + "pm";
             }
         } else {
             if (hour === 12) {
@@ -259,13 +303,13 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
 
         var fmt =  (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getUTCFullYear().toString().substring(2,4);
         if (shouldDate) {
-            description += ':: <match>' + escape(fmt + " " + hour) + '</match> ';
+            description += ':: <match>' + escape(fmt + " " + hour) +'</match> ';
         } else {
             description += ':: ' + escape(fmt) + ' ';
         }
 
-        description += '- ' + escape(elem.title);
-        res.push({content:elem.url, description:description});
+        description += '- ' + escape(elem.doc.title);
+        res.push({content:elem.doc.url, description:description});
     }
     if (res.length > 0) {
         chrome.omnibox.setDefaultSuggestion({description: "Select an option below"});
@@ -294,24 +338,21 @@ function escapeRegExp(str) {
 
 function shouldArchive(data) {
     // blacklist =  {"REGEX", "PAGE", "SITE"}
-    //var custom = JSON.parse(localStorage.getItem('blacklist_def'));     
+    //var custom = JSON.parse(localStorage.getItem('blacklist_def'));
     var site = blacklist["SITE"];
     var page = blacklist["PAGE"];
     var regex = blacklist["REGEX"];
     var url = data.url.replace("http://",  "").replace("https://", "");
     //console.log(custom)
-
     // for (var i=0; i<custom.length; i++){
     //     if (url.match("chrome/newtab?") !=null) {
     //         return false;
     //     }
-
     //     else if (url.match(custom[i]) != null) {
     //     console.log("blacklisted website, not stored: ", url)
     //     return false;
     //     }
     // }
-
     for (var i = 0; i < site.length; i++) {
         // var reg = new RegExp(escapeRegExp(page[i]) + ".*");
         if (url.indexOf(site[i].replace("http://",  "").replace("https://", "")) != -1) {
@@ -338,13 +379,13 @@ function makeSuggestions(query, candidates, cb, suggestCb) {
     var res = [];
     var urls = {};
     var keywords = query.keywords;
-    //console.log(keywords)
+    console.log(candidates);
     var keywordsLen = keywords.length;
     var negative = query.negative;
     var negativeLen = negative.length;
     var j = 0;
     for (var i = candidates.length - 1; i > -1; i--) {
-        var text = candidates[i].text;
+        var text = candidates[i].doc.text;
         var isMatching = true;
         for (var k = 0; k < negativeLen; k++) {
             if (text.indexOf(negative[k]) > -1) {
@@ -361,7 +402,7 @@ function makeSuggestions(query, candidates, cb, suggestCb) {
             }
 
             if (isMatching) {
-                var cleanedURL = cleanURL(candidates[i].url);
+                var cleanedURL = cleanURL(candidates[i].doc.url);
                 if (!(cleanedURL in urls)) {
                     res.push(candidates[i]);
                     urls[cleanedURL] = true;
@@ -383,64 +424,63 @@ function cleanURL(url) {
 
 
 // Early work on pouchDB search implementation
-/*function dispatchSuggestions_alt(text,cb,suggestCb){
+function dispatchSuggestions(text, cb, suggestCb){
     var query = makeQueryFromText(text);
-    query.text = text;
     if (query.before !== false && query.after !== false && query.after >= query.before) return;
 
     query.keywords.sort(function(a,b){return b.length-a.length});
-
-    search_pouch(query, text, cb, suggestCb)
-}*/
-
-
-function dispatchSuggestions(text, cb, suggestCb) {
-    var query = makeQueryFromText(text);
-    query.text = text;
-    if (query.before !== false && query.after !== false && query.after >= query.before) return;
-
-    query.keywords.sort(function(a,b){return b.length-a.length});
-
-    if (query.after >= CUTOFF_DATE) {
-        var start = Math.floor(binarySearch(preloaded, {'time':+query.after}, LT_OBJ,
-                                            GT_OBJ, 0, preloaded.length));
-        var end;
-        if (query.before) {
-            end = Math.ceil(binarySearch(preloaded, {'time':+query.before}, LT_OBJ,
-                                         GT_OBJ, 0, preloaded.length));
-        } else {
-            end = preloaded.length;
-        }
-
-        makeSuggestions(query, preloaded.slice(start, end), cb, suggestCb)
-    } else {
-        var start = Math.floor(binarySearch(timeIndex, +query.after, LT,
-                                            GT, 0, timeIndex.length));
-        var end;
-        if (query.before) {
-            end = Math.ceil(binarySearch(timeIndex, +query.before, LT,
-                                         GT, 0, timeIndex.length));
-        } else {
-            end = timeIndex.length;
-        }
-
-        window.sorted = [];
-        var get = timeIndex.slice(start, end);
-        var index = Math.ceil(binarySearch(get, +CUTOFF_DATE, LT, GT, 0, get.length));
-        if (index < get.length) {
-            sorted = preloaded.slice(0, get.length - index + 1);
-        }
-        get = get.slice(0,index);
-
-        chrome.storage.local.get(get, function(items) {
-            for (var key in items) {
-                sorted.push(items[key]);
-            }
-            sorted.sort(function(a,b) {return a.time - b.time});
-            makeSuggestions(query, sorted, cb, suggestCb);
-        });
-    }
+    // console.log(query);
+    search_pouch(query, text, cb, suggestCb);
 }
+
+
+// function dispatchSuggestions(text, cb, suggestCb) {
+//     var query = makeQueryFromText(text);
+//     query.text = text;
+//     if (query.before !== false && query.after !== false && query.after >= query.before) return;
+
+//     query.keywords.sort(function(a,b){return b.length-a.length});
+
+//     if (query.after >= CUTOFF_DATE) {
+//         var start = Math.floor(binarySearch(preloaded, {'time':+query.after}, LT_OBJ,
+//                                             GT_OBJ, 0, preloaded.length));
+//         var end;
+//         if (query.before) {
+//             end = Math.ceil(binarySearch(preloaded, {'time':+query.before}, LT_OBJ,
+//                                          GT_OBJ, 0, preloaded.length));
+//         } else {
+//             end = preloaded.length;
+//         }
+
+//         makeSuggestions(query, preloaded.slice(start, end), cb, suggestCb)
+//     } else {
+//         var start = Math.floor(binarySearch(timeIndex, +query.after, LT,
+//                                             GT, 0, timeIndex.length));
+//         var end;
+//         if (query.before) {
+//             end = Math.ceil(binarySearch(timeIndex, +query.before, LT,
+//                                          GT, 0, timeIndex.length));
+//         } else {
+//             end = timeIndex.length;
+//         }
+
+//         window.sorted = [];
+//         var get = timeIndex.slice(start, end);
+//         var index = Math.ceil(binarySearch(get, +CUTOFF_DATE, LT, GT, 0, get.length));
+//         if (index < get.length) {
+//             sorted = preloaded.slice(0, get.length - index + 1);
+//         }
+//         get = get.slice(0,index);
+
+//         chrome.storage.local.get(get, function(items) {
+//             for (var key in items) {
+//                 sorted.push(items[key]);
+//             }
+//             sorted.sort(function(a,b) {return a.time - b.time});
+//             makeSuggestions(query, sorted, cb, suggestCb);
+//         });
+//     }
+// }
 
 function binarySearch(arr, value, lt, gt, i, j) {
     if (Math.abs(j - i) <= 1) {
@@ -458,5 +498,4 @@ function binarySearch(arr, value, lt, gt, i, j) {
     }
     return binarySearch(arr, value, lt, gt, i, j);
 }
-
 init();
