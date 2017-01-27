@@ -195,15 +195,6 @@ function store_url(data) {
     });
 }
 
-/*function show_url() {
-    db.allDocs({
-        include_docs: true,
-        descending: true
-    }, function (err, doc) {
-        console.log(doc);
-    });
-}*/
-
 function search_pouch(query, text, cb, suggestCb) {
     
 
@@ -433,69 +424,4 @@ function dispatchSuggestions(text, cb, suggestCb){
     search_pouch(query, text, cb, suggestCb);
 }
 
-
-// function dispatchSuggestions(text, cb, suggestCb) {
-//     var query = makeQueryFromText(text);
-//     query.text = text;
-//     if (query.before !== false && query.after !== false && query.after >= query.before) return;
-
-//     query.keywords.sort(function(a,b){return b.length-a.length});
-
-//     if (query.after >= CUTOFF_DATE) {
-//         var start = Math.floor(binarySearch(preloaded, {'time':+query.after}, LT_OBJ,
-//                                             GT_OBJ, 0, preloaded.length));
-//         var end;
-//         if (query.before) {
-//             end = Math.ceil(binarySearch(preloaded, {'time':+query.before}, LT_OBJ,
-//                                          GT_OBJ, 0, preloaded.length));
-//         } else {
-//             end = preloaded.length;
-//         }
-
-//         makeSuggestions(query, preloaded.slice(start, end), cb, suggestCb)
-//     } else {
-//         var start = Math.floor(binarySearch(timeIndex, +query.after, LT,
-//                                             GT, 0, timeIndex.length));
-//         var end;
-//         if (query.before) {
-//             end = Math.ceil(binarySearch(timeIndex, +query.before, LT,
-//                                          GT, 0, timeIndex.length));
-//         } else {
-//             end = timeIndex.length;
-//         }
-
-//         window.sorted = [];
-//         var get = timeIndex.slice(start, end);
-//         var index = Math.ceil(binarySearch(get, +CUTOFF_DATE, LT, GT, 0, get.length));
-//         if (index < get.length) {
-//             sorted = preloaded.slice(0, get.length - index + 1);
-//         }
-//         get = get.slice(0,index);
-
-//         chrome.storage.local.get(get, function(items) {
-//             for (var key in items) {
-//                 sorted.push(items[key]);
-//             }
-//             sorted.sort(function(a,b) {return a.time - b.time});
-//             makeSuggestions(query, sorted, cb, suggestCb);
-//         });
-//     }
-// }
-
-function binarySearch(arr, value, lt, gt, i, j) {
-    if (Math.abs(j - i) <= 1) {
-        return (i + j)/2;
-    }
-
-    var m = Math.floor((i + j)/2)
-    var cmpVal = arr[m];
-    if (gt(cmpVal, value)) {
-        j = m;
-    } else if (lt(cmpVal, value)){
-        i = m;
-    } else {
-        return m;
-    }
-    return binarySearch(arr, value, lt, gt, i, j);
-}
 init();
