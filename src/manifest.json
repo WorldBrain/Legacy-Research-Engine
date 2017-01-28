@@ -9,7 +9,7 @@
             "matches": [
                 "<all_urls>"
             ],
-            "js": ["js/compatibility.js","js/pdf.js","js/pdf.worker.js","js/pdftotext.js","js/bundle.js", "js/blacklist2.js","js/background.js","js/lib/stopwords_res.js", "js/lib/readability.js", "js/relevanttext.js", "js/content.js"]
+            "js": ["js/bundle.js", "js/compatibility.js","js/pdf.js","js/pdf.worker.js","js/pdftotext.js", "js/blacklist2.js","js/background.js","js/lib/stopwords_res.js", "js/lib/readability.js", "js/relevanttext.js", "js/content.js"]
         }
     ],
     "web_accessible_resources": ["js/pdf.worker.js"],
@@ -36,6 +36,6 @@
     "omnibox": { "keyword" : "w" },
     "options_page": "assets/preferences.html",
     "background": {
-        "scripts": ["js/compatibility.js","js/pdf.js","js/pdftotext.js","js/pdf.worker.js","js/bundle.js","js/lib/pouchdb-6.0.7.min.js","js/lib/pdf2text_bundle.js", "js/lib/pouchdb.quick-search.min.js", "js/blacklist2.js", "js/lib/chrono.min.js", "js/textprocessing.js", "js/queryparser.js", "js/background.js", "js/lib/readability.js"]
+        "scripts": ["js/bundle.js", "js/compatibility.js","js/pdf.js","js/pdftotext.js","js/pdf.worker.js", "js/lib/pouchdb-6.0.7.min.js","js/lib/pdf2text_bundle.js", "js/lib/pouchdb.quick-search.min.js", "js/blacklist2.js", "js/lib/chrono.min.js", "js/textprocessing.js", "js/queryparser.js", "js/background.js", "js/lib/readability.js"]
     }
 }
