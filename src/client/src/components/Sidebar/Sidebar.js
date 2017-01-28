@@ -15,6 +15,12 @@ export const Sidebar = () => (
 
           <ul className="nav">
               <li>
+                  <Link to="/search" activeClassName="active">
+                      <i className="pe-7s-search"></i>
+                      <p>Search</p>
+                  </Link>
+              </li>
+              <li>
                   <Link to="/about" activeClassName="active">
                       <i className="pe-7s-info"></i>
                       <p>About</p>

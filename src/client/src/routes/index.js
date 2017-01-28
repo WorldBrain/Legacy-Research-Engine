@@ -7,6 +7,7 @@ import Home from './Home'
 import CounterRoute from './Counter'
 import FeedbackRoute from './Feedback'
 import AboutRoute from './About'
+import SearchRoute from './Search';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -37,6 +38,7 @@ export const createRoutes = (store) => (
       <IndexRedirect to="about" />
       <Route path="about" component={AboutRoute}/>
       <Route path="feedback" component={FeedbackRoute} />
+      <Route path="search" component={SearchRoute} />
     </Route>
 )
 
