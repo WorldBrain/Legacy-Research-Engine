@@ -28,7 +28,7 @@ class SearchBar extends React.Component {
      * @return {void}
      */
     handleKeyPress(event) {
-        if(event.key === 'Enter') {
+        if(event.key === 'Enter' && this.state.query) {
             this.props.onSearch(this.state.query);
             event.target.blur();
         }
