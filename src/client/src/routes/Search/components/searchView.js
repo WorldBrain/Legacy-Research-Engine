@@ -1,7 +1,10 @@
 import React from 'react';
 
 import SearchBar from './searchBar';
+import SearchResults from './SearchResults';
 import './searchView.scss';
+
+import { Results } from '../module/tempResults';
 
 /**
  * Responsible for painting and handling interactions with the search page.
@@ -12,7 +15,8 @@ class SearchView extends React.Component {
 
         this.onSearch = this.onSearch.bind(this);
         this.state = {
-            searchQuery: ''
+            query: '',
+            results: Results
         };
     }
 
@@ -22,7 +26,10 @@ class SearchView extends React.Component {
      * @return {void}
      */
     onSearch(query) {
-        this.setState({searchQuery: query});
+        this.setState({
+            query: query,
+            results: Results
+        });
     }
 
     /**
@@ -37,13 +44,13 @@ class SearchView extends React.Component {
                     </div>
                 </div>
 
-                <div className="row">
-                    <div className="col-md-8">
-                        {this.state.searchQuery && 
-                            <p>You searched for {this.state.searchQuery}</p>
-                        }
+                { this.state.query &&
+                    <div className="row">
+                        <div className="col-md-8">
+                            <SearchResults results={this.state.results} />
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         );
     }
