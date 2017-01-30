@@ -2,6 +2,7 @@ import React from 'react';
 
 import SearchBar from './searchBar';
 import SearchResults from './SearchResults';
+import Loader from '../../../components/loader';
 import './searchView.scss';
 
 /**
@@ -34,6 +35,14 @@ class SearchView extends React.Component {
                         <SearchBar onSearch={this.onSearch}  />
                     </div>
                 </div>
+
+                { this.props.isLoading && 
+                    <div className="row">
+                        <div className="col-md-8">
+                            <Loader />
+                        </div>
+                    </div>
+                }
 
                 { this.props.results && !this.props.isLoading &&
                     <div className="row">

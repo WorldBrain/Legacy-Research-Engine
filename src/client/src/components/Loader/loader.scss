@@ -1,0 +1,37 @@
+// From http://www.codicode.com/art/full_css_spinners.aspx
+
+.loader {
+    font-size: 5px;
+    text-indent: -999em;
+    overflow: hidden;
+    width: 4em;
+    height: 4em;
+    margin: 20em auto;
+    border-radius: 50%;
+    box-shadow: 0em -8em 0 -2em #000000, 6em -6em 0 -1em #000000, 8em 0em 0 0em #000000, 6em 6em 0 -3em #000000, 0em 8em 0 -3em #000000, -6em 6em 0 -3em #000000, -8em 0em 0 -3em #000000, -6em -6em 0 -3em #000000;
+    animation: spin4 2s infinite linear;
+}
+
+@keyframes spin4 {
+    12.5% {
+        box-shadow: 0em -8em 0 -3em #000000, 6em -6em 0 -2em #000000, 8em 0em 0 -1em #000000, 6em 6em 0 0em #000000, 0em 8em 0 -3em #000000, -6em 6em 0 -3em #000000, -8em 0em 0 -3em #000000, -6em -6em 0 -3em #000000;
+    }
+    25% {
+        box-shadow: 0em -8em 0 -3em #000000, 6em -6em 0 -3em #000000, 8em 0em 0 -2em #000000, 6em 6em 0 -1em #000000, 0em 8em 0 0em #000000, -6em 6em 0 -3em #000000, -8em 0em 0 -3em #000000, -6em -6em 0 -3em #000000;
+    }
+    37.5% {
+        box-shadow: 0em -8em 0 -3em #000000, 6em -6em 0 -3em #000000, 8em 0em 0 -3em #000000, 6em 6em 0 -2em #000000, 0em 8em 0 -1em #000000, -6em 6em 0 0em #000000, -8em 0em 0 -3em #000000, -6em -6em 0 -3em #000000;
+    }
+    50% {
+        box-shadow: 0em -8em 0 -3em #000000, 6em -6em 0 -3em #000000, 8em 0em 0 -3em #000000, 6em 6em 0 -3em #000000, 0em 8em 0 -2em #000000, -6em 6em 0 -1em #000000, -8em 0em 0 0em #000000, -6em -6em 0 -3em #000000;
+    }
+    62.5% {
+        box-shadow: 0em -8em 0 -3em #000000, 6em -6em 0 -3em #000000, 8em 0em 0 -3em #000000, 6em 6em 0 -3em #000000, 0em 8em 0 -3em #000000, -6em 6em 0 -2em #000000, -8em 0em 0 -1em #000000, -6em -6em 0 0em #000000;
+    }
+    75% {
+        box-shadow: 0em -8em 0 0em #000000, 6em -6em 0 -3em #000000, 8em 0em 0 -3em #000000, 6em 6em 0 -3em #000000, 0em 8em 0 -3em #000000, -6em 6em 0 -3em #000000, -8em 0em 0 -2em #000000, -6em -6em 0 -1em #000000;
+    }
+    87.5% {
+        box-shadow: 0em -8em 0 -1em #000000, 6em -6em 0 0em #000000, 8em 0em 0 -3em #000000, 6em 6em 0 -3em #000000, 0em 8em 0 -3em #000000, -6em 6em 0 -3em #000000, -8em 0em 0 -3em #000000, -6em -6em 0 -2em #000000;
+    }
+}
