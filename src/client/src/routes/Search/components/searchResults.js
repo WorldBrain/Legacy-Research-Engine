@@ -18,7 +18,7 @@ const SearchResults = ({results}) => {
 
     const resultElements = results.map((result) => {
         return (
-            <li className="search-results__list__item">
+            <li className="search-results__list__item" key={result.id}>
                 <div>
                     <p className="search-results__list__item__title">
                         <a href={result.link} className="search-results__list__item__title__link">
