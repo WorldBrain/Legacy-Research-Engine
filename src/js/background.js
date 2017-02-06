@@ -68,6 +68,7 @@ function init() {
         // handle error
         console.log(err);
     });
+    transferToPouch(db);
     window.preloaded = [];
     window.cache = {};
     chrome.storage.local.get(['blacklist', 'preferences'], function(items) {
@@ -109,6 +110,14 @@ function init() {
             makePreloaded(timeIndex);
         }
     });
+}
+
+function transferToPouch(db) {
+    var count = 0;
+    for (var item in localStorage)
+        if(item.time != undefined && item.text != undefined)
+            count += store_url(item);
+    console.log('Successfully stored ' + count.toString() + ' / ' + localStorage.length + ' items to PDB');
 }
 
 function makePreloaded(index) {
@@ -187,11 +196,12 @@ function store_url(data) {
     };
     db.put(item, function callback(err, result) {
         if (!err) {
-            console.log('Successfully stored the page: ' + data.url)
+            console.log('Successfully stored the page: ' + data.url);
+            return 1;
         } else {
             console.log('Error on URL: ' + data.url)
+            return 0;
         }
-
     });
 }
 
