@@ -114,10 +114,18 @@ function init() {
 
 function transferToPouch(db) {
     var count = 0;
-    for (var item in localStorage)
-        if(item.time != undefined && item.text != undefined)
-            count += store_url(item);
-    console.log('Successfully stored ' + count.toString() + ' / ' + localStorage.length + ' items to PDB');
+    var keys = null;
+    chrome.storage.local.get(null, function(results) {
+            keys = Object.keys(results);
+            for (key in keys)
+                if(key != "index" && 
+                        key != "blacklist" && 
+                        key != "preferences" && 
+                        key != "shouldOpenTab")
+                    count += store_url(results[key]);
+        }
+    );
+    console.log('Successfully stored ' + count.toString() + ' / ' + (keys.length - 4).toString() + ' items to PDB');
 }
 
 function makePreloaded(index) {
