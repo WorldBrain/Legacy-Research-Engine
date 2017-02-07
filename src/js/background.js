@@ -162,7 +162,6 @@ function search_pouch(query, text, cb, suggestCb) {
     for(var i = 0 ; i < query.keywords.length ; i++)
         if(query.keywords[i].length == 0)
             query.keywords.splice(i, 1)
-    console.log(query);
     // Regular search through PouchDB
     db.search({
         query: query.text,
