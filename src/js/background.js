@@ -1,4 +1,4 @@
-var MILLIS_BEFORE_CLEAR = 1000 * 60; // 60 seconds 
+var MILLIS_BEFORE_CLEAR = 1000 * 60; // 60 seconds
 var CLEAR_DELAY = 20000;
 var MAX_URL_LEN_SHOWN = 50;
 var LT = function(a,b) {return a < b};
@@ -8,15 +8,6 @@ var LT_OBJ = function(a,b) {
 }
 
 var db
-
-var GT_OBJ = function(a,b) {
-    return a.time > b.time;
-}
-
-Array.max = function( array ){
-    return Math.max.apply(Math,array);
-};
-
 
 function ValidURL(text) {
     var valid = /((https?):\/\/)?(([w|W]{3}\.)+)?[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?/
@@ -69,8 +60,6 @@ function init() {
         console.log(err);
     });
     transferToPouch(db);
-    window.preloaded = [];
-    window.cache = {};
     chrome.storage.local.get(['blacklist', 'preferences'], function(items) {
         var obj = items['blacklist'];
         if (obj === undefined || !('PAGE' in obj && 'SITE' in obj && 'REGEX' in obj)) {
@@ -88,28 +77,6 @@ function init() {
             window.preferences = obj;
         }
     });
-
-    chrome.storage.local.get('index', function(items) {
-        var obj = items['index'];
-        if (obj === undefined) {
-            window.timeIndex = [];
-            chrome.storage.local.get(null, function(items) {
-                for (var key in items) {
-                    if (key != 'index') {
-                        timeIndex.push(items[key].time.toString());
-                    }
-                }
-
-                timeIndex.sort(function(a,b) {return parseInt(a) - parseInt(b)}); // soonest last
-                makePreloaded(timeIndex);
-                chrome.storage.local.set({'index':{'index':timeIndex}});
-            });
-
-        } else {
-            window.timeIndex = obj.index;
-            makePreloaded(timeIndex);
-        }
-    });
 }
 
 function transferToPouch(db) {
@@ -118,38 +85,14 @@ function transferToPouch(db) {
     chrome.storage.local.get(null, function(results) {
             keys = Object.keys(results);
             for (var i = 0 ; i < keys.length ; i++)
-                if(keys[i] != "index" && 
-                        keys[i] != "blacklist" && 
-                        keys[i] != "preferences" && 
+                if(keys[i] != "index" &&
+                        keys[i] != "blacklist" &&
+                        keys[i] != "preferences" &&
                         keys[i] != "shouldOpenTab")
                     count += store_url(results[keys[i]]);
         }
     );
     console.log('Successfully stored ' + count.toString() + ' / ' + (keys.length - 4).toString() + ' items to PDB');
-}
-
-function makePreloaded(index) {
-    var preloaded_index = [];
-    var millis = +CUTOFF_DATE;
-    var i = Math.floor(binarySearch(index, millis, LT, GT, 0, index.length));
-    for (var j = i; j < index.length; j++) {
-        preloaded_index.push(index[j]);
-    }
-
-    chrome.storage.local.get(preloaded_index, function(items) {
-        window.preloaded = [];
-        for (var key in items) {
-            preloaded.push(items[key]);
-        }
-
-        preloaded.sort(function(a,b){return a.time-b.time});
-    });
-}
-
-function assert(condition, message) {
-    if (!condition) {
-        throw message || "Assertion failed";
-    }
 }
 
 function handleMessage(data, sender, sendRespones) {
@@ -207,16 +150,16 @@ function store_url(data) {
             console.log('Successfully stored the page: ' + data.url);
             return 1;
         } else {
-            console.log('Error on URL: ' + data.url)
+            console.log('Error ' + err + ' on URL: ' + data.url)
             return 0;
         }
     });
 }
 
 function search_pouch(query, text, cb, suggestCb) {
-    
 
-    for(var i = 0 ; i < query.keywords.length ; i++) 
+
+    for(var i = 0 ; i < query.keywords.length ; i++)
         if(query.keywords[i].length == 0)
             query.keywords.splice(i, 1)
     console.log(query);
@@ -271,7 +214,7 @@ function search_pouch(query, text, cb, suggestCb) {
         } else {
             final_results = results;
         }
-        if(final_results.length > 0) 
+        if(final_results.length > 0)
             return suggestionsComplete(final_results, query.shouldDate, suggestCb);
     }).catch(function (err) {
         console.log(err)
@@ -326,19 +269,6 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
         chrome.omnibox.setDefaultSuggestion({description: "No results found"})
     }
     suggestCb(res);
-    window.setTimeout(clearCache, CLEAR_DELAY);
-}
-
-function clearCache() {
-    
-    var now = +(new Date());
-
-    for (var time in cache) {
-        if (now - parseInt(time) > MILLIS_BEFORE_CLEAR) {
-            delete cache[time];
-        }
-    }
-    return;
 }
 
 function escapeRegExp(str) {
