@@ -59,7 +59,7 @@ function init() {
         // handle error
         console.log(err);
     });
-    transferToPouch(db);
+    transferToPouch();
     chrome.storage.local.get(['blacklist', 'preferences'], function(items) {
         var obj = items['blacklist'];
         if (obj === undefined || !('PAGE' in obj && 'SITE' in obj && 'REGEX' in obj)) {
@@ -79,7 +79,7 @@ function init() {
     });
 }
 
-function transferToPouch(db) {
+function transferToPouch() {
     var count = 0;
     var keys = null;
     chrome.storage.local.get(null, function(results) {
