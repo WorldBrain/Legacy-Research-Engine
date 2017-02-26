@@ -38,6 +38,11 @@ For more detailed description, you can watch our [Demo Video (2min)](http://worl
 
 [Here](https://github.com/WorldBrain/Research-Engine/blob/master/ROADMAP.md) you find the long term roadmap. 
 
+### IMPORTANT
+
+We started collaborating with the [WebMemex project](https://github.com/WebMemex/memextension) and are in the mode of porting all the features of WorldBrain there. The WebMemex will power our software in the future.
+Therefore be not surprised, if you see no action here. 
+
 ### Current Stage
 
 Right now, the chrome extension lets you full-text search all the web pages and PDFs you visited and bookmarked.
