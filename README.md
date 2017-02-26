@@ -1,4 +1,4 @@
-# WorldBrain's WebMemex
+# WorldBrain's (Re)search-Engine
 
 **Welcome to the WorldBrain project. We work on the goal of an increased (scientific) literacy in our global society through a better overall information quality on the internet.**
 
@@ -6,7 +6,7 @@ Doing so by developing open-source search tools for professional web-researchers
 
 With the software we build, we aim to gather a diverse community of people that loves working with fact-based and intellectually honest information. ([Watch the 3.5 min Vision Video](http://worldbrain.io/vision))
 
-### Our first tool is the *WebMemex*, a photographic memory for your web research. 
+### Our first tool is the *(Re)search-Engine*, a photographic memory for your web research. 
 
 It's an open-source & decentralised chrome extension to **full-text search all the pages you visited and bookmarked**, and later also all the apps you use to organise your knowledge (i.e. Evernote, Pocket, Google Drive, Asana, Mendeley)
 ([Watch 2 min Intro Video](http://worldbrain.io/intro)) ([DOWNLOAD HERE](http://worldbrain.io/download))
