@@ -1,5 +1,9 @@
 # WorldBrain's (Re)search-Engine
 
+## IMPORTANT
+
+We started collaborating with the [WebMemex project](https://github.com/WebMemex/memextension) and are in the mode of porting all the features of WorldBrain there. The WebMemex will power our software in the future and will lend its name to the WorldBrain tool as well. Therefore be not surprised, if you see no action in this repo. 
+
 **Welcome to the WorldBrain project. We work on the goal of an increased (scientific) literacy in our global society through a better overall information quality on the internet.**
 
 Doing so by developing open-source search tools for professional web-researchers like science communicators, (STEM-) students, journalists, librarians and online debaters to effortlessly find, rate and share qualitative and trustworthy web content/notes with their friends, followers and the public. 
@@ -37,11 +41,6 @@ For more detailed description, you can watch our [Demo Video (2min)](http://worl
 ## Status & Development Roadmap
 
 [Here](https://github.com/WorldBrain/Research-Engine/blob/master/ROADMAP.md) you find the long term roadmap. 
-
-### IMPORTANT
-
-We started collaborating with the [WebMemex project](https://github.com/WebMemex/memextension) and are in the mode of porting all the features of WorldBrain there. The WebMemex will power our software in the future.
-Therefore be not surprised, if you see no action here. 
 
 ### Current Stage
 
