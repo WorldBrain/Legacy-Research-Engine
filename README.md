@@ -112,7 +112,7 @@ Fork the project, then...
 ## How to get in touch with us
 
  1. via Email: [info@worldbrain.io](mailto:info@worldbrain.io)
- 2. Request Slack Invitation: [http://worldbrain.slack.com](http://worldbrain.slack.com)
+ 2. Enter our Slack Channel: [https://join-worldbrain.herokuapp.com/](https://join-worldbrain.herokuapp.com/)
 
 
 ## Acknowledgements
