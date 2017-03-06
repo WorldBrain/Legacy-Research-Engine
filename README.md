@@ -7,13 +7,11 @@ We started collaborating with the [WebMemex project](https://github.com/WebMemex
 # WorldBrain's (Re)search-Engine
 **Welcome to the WorldBrain project. We work on the goal of an increased (scientific) literacy in our global society through a better overall information quality on the internet.**
 
-Doing so by developing open-source search tools for professional web-researchers like science communicators, (STEM-) students, journalists, librarians and online debaters to effortlessly find, rate and share qualitative and trustworthy web content/notes with their friends, followers and the public. 
-
-With the software we build, we aim to gather a diverse community of people that loves working with fact-based and intellectually honest information. ([Watch the 3.5 min Vision Video](http://worldbrain.io/vision))
+Doing so by developing open-source search tools for professional web-researchers like science communicators, (STEM-) students, journalists, librarians and online debaters to effortlessly find, rate and share qualitative and trustworthy web content/notes with their friends, followers and the public. ([Watch the 3.5 min Vision Video](http://worldbrain.io/vision))
 
 ### Our first tool is the *(Re)search-Engine*, a photographic memory for your web research. 
 
-It's an open-source & decentralised chrome extension to **full-text search all the pages you visited and bookmarked**, and later also all the apps you use to organise your knowledge (i.e. Evernote, Pocket, Google Drive, Asana, Mendeley)
+It's an open-source chrome extension to **full-text search all the pages you visited and bookmarked**, and later also all the apps you use to organise your knowledge (i.e. Evernote, Pocket, Google Drive, Asana, Mendeley)
 ([Watch 2 min Intro Video](http://worldbrain.io/intro)) ([DOWNLOAD HERE](http://worldbrain.io/download))
 
 ## Table of Content
@@ -70,8 +68,7 @@ More info in our [projects section](https://github.com/WorldBrain/Research-Engin
 
 ## How to get involved
 
- - If you are **JAVASCRIPT DEVELOPER** you can check out [our current projects](https://github.com/WorldBrain/Research-Engine/projects) and [open tasks](https://github.com/WorldBrain/Research-Engine/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
- - Into **DECENTRALISATION**? You can join [our discussion](https://github.com/WorldBrain/Research-Engine/issues/43) about decentralising our server infrastructure.
+ - If you are **JAVASCRIPT DEVELOPER** you can check out [our current projects](https://github.com/WebMemex/webmemex-extension/projects) and [open tasks](https://github.com/WebMemex/webmemex-extension/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer-task)
  - Wanna help with **MARKETING**? Contact Oliver via email: oli@worldbrain.io
  - Wanna help us with **MONEYYYZ**? Wohoo! You can do so by [supporting us on Patreon](http://patreon.com/WorldBrain) 
 
