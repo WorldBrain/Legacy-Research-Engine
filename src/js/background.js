@@ -3,11 +3,14 @@ var CLEAR_DELAY = 20000;
 var MAX_URL_LEN_SHOWN = 50;
 var LT = function(a,b) {return a < b};
 var GT = function(a,b) {return a > b};
+
+var GT_OBJ = function(a,b) {
+    return a.time > b.time;
+}
+
 var LT_OBJ = function(a,b) {
     return a.time < b.time;
 }
-
-var db
 
 function ValidURL(text) {
     var valid = /((https?):\/\/)?(([w|W]{3}\.)+)?[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?/
@@ -47,19 +50,8 @@ function acceptInput(text, disposition) {
 
 function init() {
 
-    db = new PouchDB('main')
-    // db.plugin()
-    var remoteCouch = false;
-    db.search({
-        fields: ['title','url','text'],
-        build: true
-    }).then(function (info) {
-        // if build was successful, info is {"ok": true}
-    }).catch(function (err) {
-        // handle error
-        console.log(err);
-    });
-    transferToPouch();
+    window.preloaded = [];
+    window.cache = {};
     chrome.storage.local.get(['blacklist', 'preferences'], function(items) {
         var obj = items['blacklist'];
         if (obj === undefined || !('PAGE' in obj && 'SITE' in obj && 'REGEX' in obj)) {
@@ -77,7 +69,56 @@ function init() {
             window.preferences = obj;
         }
     });
+
+    chrome.storage.local.get('index', function(items) {
+        var obj = items['index'];
+        if (obj === undefined) {
+            window.timeIndex = [];
+            chrome.storage.local.get(null, function(items) {
+                for (var key in items) {
+                    if (key != 'index') {
+                        timeIndex.push(items[key].time.toString());
+                    }
+                }
+
+                timeIndex.sort(function(a,b) {return parseInt(a) - parseInt(b)}); // soonest last
+                makePreloaded(timeIndex);
+                chrome.storage.local.set({'index':{'index':timeIndex}});
+            });
+
+        } else {
+            window.timeIndex = obj.index;
+            makePreloaded(timeIndex);
+        }
+    });
 }
+
+
+function makePreloaded(index) {
+    var preloaded_index = [];
+    var millis = +CUTOFF_DATE;
+    var i = Math.floor(binarySearch(index, millis, LT, GT, 0, index.length));
+    for (var j = i; j < index.length; j++) {
+        preloaded_index.push(index[j]);
+    }
+
+    chrome.storage.local.get(preloaded_index, function(items) {
+        window.preloaded = [];
+        for (var key in items) {
+            preloaded.push(items[key]);
+        }
+
+        preloaded.sort(function(a,b){return a.time-b.time});
+    });
+}
+
+function assert(condition, message) {
+    if (!condition) {
+        throw message || "Assertion failed";
+    }
+}
+
+
 
 function transferToPouch() {
     var count = 0;
@@ -100,17 +141,12 @@ function handleMessage(data, sender, sendRespones) {
     if (data.msg === 'pageContent' && shouldArchive(data)) {
         delete data.msg;
         data.text = processPageText(data.text);
-        //console.log("TEST"+ data.text)
         var time = data.time;
         var keyValue = {};
         keyValue[time] = data;
         chrome.storage.local.set(keyValue, function() {
             console.log("Stored: " + data.url);
         });
-
-
-        store_url(data);
-        //show_url()
 
         timeIndex.push(time.toString());
         preloaded.push(data);
@@ -137,89 +173,6 @@ function handleMessage(data, sender, sendRespones) {
     }
 }
 
-function store_url(data) {
-    var item = {
-        _id: data.time.toString(),
-        title: data.title,
-        text: data.text,
-        LastVisitTime: data.time,
-        url: data.url,
-    };
-    db.put(item, function callback(err, result) {
-        if (!err) {
-            console.log('Successfully stored the page: ' + data.url);
-            return 1;
-        } else {
-            console.log('Error ' + err + ' on URL: ' + data.url)
-            return 0;
-        }
-    });
-}
-
-function search_pouch(query, text, cb, suggestCb) {
-
-
-    for(var i = 0 ; i < query.keywords.length ; i++)
-        if(query.keywords[i].length == 0)
-            query.keywords.splice(i, 1)
-    // Regular search through PouchDB
-    db.search({
-        query: query.text,
-        fields: ['title','url','text'],
-        include_docs: true,
-        build: false
-    }).then(function (res) {
-
-        var results = [];
-        for(var i = 0; i < res.rows.length ; i++) {
-            var doc = res.rows[i];
-            if (query.before != false) {
-                if (doc.doc.LastVisitTime <= query.before.getTime() && doc.doc.LastVisitTime >= query.after.getTime())
-                    results.push(doc);
-            }
-            else if (doc.doc.LastVisitTime >= query.after.getTime())
-                results.push(doc);
-        }
-
-        // If Minuswords are entered in the query
-        var final_results = [];
-        if(query.negative.length > 0) {
-
-        	//calculating the precision, if more than 1 minus word is entered: https://github.com/nolanlawson/pouchdb-quick-search#minimum-should-match-mm
-        	var full_percent = 100
-        	divisor = query.negative.length
-        	var mm = 100 / divisor + "%"
-
-        	// searching for two minus words
-        	query.negative= query.negative.join(" ")
-            db.search({
-                query: query.negative,
-                fields: ['title','url','text'],
-                mm: mm,
-                include_docs: true,
-                build: false
-            }).then(function (res_negative) {
-                for(var i = 0 ; i < res.rows.length ; i++) {
-                    var flag = 0;
-                    for(var j = 0 ; j < res_negative.rows.length ; j++) {
-                        if(res.rows[i].id === res_negative.rows[j].id)
-                            flag = 1;
-                    }
-                    if(flag === 0)
-                        final_results.push(res.rows[i]);
-                }
-                return suggestionsComplete(final_results, query.shouldDate, suggestCb);
-            });
-        } else {
-            final_results = results;
-        }
-        if(final_results.length > 0)
-            return suggestionsComplete(final_results, query.shouldDate, suggestCb);
-    }).catch(function (err) {
-        console.log(err)
-    });
-}
-
 function omnibarHandler(text, suggest) {
     dispatchSuggestions(text, suggestionsComplete, suggest);
 }
@@ -229,12 +182,12 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
     var i;
     for (i = 0; i < suggestions.length; i++) {
         var elem = suggestions[i];
-        var urlToShow = elem.doc.url;
+        var urlToShow = elem.url;
         if (urlToShow.length >= MAX_URL_LEN_SHOWN) {
             urlToShow = urlToShow.substring(0,47) + '...';
         }
         var description = "<url>" + escape(urlToShow) + "</url> "
-        var date = new Date(elem.doc.LastVisitTime);
+        var date = new Date(elem.time);
         var hour = date.getHours();
         var minutes = date.getMinutes();
         if (hour > 12) {
@@ -259,8 +212,8 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
             description += ':: ' + escape(fmt) + ' ';
         }
 
-        description += '- ' + escape(elem.doc.title);
-        res.push({content:elem.doc.url, description:description});
+        description += '- ' + escape(elem.title);
+        res.push({content:elem.url, description:description});
     }
     if (res.length > 0) {
         chrome.omnibox.setDefaultSuggestion({description: "Select an option below"});
@@ -323,7 +276,7 @@ function makeSuggestions(query, candidates, cb, suggestCb) {
     var negativeLen = negative.length;
     var j = 0;
     for (var i = candidates.length - 1; i > -1; i--) {
-        var text = candidates[i].doc.text;
+        var text = candidates[i].text;
         var isMatching = true;
         for (var k = 0; k < negativeLen; k++) {
             if (text.indexOf(negative[k]) > -1) {
@@ -340,7 +293,7 @@ function makeSuggestions(query, candidates, cb, suggestCb) {
             }
 
             if (isMatching) {
-                var cleanedURL = cleanURL(candidates[i].doc.url);
+                var cleanedURL = cleanURL(candidates[i].url);
                 if (!(cleanedURL in urls)) {
                     res.push(candidates[i]);
                     urls[cleanedURL] = true;
@@ -360,15 +313,69 @@ function cleanURL(url) {
     return url.trim().replace(/(#.+?)$/, '');
 }
 
-
-// Early work on pouchDB search implementation
-function dispatchSuggestions(text, cb, suggestCb){
+function dispatchSuggestions(text, cb, suggestCb) {
     var query = makeQueryFromText(text);
+    query.text = text;
     if (query.before !== false && query.after !== false && query.after >= query.before) return;
 
     query.keywords.sort(function(a,b){return b.length-a.length});
-    // console.log(query);
-    search_pouch(query, text, cb, suggestCb);
+
+    if (query.after >= CUTOFF_DATE) {
+        var start = Math.floor(binarySearch(preloaded, {'time':+query.after}, LT_OBJ,
+                                            GT_OBJ, 0, preloaded.length));
+        var end;
+        if (query.before) {
+            end = Math.ceil(binarySearch(preloaded, {'time':+query.before}, LT_OBJ,
+                                         GT_OBJ, 0, preloaded.length));
+        } else {
+            end = preloaded.length;
+        }
+
+        makeSuggestions(query, preloaded.slice(start, end), cb, suggestCb)
+    } else {
+        var start = Math.floor(binarySearch(timeIndex, +query.after, LT,
+                                            GT, 0, timeIndex.length));
+        var end;
+        if (query.before) {
+            end = Math.ceil(binarySearch(timeIndex, +query.before, LT,
+                                         GT, 0, timeIndex.length));
+        } else {
+            end = timeIndex.length;
+        }
+
+        window.sorted = [];
+        var get = timeIndex.slice(start, end);
+        var index = Math.ceil(binarySearch(get, +CUTOFF_DATE, LT, GT, 0, get.length));
+        if (index < get.length) {
+            sorted = preloaded.slice(0, get.length - index + 1);
+        }
+        get = get.slice(0,index);
+
+        chrome.storage.local.get(get, function(items) {
+            for (var key in items) {
+                sorted.push(items[key]);
+            }
+            sorted.sort(function(a,b) {return a.time - b.time});
+            makeSuggestions(query, sorted, cb, suggestCb);
+        });
+    }
+}
+
+function binarySearch(arr, value, lt, gt, i, j) {
+    if (Math.abs(j - i) <= 1) {
+        return (i + j)/2;
+    }
+
+    var m = Math.floor((i + j)/2)
+    var cmpVal = arr[m];
+    if (gt(cmpVal, value)) {
+        j = m;
+    } else if (lt(cmpVal, value)){
+        i = m;
+    } else {
+        return m;
+    }
+    return binarySearch(arr, value, lt, gt, i, j);
 }
 
 init();
