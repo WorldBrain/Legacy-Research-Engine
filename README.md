@@ -106,6 +106,11 @@ Fork the project, then...
 - Click *load unpacked extension* (top left)
 - Select the ```/build``` folder from the project
 
+#### Problems Building the Extension in Windows?
+
+Check [this StackOverflow thread](http://stackoverflow.com/questions/39727920/cant-use-mkdir-in-npm-script-from-windows)
+
+
 ## How to get in touch with us
 
  1. via Email: [info@worldbrain.io](mailto:info@worldbrain.io)
