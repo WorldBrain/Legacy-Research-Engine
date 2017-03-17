@@ -19,7 +19,8 @@
         "storage",
         "tabs",
         "history",
-        "bookmarks"
+        "bookmarks",
+        "webNavigation"
     ],
     "browser_action": {
         "default_icon": {
