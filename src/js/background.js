@@ -270,7 +270,6 @@ function makeSuggestions(query, candidates, cb, suggestCb) {
     var res = [];
     var urls = {};
     var keywords = query.keywords;
-    console.log(candidates);
     var keywordsLen = keywords.length;
     var negative = query.negative;
     var negativeLen = negative.length;
