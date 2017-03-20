@@ -18,7 +18,7 @@ function extractFromText( data, callback ) {
 
   text = '<textractwrapper>' + text + '<textractwrapper>';
 
-    $ = cheerio.load( text );
+    $ = cheerio.load( text , { decodeEntities: false } );
     $( 'script' ).remove();
     $( 'style' ).remove();
     $( 'noscript' ).remove();
