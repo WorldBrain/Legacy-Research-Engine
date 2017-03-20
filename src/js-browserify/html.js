@@ -18,7 +18,7 @@ function extractFromText( data, callback ) {
 
   text = '<textractwrapper>' + text + '<textractwrapper>';
 
-    $ = cheerio.load( text );
+    $ = cheerio.load( text , { decodeEntities: false } );
     $( 'script' ).remove();
     $( 'style' ).remove();
     $( 'noscript' ).remove();
@@ -32,7 +32,6 @@ function extractFromText( data, callback ) {
       .replace( WHITELIST_STRIP_LINEBREAKS, ' ' )
       .replace( / (?! )/g, '' )
       .replace( /[ \t\v\u00A0]{2,}/g, ' ' )
-      .replace(/[^a-zA-Z0-9]+/g, " ")
       ;
 
       
