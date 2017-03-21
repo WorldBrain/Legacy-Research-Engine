@@ -13,8 +13,9 @@ var initial = document.body.parentNode.innerHTML;
 var get_text = require('./html.js')
 var _ = require('lodash')
 var get_progress_total = 0
-var get_progress_success = 0 
+var get_progress_success = 0
 var get_progress_failed = 0
+var get_timeout = 60000
 
 //open list of already indexed urls from local storage
 var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
@@ -110,7 +111,7 @@ function downloadUtil(download_items, index) {
                                     }
                                 } 
 
-                                else if (xhttp.readyState == 4 && xhttp.status != 200) {
+                                else if (xhttp.readyState == 4 && xhttp.status != 200 && xhttp.status != 0) {
                                         console.log('Download failed because!: ' + xhttp.status +': ' + download_items[index].url);
                                         update_progress_failed()
                                         downloadUtil(download_items, index + 1);
@@ -120,8 +121,10 @@ function downloadUtil(download_items, index) {
                     
 
                         };
+                        xhttp.timeout = get_timeout;
                         xhttp.ontimeout = function() {
                         console.log('Timeout!!');
+                        update_progress_failed()
                         downloadUtil(download_items, index + 1);
                         }
                         xhttp.open('GET', download_items[index].url, true);
