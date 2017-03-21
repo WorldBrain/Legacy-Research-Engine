@@ -15,7 +15,7 @@ var _ = require('lodash')
 var get_progress_total = 0
 var get_progress_success = 0 
 var get_progress_failed = 0
-
+var hash_downloads;
 //open list of already indexed urls from local storage
 var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
 var isAbortedByUser = false;    
@@ -29,6 +29,9 @@ document.getElementById('abort_button').addEventListener("click", function(){
 
 
 function downloadUtil(download_items, index) {   
+
+	if(hash_downloads[index]) return;
+	hash_downloads[index] = true;
 
     // Process that runs, as soon as all urls from the list have been processed/downloaded
     if(parseInt(index) === download_items.length) {
@@ -50,6 +53,14 @@ function downloadUtil(download_items, index) {
         else {
 
             try{
+
+                var downloadTimeout = setTimeout(function(){
+                    existing_urls.push(download_items[index]);
+                    localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
+                    downloadUtil(download_items,index+1);
+                    clearTimeout(downloadTimeout);
+                },30000);
+
 
                 // IF PDF SEND TO SEPARATE XMLHTTP REQUEST
                 if (download_items[index].url.includes(".pdf") === true){
@@ -169,10 +180,11 @@ function gather_urls(callback){
 //starts the actual download process of the combined list from 'gather_urls()'
 function start_download(){
     gather_urls(function(result){
+        hash_downloads = new Array(len).fill(false);
+        console.log(hash_downloads);
         downloadUtil(result, 0);
     })
 };
-
 
 // selection function for history. Is true, if checkbox for history is active in analyse_urls.html
 function get_history_checked(callback){
