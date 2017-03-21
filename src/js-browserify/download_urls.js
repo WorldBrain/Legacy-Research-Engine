@@ -15,6 +15,7 @@ var _ = require('lodash')
 var get_progress_total = 0
 var get_progress_success = 0 
 var get_progress_failed = 0
+//to keep track of downloadUtils callback
 var hash_downloads;
 //open list of already indexed urls from local storage
 var existing_urls = JSON.parse(localStorage['list_downloaded_urls']);
@@ -29,8 +30,9 @@ document.getElementById('abort_button').addEventListener("click", function(){
 
 
 function downloadUtil(download_items, index) {   
-
+	//check if duplicate callback 
 	if(hash_downloads[index]) return;
+	//mark the function call
 	hash_downloads[index] = true;
 
     // Process that runs, as soon as all urls from the list have been processed/downloaded
@@ -55,6 +57,8 @@ function downloadUtil(download_items, index) {
             try{
 
                 var downloadTimeout = setTimeout(function(){
+                    //add the current url to the localstorage
+                    //if it takes more than 30secs
                     existing_urls.push(download_items[index]);
                     localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
                     downloadUtil(download_items,index+1);
@@ -180,8 +184,7 @@ function gather_urls(callback){
 //starts the actual download process of the combined list from 'gather_urls()'
 function start_download(){
     gather_urls(function(result){
-        hash_downloads = new Array(len).fill(false);
-        console.log(hash_downloads);
+        hash_downloads = new Array(result.length).fill(false);
         downloadUtil(result, 0);
     })
 };
