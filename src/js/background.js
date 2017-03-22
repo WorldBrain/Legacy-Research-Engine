@@ -119,23 +119,6 @@ function assert(condition, message) {
 }
 
 
-
-function transferToPouch() {
-    var count = 0;
-    var keys = null;
-    chrome.storage.local.get(null, function(results) {
-            keys = Object.keys(results);
-            for (var i = 0 ; i < keys.length ; i++)
-                if(keys[i] != "index" &&
-                        keys[i] != "blacklist" &&
-                        keys[i] != "preferences" &&
-                        keys[i] != "shouldOpenTab")
-                    count += store_url(results[keys[i]]);
-        }
-    );
-    console.log('Successfully stored ' + count.toString() + ' / ' + (keys.length - 4).toString() + ' items to PDB');
-}
-
 function handleMessage(data, sender, sendRespones) {
     // data is from message
     if (data.msg === 'pageContent' && shouldArchive(data)) {
