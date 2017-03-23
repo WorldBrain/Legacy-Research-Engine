@@ -64,8 +64,8 @@ function downloadUtil(download_items, index) {
                     existing_urls.push(download_items[index]);
                     localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
                     downloadUtil(download_items,index+1);
-                    clearTimeout(downloadTimeout);
-                },30000);
+                    console.log("Timeout: ", download_items[index].url)
+                },20000);
 
 
                 // IF PDF SEND TO SEPARATE XMLHTTP REQUEST
@@ -73,8 +73,7 @@ function downloadUtil(download_items, index) {
                     try{
                         openPDF(download_items[index].url, download_items[index].lastVisitTime)
                         downloadUtil(download_items, index + 1);
-                        existing_urls.push(download_items[index].url);
-                            
+                        existing_urls.push(download_items[index].url);                            
                     }
                     catch (err) {
                         console.log(err)
@@ -108,12 +107,14 @@ function downloadUtil(download_items, index) {
                                             // build the message that is sent to the "handleMessage"-function in background.js that stores it to DB           
                                              build_data(page_text,page_title,download_items, function(data){
                                                 handleMessage(data,null,null);
+                                                clearTimeout(downloadTimeout);  // TODO: have this clear time out also for pdfs
                                              })
                                         
                                         });
                                         //adding Url to list of already downloaded items.
                                         existing_urls.push(download_items[index].url);
                                         update_progress_success()
+
                                         downloadUtil(download_items, index + 1);
 
 
