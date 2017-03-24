@@ -3,13 +3,13 @@
     "name": "WorldBrain - The (Re)search-Engine",
     "short_name":"WorldBrain",
     "description": "Full-Text search the pages & PDFs you visited and bookmarked. All data is stored locally & nothing leaves your computer.",
-    "version": "0.0.1.9001",
+    "version": "0.0.1.9003",
     "content_scripts": [
         {
             "matches": [
                 "<all_urls>"
             ],
-            "js": ["js/bundle.js", "js/compatibility.js","js/pdf.js","js/pdf.worker.js","js/pdftotext.js", "js/blacklist2.js","js/lib/stopwords_res.js", "js/lib/readability.js", "js/relevanttext.js"]
+            "js": ["js/compatibility.js","js/pdf.js","js/pdf.worker.js","js/pdftotext.js", "js/blacklist2.js","js/lib/stopwords_res.js", "js/lib/readability.js", "js/relevanttext.js"]
         }
     ],
     "web_accessible_resources": ["js/pdf.worker.js"],
@@ -19,8 +19,7 @@
         "storage",
         "tabs",
         "history",
-        "bookmarks",
-        "webRequest"
+        "bookmarks"
     ],
     "browser_action": {
         "default_icon": {
