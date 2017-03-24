@@ -25,12 +25,6 @@ window.setTimeout((function(){
         "text": document.body.innerText, //relText,
         "title": document.title,
     });}
-}), 1000);
-
-
-
-
-
-
+}), 1000)
 
 

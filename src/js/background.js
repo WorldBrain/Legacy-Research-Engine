@@ -77,7 +77,10 @@ function init() {
             chrome.storage.local.get(null, function(items) {
                 for (var key in items) {
                     if (key != 'index') {
+                        try{
                         timeIndex.push(items[key].time.toString());
+                        }
+                        catch(e){}
                     }
                 }
 

@@ -193,10 +193,7 @@
                              <div style="padding: 30px;padding-top:0px">
                              
                              <h4 id="close_message">Download started. <strong>DON'T CLOSE THIS PAGE WITHOUT PAUSING!</strong></h4>
-                                    <p id="info_text">To make all your previously visited pages available for full-text search, we need to download them first. <br>Depending on the number of pages, this might take a while and might influence your browsing speed.<br> 
-                                    <p>You can watch the whole download process by pressing <code>cmd + alt + j</code>(Mac) / <code>Ctrl + Shift + j</code>(Win)</p>
-
-                                    <strong>You can pause and continue the downloading process at any time via <a href="preferences.html">the preferences</a></strong></p>
+                                    <p style="font-size: 15px" id="info_text">You can watch the whole download process by pressing <code>cmd + alt + j</code>(Mac) / <code>Ctrl + Shift + j</code>(Win)</p>
                                     <br>
                                     <p>
                                         <strong>TOTAL PROGRESS</strong>: <span id="total_progress">0</span>/<span id="total_urls">0</span>
@@ -209,11 +206,11 @@
                                     <p style="margin-top=10px">
                                         <strong>Known Issues:</strong>
                                         <ul>
-                                        <li>If the red malware warning screen appears and you go back then you have to restart the download. <br>Your previously downloaded pages are saved, but you have to restart WorldBrain via the extension menu to search them.</li>
-                                        <li>Failed URLs are nothing bad, we just cannot get them (i.e. behind login / you are offline).</li>
+                                        <li>If the red malware warning screen appears and you "go back to safety", then you have to restart the download. <br>Your previously downloaded pages are saved, but you have to restart WorldBrain via the extension menu to search them.</li>
+                                        <li>Failed URLs are nothing bad per se, we just cannot get them (i.e. behind login / you are offline).</li>
                                         <li>Really, just don't close this page without pausing. There were instances that bricked the extension.</li>
                                         <li>Sometimes the "Pause" button doesn't work immediately. Click once and wait. <br>As soon as it processes the click, the page will change and the extension restarts.</li>
-                                        <li>Some URLs (like authentifications) take a long time to process and it will look like the download is stuck. It will continue after a while. If it really doesn't work, contact us (<a href="mailto:info@worldbrain.io">info@worldbrain.io</a>) and pause the download.</li>
+                                        <li>We are still in an early stage, so errors/bugs can happen. If you have problems, you can always reach us via email: <a href="mailto:info@worldbrain.io">info@worldbrain.io</a></li>
                                         </ul>
                                     </p>
 
@@ -248,7 +245,6 @@
     <script type="text/javascript" src="../js/lib/readability.js"></script>
     <script type="text/javascript" src="../js/pdftotext.js"></script>
     <script type="text/javascript" src="../js/background.js"></script>
-    <!-- <script type="text/javascript" src="../js/download_History.js"></script>  -->
     <script type="text/javascript" src="../js/textprocessing.js"></script> 
 
 

@@ -1,0 +1,1 @@
+chrome.tabs.executeScript(details.tabId, { file: '/js/content.js'});
