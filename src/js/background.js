@@ -193,12 +193,12 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
 
         var fmt =  (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getUTCFullYear().toString().substring(2,4);
         if (shouldDate) {
-            description += ':: <match>' + escape(fmt + " " + hour) +'</match> ';
+            description += '     ' + escape(" " + fmt + "   ") + decodeURIComponent("\uD83D\uDD52") + " " + hour;
         } else {
-            description += ':: ' + escape(fmt) + ' ';
+            description += '   ' + escape(fmt) + ' ';
         }
 
-        description += '- ' + escape(elem.title);
+        description += '  -  ' + escape(elem.title);
         res.push({content:elem.url, description:description});
     }
     if (res.length > 0) {

@@ -64,6 +64,7 @@ function downloadUtil(download_items, index) {
                     existing_urls.push(download_items[index]);
                     localStorage['list_downloaded_urls'] = JSON.stringify(existing_urls);
                     downloadUtil(download_items,index+1);
+                    update_progress_failed()
                     console.log("Timeout: ", download_items[index].url)
                 },20000);
 
