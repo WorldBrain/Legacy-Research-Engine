@@ -204,7 +204,7 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
     if (res.length > 0) {
         chrome.omnibox.setDefaultSuggestion({description: "Select an option below"});
     } else {
-        chrome.omnibox.setDefaultSuggestion({description: "No results found"})
+        chrome.omnibox.setDefaultSuggestion({description: 'No results - The default results only include the past 60 days. To go back more, use time filters (after: or before:)'})
     }
     suggestCb(res);
 }
