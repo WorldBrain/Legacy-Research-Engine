@@ -202,9 +202,9 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
         res.push({content:elem.url, description:description});
     }
     if (res.length > 0) {
-        chrome.omnibox.setDefaultSuggestion({description: "Select an option below"});
+        chrome.omnibox.setDefaultSuggestion({description: 'Tip: Use time filters. Type: before/after:"2 weeks ago"'});
     } else {
-        chrome.omnibox.setDefaultSuggestion({description: 'No results - The default results only include the past 60 days. To go back more, use time filters (after: or before:)'})
+        chrome.omnibox.setDefaultSuggestion({description: 'No results - Tip: Use time filters. Type: before/after:"2 weeks ago"'})
     }
     suggestCb(res);
 }
@@ -362,5 +362,13 @@ function binarySearch(arr, value, lt, gt, i, j) {
     }
     return binarySearch(arr, value, lt, gt, i, j);
 }
+
+chrome.management.onUninstalled.addListener( function(){
+
+    window.open('http://worldbrain.io')
+
+})
+
+
 
 init();
