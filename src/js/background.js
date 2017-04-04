@@ -363,11 +363,17 @@ function binarySearch(arr, value, lt, gt, i, j) {
     return binarySearch(arr, value, lt, gt, i, j);
 }
 
-chrome.management.onUninstalled.addListener( function(){
-
-    window.open('http://worldbrain.io')
-
-})
+chrome.runtime.setUninstallURL("http://worldbrain.io/uninstall", function() {
+    var lastError = chrome.runtime.lastError;
+    if (lastError && lastError.message) {
+        console.warn(
+            "Unable to set uninstall URL: " + lastError.message
+        );
+        
+    } else {
+        // The url is set
+    }
+});
 
 
 
