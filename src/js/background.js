@@ -204,7 +204,7 @@ function suggestionsComplete(suggestions, shouldDate, suggestCb) {
     if (res.length > 0) {
         chrome.omnibox.setDefaultSuggestion({description: 'Tip: Use time filters. Type: before/after:"2 weeks ago"'});
     } else {
-        chrome.omnibox.setDefaultSuggestion({description: 'No results - Tip: Use time filters. Type: before/after:"2 weeks ago"'})
+        chrome.omnibox.setDefaultSuggestion({description: 'No results - By default only the last 31 days are searchable. Tip: Use time filters: before/after:"2 weeks ago"'})
     }
     suggestCb(res);
 }
