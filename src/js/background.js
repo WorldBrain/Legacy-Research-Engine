@@ -1,3 +1,4 @@
+
 var MILLIS_BEFORE_CLEAR = 1000 * 60; // 60 seconds
 var CLEAR_DELAY = 20000;
 var MAX_URL_LEN_SHOWN = 50;
@@ -8,6 +9,12 @@ var LT_OBJ = function(a,b) {
 }
 
 var db
+//import levi from 'levi' something like that
+var levidb = levi.levi('db')
+.use(levi.tokenizer())
+.use(levi.stemmer())
+.use(levi.stopword())
+ 
 
 function ValidURL(text) {
     var valid = /((https?):\/\/)?(([w|W]{3}\.)+)?[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?/
@@ -46,7 +53,8 @@ function acceptInput(text, disposition) {
 }
 
 function init() {
-
+    
+    //levi =  new indexedDB('levi')
     db = new PouchDB('main')
     // db.plugin()
     var remoteCouch = false;
@@ -89,7 +97,7 @@ function transferToPouch() {
                         keys[i] != "blacklist" &&
                         keys[i] != "preferences" &&
                         keys[i] != "shouldOpenTab")
-                    count += store_url(results[keys[i]]);
+                        count += store_url(results[keys[i]]);
         }
     );
     console.log('Successfully stored ' + count.toString() + ' / ' + (keys.length - 4).toString() + ' items to PDB');
@@ -97,7 +105,7 @@ function transferToPouch() {
 
 function handleMessage(data, sender, sendRespones) {
     // data is from message
-    if (data.msg === 'pageContent' && shouldArchive(data)) {
+    if (data.msg === 'pageContent' && shouldArchive(data) ) {
         delete data.msg;
         data.text = processPageText(data.text);
         //console.log("TEST"+ data.text)
@@ -154,15 +162,75 @@ function store_url(data) {
             return 0;
         }
     });
+    levidb.put('indexing_key',item )
+    console.log('#############Build')
 }
 
 function search_pouch(query, text, cb, suggestCb) {
+    //levi search implementation
+    levidb.searchStream(query, {
+    fields: { 'title': 10, 'url': 5, 'text':1 } // title field boost. then url then text as mentioned by Oliver.   
+    }).toArray(function (res) { console.log(res)
+      /*levi search returns the search results into an Array. We parse that array along with the conditions 
+      applied in the below original search of Research Engine checking for date time compatiblities and
+      negative query length .
+        */
+        var results = [];
+        for(var i = 0; i < res.length ; i++) {
+            var doc = res[i];
+            if (query.before != false) {
+                if (doc.doc.LastVisitTime <= query.before.getTime() && doc.doc.LastVisitTime >= query.after.getTime())
+                    results.push(doc);
+            }
+            else if (doc.doc.LastVisitTime >= query.after.getTime())
+                results.push(doc);
+        }
 
+        // If Minuswords are entered in the query
+        var final_results = [];
+        if(query.negative.length > 0) {
 
+        	//calculating the precision, if more than 1 minus word is entered: https://github.com/nolanlawson/pouchdb-quick-search#minimum-should-match-mm
+        	var full_percent = 100
+        	divisor = query.negative.length
+        	var mm = 100 / divisor + "%"
+
+        	// searching for two minus words
+        	query.negative= query.negative.join(" ")
+            db.search({
+                query: query.negative,
+                fields: ['title','url','text'],
+                mm: mm,
+                include_docs: true,
+                build: false
+            }).then(function (res_negative) {
+                for(var i = 0 ; i < res.length ; i++) {
+                    var flag = 0;
+                    for(var j = 0 ; j < res_negative.rows.length ; j++) {
+                        if(res[i].id === res_negative.rows[j].id)
+                            flag = 1;
+                    }
+                    if(flag === 0)
+                        final_results.push(res[i]);
+                }
+                return suggestionsComplete(final_results, query.shouldDate, suggestCb);
+            });
+        } else {
+            final_results = results;
+        }
+        if(final_results.length > 0)
+            return suggestionsComplete(final_results, query.shouldDate, suggestCb);          
+    })
+    
+    
+    
+    
     for(var i = 0 ; i < query.keywords.length ; i++)
         if(query.keywords[i].length == 0)
             query.keywords.splice(i, 1)
     // Regular search through PouchDB
+
+
     db.search({
         query: query.text,
         fields: ['title','url','text'],

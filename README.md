@@ -1,5 +1,4 @@
 
-
 ## IMPORTANT
 
 We started collaborating with the [WebMemex project](https://github.com/WebMemex/memextension) and are in the mode of porting all the features of WorldBrain there. The WebMemex will power our software in the future and will lend its name to the WorldBrain tool as well. Therefore be not surprised, if you see no action in this repo. 
