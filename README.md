@@ -5,6 +5,9 @@
 We started collaborating with the [WebMemex project](https://github.com/WebMemex/memextension) and are in the mode of porting all the features of WorldBrain there and refactoring the code (Yes, we know, it's a complete hack-job, a big, fat house of cards). As we are in porting mode, be not surprised, if you see no action in this repo. 
 
 # WorldBrain's (Re)search-Engine
+[![Backers on Open Collective](https://opencollective.com/research-engine/backers/badge.svg)](#backers)
+[![Sponsors on Open Collective](https://opencollective.com/research-engine/sponsors/badge.svg)](#sponsors)
+
 **Welcome to the WorldBrain project. We work on the goal of an increased (scientific) literacy in our global society through a better overall information quality on the internet.**
 
 Doing so by developing open-source search tools for professional web-researchers like science communicators, (STEM-) students, journalists, librarians and online debaters to effortlessly find, rate and share qualitative and trustworthy web content/notes with their friends, followers and the public. ([Watch the 3.5 min Vision Video](http://worldbrain.io/vision))
@@ -122,9 +125,81 @@ Check [this StackOverflow thread](http://stackoverflow.com/questions/39727920/ca
 This tool is originally released under the name "[Falcon](https://github.com/lengstrom/falcon)" and will be further developed to fit the needs of the scientific research community.  The original programmers are [@andrewilyas](https://github.com/andrewilyas) and [@lengstrom](https://github.com/lengstrom).
 
 
+## Backers
+
+Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/research-engine#backer)]
+
+<a href="https://opencollective.com/research-engine/backer/0/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/0/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/1/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/1/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/2/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/2/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/3/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/3/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/4/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/4/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/5/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/5/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/6/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/6/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/7/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/7/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/8/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/8/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/9/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/9/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/10/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/10/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/11/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/11/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/12/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/12/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/13/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/13/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/14/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/14/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/15/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/15/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/16/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/16/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/17/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/17/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/18/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/18/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/19/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/19/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/20/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/20/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/21/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/21/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/22/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/22/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/23/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/23/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/24/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/24/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/25/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/25/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/26/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/26/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/27/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/27/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/28/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/28/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/backer/29/website" target="_blank"><img src="https://opencollective.com/research-engine/backer/29/avatar.svg"></a>
+
+
+## Sponsors
+
+Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/research-engine#sponsor)]
+
+<a href="https://opencollective.com/research-engine/sponsor/0/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/1/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/2/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/3/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/4/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/5/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/6/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/7/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/8/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/9/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/10/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/10/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/11/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/11/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/12/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/12/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/13/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/13/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/14/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/14/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/15/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/15/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/16/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/16/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/17/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/17/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/18/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/18/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/19/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/19/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/20/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/20/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/21/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/21/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/22/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/22/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/23/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/23/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/24/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/24/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/25/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/25/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/26/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/26/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/27/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/27/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/28/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/28/avatar.svg"></a>
+<a href="https://opencollective.com/research-engine/sponsor/29/website" target="_blank"><img src="https://opencollective.com/research-engine/sponsor/29/avatar.svg"></a>
+
+
 ## License
 
 Currently the (Re)search-Engine is released under GPL-3, as this has been the license of *Falcon*. 
 We aim to release it under a more liberal license (CC0, MIT, BSD-2/3) as soon as we have replaced all the code from the original Falcon tool. 
 
-Our goal is to provide a set of reusable libraries, so that this client can be adapted to as many work-flows as possible. 
+Our goal is to provide a set of reusable libraries, so that this client can be adapted to as many work-flows as possible.
