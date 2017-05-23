@@ -24,7 +24,8 @@
     "watch:copy-assets": "cpx 'src/assets/**/*.*' build/assets --watch",
     "build:browserify": "mkdir -p ./build/js && browserify src/js-browserify/download_urls.js -o build/js/bundle.js",
     "watch:browserify": "mkdir -p ./build/js && watchify src/js-browserify/download_urls.js -o build/js/bundle.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "opencollective postinstall"
   },
   "repository": {
     "type": "git",
@@ -35,5 +36,10 @@
   "bugs": {
     "url": "https://github.com/WorldBrain/Research-Engine/issues"
   },
-  "homepage": "https://github.com/WorldBrain/Research-Engine#readme"
+  "homepage": "https://github.com/WorldBrain/Research-Engine#readme",
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/research-engine",
+    "logo": "https://opencollective.com/opencollective/logo.txt"
+  }
 }
