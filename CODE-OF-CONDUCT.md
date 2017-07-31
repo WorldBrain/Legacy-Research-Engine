@@ -1,20 +1,21 @@
 
-#Code of Conduct
-##1. Purpose
+# Code of Conduct
+
+## 1. Purpose
 A primary goal of the WorldBrain Community is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible. As such, we are committed to providing a friendly, safe and welcoming environment for all, regardless of gender, sexual orientation, ability, ethnicity, socioeconomic status, and religion (or lack thereof).
 
 This code of conduct outlines our expectations for all those who participate in our community, as well as the consequences for unacceptable behavior.
 
 We invite all those who participate in the WorldBrain Project to help us create safe and positive experiences for everyone.
 
-##2. Open [Source/Culture/Tech] Citizenship
+## 2. Open [Source/Culture/Tech] Citizenship
 A supplemental goal of this Code of Conduct is to increase open [source/culture/tech] citizenship by encouraging participants to recognize and strengthen the relationships between our actions and their effects on our community.
 
 Communities mirror the societies in which they exist and positive action is essential to counteract the many forms of inequality and abuses of power that exist in society.
 
 If you see someone who is making an extra effort to ensure our community is welcoming, friendly, and encourages all participants to contribute to the fullest extent, we would like to know. hope you endorse it.
 
-##3. Expected Behavior
+## 3. Expected Behavior
 The following behaviors are expected and requested of all community members:
 
 * Participate in an authentic and active way. In doing so, you contribute to the health and longevity of this community.
@@ -25,7 +26,7 @@ The following behaviors are expected and requested of all community members:
 * Remember that the behaviour of our members does not only have an impact on our community, but also on how it is perceived in the public.
 **Conflict resolution and constructive debate is one of WorldBrain's core values.** We have to nurture them as a community in order to ensure a trustworthy image in the long run.
 
-##4. Unacceptable Behavior
+## 4. Unacceptable Behavior
 The following behaviors are considered harassment and are unacceptable within our community:
 
 * Violence, threats of violence or violent language directed against another person.
@@ -40,37 +41,33 @@ The following behaviors are considered harassment and are unacceptable within ou
 * Advocating for, or encouraging, any of the above behavior.
 * Sustained disruption of community events, including talks and presentations.
 
-##5. Consequences of Unacceptable Behavior
+## 5. Consequences of Unacceptable Behavior
 Unacceptable behavior from any community member, including sponsors and those with decision-making authority, will not be tolerated.
 
 Anyone asked to stop unacceptable behavior is expected to comply immediately.
 
 If a community member engages in unacceptable behavior, the community organizers may take any action they deem appropriate, up to and including a temporary ban or permanent expulsion from the community without warning (and without refund in the case of a paid event).
 
-##6. Reporting Guidelines
+## 6. Reporting Guidelines
 If you are subject to or witness unacceptable behavior, or have any other concerns, please notify a community organizer as soon as possible by emailing info@worldbrain.io.
 
 Additionally, community organizers are available to help community members engage with local law enforcement or to otherwise help those experiencing unacceptable behavior feel safe. In the context of in-person events, organizers will also provide escorts as desired by the person experiencing distress.
 
-##7. Addressing Grievances
+## 7. Addressing Grievances
 If you feel you have been falsely or unfairly accused of violating this Code of Conduct, you should notify the WorldBrain team with a concise description of your grievance.
 
-##8. Scope
+## 8. Scope
 We expect all community participants (contributors, paid or otherwise; sponsors; and other guests) to abide by this Code of Conduct in all community venues–online and in-person–as well as in all one-on-one communications pertaining to community business.
 
 This code of conduct and its related procedures also applies to unacceptable behavior occuring outside the scope of community activities when such behavior has the potential to adversely affect the safety and well-being of community members.
 
-##9. Contact info
-To report or discuss a suspected violation of this code of conduct by a community member, you may contact any of the team directly and in confidence:
-
-Currently that's only me, [Oliver Sauter](https://github.com/oliversauter). :smile:
+## 9 . Contact info
+To report or discuss a suspected violation of this code of conduct by a community member, you may contact any of the team directly and in confidence, or the team-lead [Oliver Sauter](https://github.com/oliversauter).
 
 If you want to change that and contribute, visit our [Readme file](https://github.com/WorldBrain/Webmarks/blob/master/README.md). 
 
-See ya!
 
-
-##10. License and attribution
+## 10. License and attribution
 This Code of Conduct is distributed under a Creative Commons Attribution-ShareAlike license.
 
 It is derived from the Citizen Code of Conduct at http://citizencodeofconduct.org/ and from the Slidewinder Code of Conduct at http://www.slidewinder.io/docs/01_code_of_conduct.html.
