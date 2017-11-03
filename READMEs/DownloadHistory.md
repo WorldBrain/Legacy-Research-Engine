@@ -1,11 +1,9 @@
 Goal
 ---
 Downloading History URLs for processing.
-
 Input
 ---
 No particular input. History items already stored in ```chrome.storage.local``` by ```importHistory``` are used.
-
 Output
 ---
 Creates a data object and sends it to ```handleMessage``` for processing. The format is shown below: 
