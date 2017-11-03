@@ -68,7 +68,7 @@ More info in our [projects section](https://github.com/WorldBrain/Research-Engin
 
 ## How to get involved
 
- - If you are **JAVASCRIPT DEVELOPER** you can check out [our current projects](https://github.com/WebMemex/webmemex-extension/projects) and [open tasks](https://github.com/WebMemex/webmemex-extension/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer-task)
+ - If you are **JAVASCRIPT DEVELOPER** you can check out [our current projects](https://github.com/WorldBrain/WebMemex/projects) and [open tasks](https://github.com/WorldBrain/WebMemex/issues)
  - Wanna help with **MARKETING**? Contact Oliver via email: oli@worldbrain.io
  - Wanna help us with **MONEYYYZ**? Wohoo! You can do so by [supporting us on Patreon](http://patreon.com/WorldBrain) 
 
