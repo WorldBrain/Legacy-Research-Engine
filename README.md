@@ -2,7 +2,8 @@
 
 ## IMPORTANT
 
-We started collaborating with the [WebMemex project](https://github.com/WorldBrain/WebMemex/) on the new version of the WorldBrain tool. We are in the mode of porting all the features of WorldBrain there and refactoring the code (Yes, we know, it's a complete hack-job, a big, fat house of cards). As we are in porting mode, be not surprised, if you see no action in this repo. 
+This is a legacy repo. We rebuilt this tool from the ground up and you can download it [on our website](https://worldbrain.io). 
+The new repository, you find [here](https://github.com/WorldBrain/Memex/). 
 
 # WorldBrain's (Re)search-Engine
 **Welcome to the WorldBrain project. We work on the goal of an increased (scientific) literacy in our global society through a better overall information quality on the internet.**
